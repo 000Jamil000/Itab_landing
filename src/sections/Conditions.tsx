@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 const Conditions = () => {
   return (
-    <section id="conditions" className="bg-white" style={{ padding: '80px 0' }}>
-      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0" style={{ paddingTop: '63px' }}>
+    <section id="conditions" className="bg-white rounded-[32px] mb-[8px] pt-[63px] pb-[63px]">
+      <div className="mx-auto w-[1200px]">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '24px', marginBottom: '40px' }}>
           <motion.h2
             className="text-h2"
@@ -58,7 +58,7 @@ const Conditions = () => {
           </motion.div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4" style={{ columnGap: '16px', rowGap: '16px' }}>
+        <div className="grid" style={{ gridTemplateColumns: '288px 288px 288px 288px', columnGap: '16px', rowGap: '16px' }}>
           {/* Card 1 (green) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -87,16 +87,18 @@ const Conditions = () => {
                 и упаковка
               </div>
             </div>
-
-            {/* Spot */}
-            <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
-              <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
-                <img src="/images/conditions-spot-card1.svg" alt="" style={{ width: '100%', height: '100%' }} />
+            {/* Art area: keep absolute positioning relative to the flexible remaining space (matches Figma layout) */}
+            <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
+              {/* Spot */}
+              <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
+                  <img src="/images/conditions-spot-card1.svg" alt="" style={{ width: '100%', height: '100%' }} />
+                </div>
               </div>
-            </div>
-            {/* Illustration */}
-            <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
-              <img src="/images/conditions-card1-illustration.png" alt="" style={{ position: 'absolute', left: '11.87%', top: '16.01%', width: '88.14%', height: '77.46%', maxWidth: 'none' }} />
+              {/* Illustration (241x241 rectangle with image fill crop) */}
+              <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                <img src="/images/conditions-card1-illustration.png" alt="" style={{ position: 'absolute', left: '11.87%', top: '16.01%', width: '88.14%', height: '77.46%', maxWidth: 'none' }} />
+              </div>
             </div>
           </motion.div>
 
@@ -126,21 +128,25 @@ const Conditions = () => {
                 3 рабочих дней&nbsp;после отчёта о продажах
               </div>
             </div>
-
-            {/* Spot */}
-            <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
-              <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
-                <img src="/images/conditions-spot-card2.svg" alt="" style={{ width: '100%', height: '100%' }} />
+            {/* Art area: keep absolute positioning relative to the flexible remaining space (matches Figma layout) */}
+            <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
+              {/* Spot */}
+              <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
+                  <img src="/images/conditions-spot-card2.svg" alt="" style={{ width: '100%', height: '100%' }} />
+                </div>
               </div>
-            </div>
-            {/* Main illustration */}
-            <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
-              <img src="/images/conditions-card2-illustration.png" alt="" style={{ position: 'absolute', left: '7.65%', top: '7.79%', width: '92.18%', height: '92.18%', maxWidth: 'none' }} />
-            </div>
-            {/* Small badge */}
-            <div style={{ position: 'absolute', right: '-23.79px', bottom: '104.21px', width: '110.787px', height: '110.787px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
-              <div style={{ transform: 'rotate(15deg)', width: '90.457px', height: '90.457px', overflow: 'hidden' }}>
-                <img src="/images/conditions-card2-illustration.png" alt="" style={{ position: 'absolute', left: '3.06%', top: '11.42%', width: '100%', height: '100%', maxWidth: 'none' }} />
+              {/* Main illustration */}
+              <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                {/* Figma (8423:31331): left 7.65%, top 7.79%, size 92.18% */}
+                <img src="/images/conditions-card2-illustration.png" alt="" style={{ position: 'absolute', left: '7.65%', top: '7.79%', width: '92.18%', height: '92.18%', maxWidth: 'none' }} />
+              </div>
+              {/* Small badge */}
+              <div style={{ position: 'absolute', right: '-23.79px', bottom: '104.21px', width: '110.787px', height: '110.787px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
+                <div style={{ transform: 'rotate(15deg)', width: '90.457px', height: '90.457px', overflow: 'hidden' }}>
+                  {/* Figma (8423:31331): left 3.06%, top 11.42%, size 100% */}
+                  <img src="/images/conditions-card2-illustration.png" alt="" style={{ position: 'absolute', left: '3.06%', top: '11.42%', width: '100%', height: '100%', maxWidth: 'none' }} />
+                </div>
               </div>
             </div>
           </motion.div>
@@ -171,16 +177,18 @@ const Conditions = () => {
                 и продвижение
               </div>
             </div>
-
-            {/* Spot */}
-            <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
-              <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
-                <img src="/images/conditions-spot-card3.svg" alt="" style={{ width: '100%', height: '100%' }} />
+            {/* Art area: keep absolute positioning relative to the flexible remaining space (matches Figma layout) */}
+            <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
+              {/* Spot */}
+              <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
+                  <img src="/images/conditions-spot-card3.svg" alt="" style={{ width: '100%', height: '100%' }} />
+                </div>
               </div>
-            </div>
-            {/* Illustration */}
-            <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
-              <img src="/images/conditions-card3-illustration.png" alt="" style={{ position: 'absolute', left: '12.54%', top: '11.6%', width: '87.39%', height: '76.8%', maxWidth: 'none' }} />
+              {/* Illustration */}
+              <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                <img src="/images/conditions-card3-illustration.png" alt="" style={{ position: 'absolute', left: '12.54%', top: '11.6%', width: '87.39%', height: '76.8%', maxWidth: 'none' }} />
+              </div>
             </div>
           </motion.div>
 
@@ -210,21 +218,23 @@ const Conditions = () => {
                 и ресурсов
               </div>
             </div>
-
-            {/* Spot */}
-            <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
-              <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
-                <img src="/images/conditions-spot-card4.svg" alt="" style={{ width: '100%', height: '100%' }} />
+            {/* Art area: keep absolute positioning relative to the flexible remaining space (matches Figma layout) */}
+            <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
+              {/* Spot */}
+              <div style={{ position: 'absolute', left: '-99px', bottom: '-267.3px', width: '470.302px', height: '470.302px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
+                  <img src="/images/conditions-spot-card4.svg" alt="" style={{ width: '100%', height: '100%' }} />
+                </div>
               </div>
-            </div>
-            {/* Main illustration */}
-            <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
-              <img src="/images/conditions-card4-illustration.png" alt="" style={{ position: 'absolute', left: '-3.53%', top: '-1.75%', width: '107.06%', height: '107.06%', maxWidth: 'none' }} />
-            </div>
-            {/* Plane */}
-            <div style={{ position: 'absolute', right: '-23.79px', bottom: '104.21px', width: '110.787px', height: '110.787px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
-              <div style={{ transform: 'rotate(15deg)', width: '90.457px', height: '90.457px', overflow: 'hidden' }}>
-                <img src="/images/conditions-card4-plane.png" alt="" style={{ position: 'absolute', left: '-6.06%', top: '-2.06%', width: '112.21%', height: '112.21%', maxWidth: 'none' }} />
+              {/* Main illustration */}
+              <div style={{ position: 'absolute', left: '12px', bottom: '-81.21px', width: '241px', height: '241px', overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                <img src="/images/conditions-card4-illustration.png" alt="" style={{ position: 'absolute', left: '-3.53%', top: '-1.75%', width: '107.06%', height: '107.06%', maxWidth: 'none' }} />
+              </div>
+              {/* Plane */}
+              <div style={{ position: 'absolute', right: '-23.79px', bottom: '104.21px', width: '110.787px', height: '110.787px', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
+                <div style={{ transform: 'rotate(15deg)', width: '90.457px', height: '90.457px', overflow: 'hidden' }}>
+                  <img src="/images/conditions-card4-plane.png" alt="" style={{ position: 'absolute', left: '-6.06%', top: '-2.06%', width: '112.21%', height: '112.21%', maxWidth: 'none' }} />
+                </div>
               </div>
             </div>
           </motion.div>

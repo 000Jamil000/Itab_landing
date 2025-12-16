@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const CTA = () => {
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden mb-[8px]"
       style={{
         backgroundColor: '#59AD3B',
         borderRadius: '32px',
@@ -14,8 +14,9 @@ const CTA = () => {
       <div
         style={{
           position: 'absolute',
-          left: '418.37px',
-          top: '-275px',
+          // Match Figma (8423:31395): position is defined via right/bottom
+          right: '-578.598px',
+          bottom: '-1447.229px',
           width: '2080.228px',
           height: '2080.228px',
           display: 'flex',
@@ -24,12 +25,33 @@ const CTA = () => {
           pointerEvents: 'none',
         }}
       >
-        <div style={{ transform: 'rotate(150deg)', width: '1522.833px', height: '1522.833px' }}>
-          <img src="/images/cta-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none' }} />
+        <div style={{ transform: 'rotate(150deg)', width: '1522.833px', height: '1522.833px', position: 'relative' }}>
+          {/* Matches Figma nesting/insets for icon_m_LoveFill (8423:31395) */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '16.67%',
+              right: '11.59%',
+              bottom: '14.44%',
+              left: '8.33%',
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                top: '-9.53%',
+                right: '-8.2%',
+                bottom: '-9.53%',
+                left: '-8.2%',
+              }}
+            >
+              <img src="/images/cta-bg-lovefill.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0 relative" style={{ zIndex: 2 }}>
+      <div className="mx-auto w-[1200px] relative" style={{ zIndex: 2 }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +117,7 @@ const CTA = () => {
       <div
         style={{
           position: 'absolute',
-          left: '1419px',
+          right: '360.163px',
           top: '66px',
           width: '140.837px',
           height: '140.837px',

@@ -24,8 +24,29 @@ const Hero = () => {
           zIndex: 0,
         }}
       >
-        <div style={{ transform: 'rotate(336.274deg) scaleY(-1)', width: '1459.118px', height: '1459.118px' }}>
-          <img src="/images/hero-spot.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none' }} />
+        <div style={{ transform: 'rotate(336.274deg) scaleY(-1)', width: '1459.118px', height: '1459.118px', position: 'relative' }}>
+          {/* Match Figma nesting/insets for icon_m_LoveFill (8423:31267) */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '16.67%',
+              right: '11.59%',
+              bottom: '14.44%',
+              left: '8.33%',
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                top: '-43.77%',
+                right: '-37.66%',
+                bottom: '-43.77%',
+                left: '-37.66%',
+              }}
+            >
+              <img src="/images/hero-lovefill.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+            </div>
+          </div>
         </div>
       </div>
 

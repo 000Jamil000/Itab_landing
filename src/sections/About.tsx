@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section className="bg-white" style={{ padding: '80px 0' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
+    <section className="bg-white rounded-[32px] py-[80px] mb-[8px]">
+      <div className="mx-auto w-[1200px]">
         {/* Heading - 2 columns */}
         <div style={{ display: 'flex', flexDirection: 'row', gap: '40px', marginBottom: '40px', alignItems: 'flex-end' }}>
           <motion.div 

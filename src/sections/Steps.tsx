@@ -108,8 +108,8 @@ const Steps = () => {
   ];
 
   return (
-    <section id="steps" className="bg-white" style={{ padding: '80px 0' }}>
-      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0">
+    <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px]">
+      <div className="mx-auto w-[1200px]">
         <motion.h2 
           className="text-h2"
           style={{ color: '#242424', marginBottom: '40px', textAlign: 'center' }}
@@ -121,13 +121,12 @@ const Steps = () => {
           Всего 4 шага, чтобы начать продавать
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row gap-4">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
           {/* Left side - 4 step cards in 2x2 grid */}
           <div
             className="grid gap-4"
             style={{
-              width: '100%',
-              maxWidth: '792px',
+              width: '792px',
               gridTemplateColumns: '1fr 1fr',
             }}
           >
@@ -157,7 +156,6 @@ const Steps = () => {
               width: '392px',
               height: '616px',
             }}
-            className="w-full lg:w-[392px]"
           >
             {/* Green spot (bottom) */}
             <div

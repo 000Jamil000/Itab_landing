@@ -14,22 +14,22 @@ const StatCard = ({ iconSrc, number, label, delay }: StatCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="flex flex-col items-center gap-2 pb-0 pt-2 px-0 flex-1 min-w-0"
+      className="flex flex-col items-center gap-[8px] pb-0 pt-[8px] px-0 w-[291.75px] shrink-0"
     >
       {/* Icon with glass effect */}
-      <div className="relative w-12 h-12">
+      <div className="relative w-[48px] h-[48px]">
         <div className="absolute left-[2.61px] top-[-13.39px] w-[58.788px] h-[58.788px] flex items-center justify-center pointer-events-none">
-          <div className="rotate-[15deg] w-12 h-12 bg-primary rounded-2xl" />
+          <div className="rotate-[15deg] w-[48px] h-[48px] bg-primary rounded-[16px]" />
         </div>
-        <div className="absolute inset-0 bg-white/60 backdrop-blur-xs border border-white/60 rounded-2xl flex items-center justify-center p-3">
-          <img src={iconSrc} alt="" className="w-6 h-6 block max-w-none" />
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-xs border border-white/60 rounded-[16px] flex items-center justify-center p-[12px]">
+          <img src={iconSrc} alt="" className="w-[24px] h-[24px] block max-w-none" />
         </div>
       </div>
       
       {/* Text */}
       <div className="text-center leading-none w-full">
-        <div className="text-h5 text-secondary">{number}</div>
-        <div className="text-body-14 text-tertiary leading-5">{label}</div>
+        <div className="text-[20px] leading-[24px] font-medium text-secondary">{number}</div>
+        <div className="text-[14px] leading-[20px] font-normal text-tertiary">{label}</div>
       </div>
     </motion.div>
   );
@@ -79,20 +79,19 @@ const Numbers = () => {
   ];
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-        <div className="bg-white rounded-4xl h-[128px] flex items-center justify-center">
-          <div className="w-full flex items-center gap-[11px]">
-            {stats.map((stat, index) => (
-              <StatCard
-                key={index}
-                iconSrc={stat.iconSrc}
-                number={stat.number}
-                label={stat.label}
-                delay={index * 0.1}
-              />
-            ))}
-          </div>
+    <section className="relative z-10 mt-[-32px] mb-[8px]">
+      {/* White block (separate container) */}
+      <div className="w-full bg-white rounded-[32px] py-[20px]">
+        <div className="mx-auto w-[1200px] h-[128px] flex items-center gap-[11px]">
+          {stats.map((stat, index) => (
+            <StatCard
+              key={index}
+              iconSrc={stat.iconSrc}
+              number={stat.number}
+              label={stat.label}
+              delay={index * 0.1}
+            />
+          ))}
         </div>
       </div>
     </section>

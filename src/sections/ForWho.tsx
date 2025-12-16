@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 const ForWho = () => {
   return (
-    <section className="bg-white" style={{ padding: '80px 0' }}>
-      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0">
+    <section className="bg-white rounded-[32px] py-[80px] mb-[8px]">
+      <div className="mx-auto w-[1200px]">
         <motion.h2 
           className="text-h2 text-secondary"
           initial={{ opacity: 0, y: 30 }}
@@ -18,7 +18,7 @@ const ForWho = () => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {/* Cards row */}
-          <div className="flex flex-col lg:flex-row gap-4">
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
             {/* Card 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -29,7 +29,7 @@ const ForWho = () => {
                 backgroundColor: '#F7F7F7',
                 borderRadius: '24px',
                 padding: '32px',
-                width: '100%',
+                width: '592px',
                 height: '214px',
                 overflow: 'hidden',
                 display: 'flex',
@@ -37,7 +37,6 @@ const ForWho = () => {
                 justifyContent: 'center',
                 gap: '12px',
               }}
-              className="lg:w-[592px]"
             >
               <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                 <div style={{ width: '72px', height: '72px', overflow: 'hidden' }}>
@@ -73,7 +72,7 @@ const ForWho = () => {
                 backgroundColor: '#F7F7F7',
                 borderRadius: '24px',
                 padding: '32px',
-                width: '100%',
+                width: '592px',
                 height: '214px',
                 overflow: 'hidden',
                 display: 'flex',
@@ -81,7 +80,6 @@ const ForWho = () => {
                 justifyContent: 'center',
                 gap: '12px',
               }}
-              className="lg:w-[592px]"
             >
               <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                 <div style={{ width: '72px', height: '72px', overflow: 'hidden' }}>

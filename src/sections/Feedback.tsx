@@ -156,8 +156,8 @@ const Feedback = () => {
   }, [activeIndex]);
 
   return (
-    <section id="feedback" className="bg-white" style={{ padding: '80px 0' }}>
-      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0">
+    <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px]">
+      <div className="mx-auto w-[1200px]">
         <motion.h2 
           className="text-h2 text-secondary"
           initial={{ opacity: 0, y: 30 }}
@@ -169,7 +169,7 @@ const Feedback = () => {
           Отзывы наших поставщиков
         </motion.h2>
 
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'stretch', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
           {feedbacks.map((item, index) => (
             <FeedbackCard
               key={index}

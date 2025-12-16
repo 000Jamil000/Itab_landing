@@ -27,7 +27,9 @@ function App() {
         <Feedback />
         <CTA />
       </main>
-      <Footer />
+      <div className="mt-[80px]">
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -122,9 +122,9 @@ const Partnerships = () => {
   ];
 
   return (
-    <section className="bg-white" style={{ padding: '80px 0' }}>
-      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0">
-        <div className="flex flex-col lg:flex-row gap-10 mb-10 items-end">
+    <section className="bg-white rounded-[32px] py-[80px] mb-[8px]">
+      <div className="mx-auto w-[1200px]">
+        <div className="flex flex-row gap-[40px] mb-[40px] items-end">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -143,7 +143,6 @@ const Partnerships = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex-1"
-            style={{ paddingTop: '48px' }}
           >
             <p className="text-body-16 text-tertiary leading-relaxed">
               На iTAB вы не просто размещаете товары — вы развиваете бизнес вместе <br />
@@ -152,7 +151,7 @@ const Partnerships = () => {
           </motion.div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-[389.333px_389.333px_389.333px]">
+        <div className="grid gap-4" style={{ gridTemplateColumns: '389.333px 389.333px 389.333px' }}>
           {benefits.map((benefit, index) => (
             <PartnershipCard
               key={index}
