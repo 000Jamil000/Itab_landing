@@ -1,0 +1,192 @@
+import { motion } from 'framer-motion';
+
+type LogoItem = {
+  src: string;
+  alt?: string;
+  rounded?: number;
+  crop?: {
+    left: string;
+    top: string;
+    width: string;
+    height: string;
+  };
+  objectFit?: 'contain' | 'cover';
+};
+
+const BrandLogo = ({ item }: { item: LogoItem }) => {
+  const radius = item.rounded ?? 0;
+
+  return (
+    <div
+      style={{
+        width: '80px',
+        height: '80px',
+        position: 'relative',
+        flexShrink: 0,
+        borderRadius: radius ? `${radius}px` : undefined,
+        overflow: item.crop ? 'hidden' : 'visible',
+      }}
+    >
+      {item.crop ? (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            borderRadius: radius ? `${radius}px` : undefined,
+          }}
+        >
+          <img
+            alt={item.alt ?? ''}
+            src={item.src}
+            style={{
+              position: 'absolute',
+              left: item.crop.left,
+              top: item.crop.top,
+              width: item.crop.width,
+              height: item.crop.height,
+              maxWidth: 'none',
+            }}
+          />
+        </div>
+      ) : (
+        <img
+          alt={item.alt ?? ''}
+          src={item.src}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: item.objectFit ?? 'contain',
+            objectPosition: '50% 50%',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
+const Brands = () => {
+  const row1: LogoItem[] = [
+    // 31353 (special crop + rounded 6)
+    { src: '/images/brands/b01.png', rounded: 6, crop: { left: '16.53%', top: '16.88%', width: '66.93%', height: '66.93%' } },
+    { src: '/images/brands/b02.png' },
+    { src: '/images/brands/b03.png' },
+    { src: '/images/brands/b04.png' },
+    { src: '/images/brands/b05.png' },
+    { src: '/images/brands/b06.png' },
+    { src: '/images/brands/b07.png' },
+    { src: '/images/brands/b08.png' },
+    // 31361 custom crop
+    { src: '/images/brands/b09.png', crop: { left: '17.18%', top: '18.11%', width: '62.86%', height: '60.25%' } },
+    { src: '/images/brands/b10.png' },
+    // 31363 custom crop
+    { src: '/images/brands/b11.png', crop: { left: '21.15%', top: '20.56%', width: '59.98%', height: '60.03%' } },
+    { src: '/images/brands/b12.png' },
+    { src: '/images/brands/b13.png' },
+    { src: '/images/brands/b14.png' },
+  ];
+
+  const row2: LogoItem[] = [
+    { src: '/images/brands/b15.png' },
+    { src: '/images/brands/b16.png' },
+    // 31372 custom crop
+    { src: '/images/brands/b17.png', crop: { left: '-17.8%', top: '7.96%', width: '134.61%', height: '82.91%' } },
+    { src: '/images/brands/b18.png' },
+    // 31374 custom crop
+    { src: '/images/brands/b19.png', crop: { left: '14.72%', top: '18.49%', width: '73.66%', height: '67.69%' } },
+    { src: '/images/brands/b20.png' },
+    { src: '/images/brands/b21.png' },
+    // 31377 custom crop
+    { src: '/images/brands/b22.png', crop: { left: '16.63%', top: '19.23%', width: '63.27%', height: '63.27%' } },
+    { src: '/images/brands/b23.png' },
+    // 31379 custom crop
+    { src: '/images/brands/b24.png', crop: { left: '13.33%', top: '12.76%', width: '74.47%', height: '74.47%' } },
+    // 31380 custom crop
+    { src: '/images/brands/b25.png', crop: { left: '12.61%', top: '29.85%', width: '74.78%', height: '35%' } },
+    { src: '/images/brands/b26.png' },
+    { src: '/images/brands/b27.png' },
+    { src: '/images/brands/b28.png' },
+    // 31384 repeats icon (uses same as 31376 in figma export, use b21 to match)
+    { src: '/images/brands/b21.png' },
+  ];
+
+  const ITEM_SIZE = 80;
+  const GAP = 16;
+  const row1Travel = row1.length * (ITEM_SIZE + GAP);
+  const row2Travel = row2.length * (ITEM_SIZE + GAP);
+  const row1StartX = -64;
+  const row2StartX = -112;
+
+  return (
+    <section className="bg-white" style={{ padding: '80px 0' }}>
+      <div className="mx-auto w-full max-w-[1200px] px-4 lg:px-0">
+        <motion.h2
+          className="text-h2 text-secondary"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '40px' }}
+        >
+          Бренды, которые уже сотрудничают с нами
+        </motion.h2>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', overflow: 'hidden', position: 'relative' }}>
+          {/* Row 1 (offset -64) */}
+          <div style={{ position: 'relative', height: '80px', overflow: 'hidden' }}>
+            <motion.div
+              style={{
+                display: 'flex',
+                gap: `${GAP}px`,
+                width: 'max-content',
+                willChange: 'transform',
+              }}
+              animate={{ x: [row1StartX, row1StartX - row1Travel] }}
+              transition={{
+                x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' },
+              }}
+            >
+              {[...row1, ...row1].map((item, idx) => (
+                <BrandLogo key={`r1-${idx}`} item={item} />
+              ))}
+            </motion.div>
+
+            {/* edge gradients 120px */}
+            <div style={{ position: 'absolute', right: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', left: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+          </div>
+
+          {/* Row 2 (offset -112) */}
+          <div style={{ position: 'relative', height: '80px', overflow: 'hidden' }}>
+            <motion.div
+              style={{
+                display: 'flex',
+                gap: `${GAP}px`,
+                width: 'max-content',
+                willChange: 'transform',
+              }}
+              animate={{ x: [row2StartX - row2Travel, row2StartX] }}
+              transition={{
+                x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' },
+              }}
+            >
+              {[...row2, ...row2].map((item, idx) => (
+                <BrandLogo key={`r2-${idx}`} item={item} />
+              ))}
+            </motion.div>
+
+            {/* edge gradients 120px */}
+            <div style={{ position: 'absolute', right: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', left: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Brands;
