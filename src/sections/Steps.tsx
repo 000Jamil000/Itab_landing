@@ -108,132 +108,230 @@ const Steps = () => {
   ];
 
   return (
-    <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px]">
-      <div className="mx-auto w-[1200px]">
-        <motion.h2 
-          className="text-h2"
-          style={{ color: '#242424', marginBottom: '40px', textAlign: 'center' }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Всего 4 шага, чтобы начать продавать
-        </motion.h2>
-
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
-          {/* Left side - 4 step cards in 2x2 grid */}
-          <div
-            className="grid gap-4"
-            style={{
-              width: '792px',
-              gridTemplateColumns: '1fr 1fr',
-            }}
-          >
-            <div style={{ width: '388px' }}><StepCard {...steps[0]} delay={0} /></div>
-            <div style={{ width: '388px' }}><StepCard {...steps[1]} delay={0.1} /></div>
-            <div style={{ width: '388px' }}><StepCard {...steps[2]} delay={0.2} /></div>
-            <div style={{ width: '388px' }}><StepCard {...steps[3]} delay={0.3} /></div>
-          </div>
-
-          {/* Right side - Green banner with phone */}
-          <motion.div
+    <>
+      {/* Desktop / 1440 */}
+      <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
+        <div className="mx-auto w-[1200px]">
+          <motion.h2
+            className="text-h2"
+            style={{ color: '#242424', marginBottom: '40px', textAlign: 'center' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{
-              backgroundColor: '#59AD3B',
-              borderRadius: '24px',
-              border: '1px solid #B7DAAA',
-              padding: '32px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              position: 'relative',
-              overflow: 'hidden',
-              width: '392px',
-              height: '616px',
-            }}
+            transition={{ duration: 0.6 }}
           >
-            {/* Green spot (bottom) */}
+            Всего 4 шага, чтобы начать продавать
+          </motion.h2>
+
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
             <div
+              className="grid gap-4"
               style={{
-                position: 'absolute',
-                right: '-163px',
-                bottom: '-113px',
-                width: '692px',
-                height: '404px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                pointerEvents: 'none',
+                width: '792px',
+                gridTemplateColumns: '1fr 1fr',
               }}
             >
-              <div style={{ transform: 'rotate(90deg) scaleY(-1)', width: '404px', height: '692px' }}>
-                <img src="/images/steps-spot-green.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none' }} />
+              <div style={{ width: '388px' }}>
+                <StepCard {...steps[0]} delay={0} />
+              </div>
+              <div style={{ width: '388px' }}>
+                <StepCard {...steps[1]} delay={0.1} />
+              </div>
+              <div style={{ width: '388px' }}>
+                <StepCard {...steps[2]} delay={0.2} />
+              </div>
+              <div style={{ width: '388px' }}>
+                <StepCard {...steps[3]} delay={0.3} />
               </div>
             </div>
 
-            {/* Phone image */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               style={{
-                position: 'absolute',
-                left: '40px',
-                top: '8px',
-                width: '308.152px',
-                height: '630px',
-                pointerEvents: 'none',
-              }}
-            >
-              <img src="/images/steps-phone.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </div>
-
-            {/* Light spot big */}
-            <div
-              style={{
-                position: 'absolute',
-                left: '50%',
-                bottom: '-666.48px',
-                width: '1150.475px',
-                height: '1150.475px',
-                transform: 'translateX(-50%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                pointerEvents: 'none',
-              }}
-            >
-              <div style={{ transform: 'rotate(225deg)', width: '813.509px', height: '813.509px' }}>
-                <img src="/images/steps-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none' }} />
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <button
-              style={{
-                width: '196px',
-                height: '56px',
-                padding: '16px 20px',
                 backgroundColor: '#59AD3B',
-                color: '#FFFFFF',
-                borderRadius: '16px',
-                border: 'none',
-                fontSize: '16px',
-                fontWeight: 500,
-                lineHeight: '24px',
-                cursor: 'pointer',
+                borderRadius: '24px',
+                border: '1px solid #B7DAAA',
+                padding: '32px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
                 position: 'relative',
-                zIndex: 2,
+                overflow: 'hidden',
+                width: '392px',
+                height: '616px',
               }}
             >
-              Зарегистрироваться
-            </button>
-          </motion.div>
+              <div
+                style={{
+                  position: 'absolute',
+                  right: '-163px',
+                  bottom: '-113px',
+                  width: '692px',
+                  height: '404px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  pointerEvents: 'none',
+                }}
+              >
+                <div style={{ transform: 'rotate(90deg) scaleY(-1)', width: '404px', height: '692px' }}>
+                  <img src="/images/steps-spot-green.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none' }} />
+                </div>
+              </div>
+
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '40px',
+                  top: '8px',
+                  width: '308.152px',
+                  height: '630px',
+                  pointerEvents: 'none',
+                }}
+              >
+                <img src="/images/steps-phone.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  bottom: '-666.48px',
+                  width: '1150.475px',
+                  height: '1150.475px',
+                  transform: 'translateX(-50%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  pointerEvents: 'none',
+                }}
+              >
+                <div style={{ transform: 'rotate(225deg)', width: '813.509px', height: '813.509px' }}>
+                  <img src="/images/steps-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none' }} />
+                </div>
+              </div>
+
+              <button
+                style={{
+                  width: '196px',
+                  height: '56px',
+                  padding: '16px 20px',
+                  backgroundColor: '#59AD3B',
+                  color: '#FFFFFF',
+                  borderRadius: '16px',
+                  border: 'none',
+                  fontSize: '16px',
+                  fontWeight: 500,
+                  lineHeight: '24px',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  zIndex: 2,
+                }}
+              >
+                Зарегистрироваться
+              </button>
+            </motion.div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Tablet 744 (Figma 744 steps frame: 3 cards in horizontal row) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[744px] px-[20px]">
+          <div style={{ width: 704 }}>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{
+                width: 704,
+                height: 40,
+                margin: 0,
+                textAlign: 'center',
+                fontSize: 36,
+                lineHeight: '40px',
+                fontWeight: 500,
+                letterSpacing: '-1px',
+                color: '#242424',
+              }}
+            >
+              Всего 4 шага, чтобы начать продавать
+            </motion.h2>
+
+            {/* Cards strip (x=20,y=136,w=704,h=326). Card: 259x326, gap 8, horizontal scroll */}
+            <div
+              style={{
+                marginTop: 32,
+                width: 704,
+                height: 326,
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                display: 'flex',
+                gap: 8,
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {steps.map((s, idx) => (
+                <motion.div
+                  key={s.number}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.05 }}
+                  style={{
+                    width: 259,
+                    height: 326,
+                    flexShrink: 0,
+                    scrollSnapAlign: 'start',
+                    backgroundColor: '#F7F7F7',
+                    borderRadius: 24,
+                    padding: 24,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    boxSizing: 'border-box',
+                  }}
+                >
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                    <div
+                      style={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: 32,
+                        backgroundColor: '#59AD3B',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                        padding: 12,
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <span style={{ color: '#FFFFFF', fontWeight: 400, fontSize: 16, lineHeight: '22px', letterSpacing: '-0.2px' }}>{s.number}</span>
+                    </div>
+
+                    <div style={{ fontSize: 20, lineHeight: '22px', fontWeight: 500, color: '#242424' }}>{s.title}</div>
+
+                    <div style={{ color: '#848484', fontSize: 16, lineHeight: '24px', letterSpacing: '-0.2px' }}>{s.description}</div>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 24 }}>
+                    <img src="/images/steps-clock.svg" alt="" style={{ width: 24, height: 24 }} />
+                    <span style={{ color: '#C1C1C1', fontSize: 16, lineHeight: '22px', fontWeight: 500 }}>{s.time}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

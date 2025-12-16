@@ -11,9 +11,10 @@ interface FeedbackCardProps {
   item: FeedbackItem;
   delay: number;
   onReadMore: () => void;
+  width?: number;
 }
 
-const FeedbackCard = ({ item, delay, onReadMore }: FeedbackCardProps) => {
+const FeedbackCard = ({ item, delay, onReadMore, width }: FeedbackCardProps) => {
   const previewText = useMemo(() => item.paragraphs.join('\n\n'), [item.paragraphs]);
 
   return (
@@ -30,7 +31,7 @@ const FeedbackCard = ({ item, delay, onReadMore }: FeedbackCardProps) => {
         flexDirection: 'column',
         gap: '16px',
         height: '462px',
-        width: '389.333px',
+        width: width ? `${width}px` : '389.333px',
       }}
     >
       {/* Reviewer Info */}
@@ -156,143 +157,187 @@ const Feedback = () => {
   }, [activeIndex]);
 
   return (
-    <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px]">
-      <div className="mx-auto w-[1200px]">
-        <motion.h2 
-          className="text-h2 text-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '40px' }}
-        >
-          Отзывы наших поставщиков
-        </motion.h2>
+    <>
+      {/* Desktop / 1440 */}
+      <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
+        <div className="mx-auto w-[1200px]">
+          <motion.h2
+            className="text-h2 text-secondary"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
+          >
+            Отзывы наших поставщиков
+          </motion.h2>
 
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
-          {feedbacks.map((item, index) => (
-            <FeedbackCard
-              key={index}
-              item={item}
-              delay={index * 0.1}
-              onReadMore={() => setActiveIndex(index)}
-            />
-          ))}
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
+            {feedbacks.map((item, index) => (
+              <FeedbackCard key={index} item={item} delay={index * 0.1} onReadMore={() => setActiveIndex(index)} />
+            ))}
+          </div>
         </div>
+      </section>
 
-        <AnimatePresence>
-          {active && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+      {/* Tablet 744 (Figma: cards strip, card 400x462, gap 8) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[744px] px-[20px]">
+          <div style={{ width: 704 }}>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               style={{
-                position: 'fixed',
-                inset: 0,
-                backgroundColor: 'rgba(0,0,0,0.2)',
-                zIndex: 50,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '24px',
+                width: 704,
+                height: 40,
+                textAlign: 'center',
+                fontSize: 36,
+                lineHeight: '40px',
+                fontWeight: 500,
+                letterSpacing: '-1px',
+                color: '#242424',
+                margin: 0,
               }}
-              onMouseDown={() => setActiveIndex(null)}
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98, y: 8 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.98, y: 8 }}
-                transition={{ duration: 0.15 }}
+              Отзывы наших поставщиков
+            </motion.h2>
+
+            <div
+              style={{
+                marginTop: 40,
+                width: 704,
+                height: 462,
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                display: 'flex',
+                gap: 8,
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {feedbacks.map((item, index) => (
+                <div key={`f-744-${index}`} style={{ scrollSnapAlign: 'start' }}>
+                  <FeedbackCard item={item} width={400} delay={index * 0.05} onReadMore={() => setActiveIndex(index)} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Modal (общий для desktop + 744) */}
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              backgroundColor: 'rgba(0,0,0,0.2)',
+              zIndex: 50,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '24px',
+            }}
+            onMouseDown={() => setActiveIndex(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, y: 8 }}
+              transition={{ duration: 0.15 }}
+              style={{
+                width: '800px',
+                maxWidth: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-end',
+                gap: '8px',
+              }}
+              onMouseDown={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveIndex(null)}
+                aria-label="Закрыть"
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '16px',
+                  padding: '14px',
+                  backgroundColor: '#FFFFFF',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <img src="/images/feedback-close.svg" alt="" style={{ width: '10.667px', height: '10.667px' }} />
+              </button>
+
+              <div
                 style={{
                   width: '800px',
                   maxWidth: '100%',
+                  height: '462px',
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: '24px',
+                  padding: '32px',
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: 'flex-end',
-                  gap: '8px',
+                  gap: '16px',
                 }}
-                onMouseDown={(e) => e.stopPropagation()}
               >
-                {/* Close button */}
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex(null)}
-                  aria-label="Закрыть"
-                  style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '16px',
-                    padding: '14px',
-                    backgroundColor: '#FFFFFF',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <img src="/images/feedback-close.svg" alt="" style={{ width: '10.667px', height: '10.667px' }} />
-                </button>
-
-                {/* Modal content */}
-                <div
-                  style={{
-                    width: '800px',
-                    maxWidth: '100%',
-                    height: '462px',
-                    backgroundColor: '#FFFFFF',
-                    borderRadius: '24px',
-                    padding: '32px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '16px',
-                  }}
-                >
-                  <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                    <div
+                <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+                  <div
+                    style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '204px',
+                      border: '2px solid #F7F7F7',
+                      position: 'relative',
+                      flexShrink: 0,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <img
+                      alt=""
+                      src={active.avatarSrc}
                       style={{
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: '204px',
-                        border: '2px solid #F7F7F7',
-                        position: 'relative',
-                        flexShrink: 0,
-                        overflow: 'hidden',
+                        position: 'absolute',
+                        inset: '-2px',
+                        width: 'calc(100% + 4px)',
+                        height: 'calc(100% + 4px)',
+                        maxWidth: 'none',
                       }}
-                    >
-                      <img
-                        alt=""
-                        src={active.avatarSrc}
-                        style={{
-                          position: 'absolute',
-                          inset: '-2px',
-                          width: 'calc(100% + 4px)',
-                          height: 'calc(100% + 4px)',
-                          maxWidth: 'none',
-                        }}
-                      />
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ color: '#848484', fontSize: '14px', lineHeight: '20px' }}>{active.position}</div>
-                    </div>
+                    />
                   </div>
-
-                  <div style={{ flex: 1, overflow: 'auto' }}>
-                    <div style={{ color: '#242424', fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.2px' }}>
-                      {active.paragraphs.map((p, i) => (
-                        <p key={i} style={{ marginBottom: i === active.paragraphs.length - 1 ? 0 : 12 }}>
-                          {p}
-                        </p>
-                      ))}
-                    </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ color: '#848484', fontSize: '14px', lineHeight: '20px' }}>{active.position}</div>
                   </div>
                 </div>
-              </motion.div>
+
+                <div style={{ flex: 1, overflow: 'auto' }}>
+                  <div style={{ color: '#242424', fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.2px' }}>
+                    {active.paragraphs.map((p, i) => (
+                      <p key={i} style={{ marginBottom: i === active.paragraphs.length - 1 ? 0 : 12 }}>
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </section>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

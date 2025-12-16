@@ -120,72 +120,115 @@ const Brands = () => {
   const row2Travel = row2.length * (ITEM_SIZE + GAP);
   const row1StartX = -64;
   const row2StartX = -112;
+  const row1StartX744 = -312;
+  const row2StartX744 = -360;
 
   return (
-    <section className="bg-white rounded-[32px] py-[80px] mb-[8px]">
-      <div className="mx-auto w-[1200px]">
-        <motion.h2
-          className="text-h2 text-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '40px' }}
-        >
-          Бренды, которые уже сотрудничают с нами
-        </motion.h2>
+    <>
+      {/* Desktop / 1440 */}
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
+        <div className="mx-auto w-[1200px]">
+          <motion.h2
+            className="text-h2 text-secondary"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
+          >
+            Бренды, которые уже сотрудничают с нами
+          </motion.h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', overflow: 'hidden', position: 'relative' }}>
-          {/* Row 1 (offset -64) */}
-          <div style={{ position: 'relative', height: '80px', overflow: 'hidden' }}>
-            <motion.div
-              style={{
-                display: 'flex',
-                gap: `${GAP}px`,
-                width: 'max-content',
-                willChange: 'transform',
-              }}
-              animate={{ x: [row1StartX, row1StartX - row1Travel] }}
-              transition={{
-                x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' },
-              }}
-            >
-              {[...row1, ...row1].map((item, idx) => (
-                <BrandLogo key={`r1-${idx}`} item={item} />
-              ))}
-            </motion.div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', overflow: 'hidden', position: 'relative' }}>
+            <div style={{ position: 'relative', height: '80px', overflow: 'hidden' }}>
+              <motion.div
+                style={{ display: 'flex', gap: `${GAP}px`, width: 'max-content', willChange: 'transform' }}
+                animate={{ x: [row1StartX, row1StartX - row1Travel] }}
+                transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
+              >
+                {[...row1, ...row1].map((item, idx) => (
+                  <BrandLogo key={`r1-${idx}`} item={item} />
+                ))}
+              </motion.div>
+              <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', left: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+            </div>
 
-            {/* edge gradients 120px */}
-            <div style={{ position: 'absolute', right: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', left: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
-          </div>
-
-          {/* Row 2 (offset -112) */}
-          <div style={{ position: 'relative', height: '80px', overflow: 'hidden' }}>
-            <motion.div
-              style={{
-                display: 'flex',
-                gap: `${GAP}px`,
-                width: 'max-content',
-                willChange: 'transform',
-              }}
-              animate={{ x: [row2StartX - row2Travel, row2StartX] }}
-              transition={{
-                x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' },
-              }}
-            >
-              {[...row2, ...row2].map((item, idx) => (
-                <BrandLogo key={`r2-${idx}`} item={item} />
-              ))}
-            </motion.div>
-
-            {/* edge gradients 120px */}
-            <div style={{ position: 'absolute', right: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', left: 0, top: 0, width: '120px', height: '80px', background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+            <div style={{ position: 'relative', height: '80px', overflow: 'hidden' }}>
+              <motion.div
+                style={{ display: 'flex', gap: `${GAP}px`, width: 'max-content', willChange: 'transform' }}
+                animate={{ x: [row2StartX - row2Travel, row2StartX] }}
+                transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
+              >
+                {[...row2, ...row2].map((item, idx) => (
+                  <BrandLogo key={`r2-${idx}`} item={item} />
+                ))}
+              </motion.div>
+              <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', left: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Tablet 744 (Figma: title 2 lines, rows offsets -312/-360) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[744px] px-[20px]">
+          <div style={{ width: 704 }}>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{
+                width: 704,
+                height: 80,
+                textAlign: 'center',
+                fontSize: 36,
+                lineHeight: '40px',
+                fontWeight: 500,
+                letterSpacing: '-1px',
+                color: '#242424',
+                margin: 0,
+              }}
+            >
+              Бренды, которые уже <br />
+              сотрудничают с нами
+            </motion.h2>
+
+            <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 16, overflow: 'hidden', position: 'relative' }}>
+              <div style={{ position: 'relative', height: 80, overflow: 'hidden' }}>
+                <motion.div
+                  style={{ display: 'flex', gap: `${GAP}px`, width: 'max-content', willChange: 'transform' }}
+                  animate={{ x: [row1StartX744, row1StartX744 - row1Travel] }}
+                  transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
+                >
+                  {[...row1, ...row1].map((item, idx) => (
+                    <BrandLogo key={`r1-744-${idx}`} item={item} />
+                  ))}
+                </motion.div>
+                <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', left: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+              </div>
+
+              <div style={{ position: 'relative', height: 80, overflow: 'hidden' }}>
+                <motion.div
+                  style={{ display: 'flex', gap: `${GAP}px`, width: 'max-content', willChange: 'transform' }}
+                  animate={{ x: [row2StartX744 - row2Travel, row2StartX744] }}
+                  transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
+                >
+                  {[...row2, ...row2].map((item, idx) => (
+                    <BrandLogo key={`r2-744-${idx}`} item={item} />
+                  ))}
+                </motion.div>
+                <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', left: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

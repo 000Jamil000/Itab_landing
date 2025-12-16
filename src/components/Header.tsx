@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import LayoutContainer from './LayoutContainer';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,14 +33,14 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-[90px] gap-20">
+      <LayoutContainer>
+        <div className="flex items-center justify-between h-[90px] gap-20 max-744:gap-0">
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
               src="/images/logo.svg" 
               alt="iTAB" 
-              className="h-[42px] w-[120px] transition-all duration-300"
+              className="h-[42px] w-[120px] transition-all duration-300 max-375:h-[35px] max-375:w-[100px]"
               style={{
                 filter: isScrolled 
                   ? 'brightness(0) saturate(100%) invert(59%) sepia(36%) saturate(625%) hue-rotate(64deg) brightness(95%) contrast(87%)' 
@@ -87,7 +88,7 @@ const Header = () => {
             Войти
           </button>
         </div>
-      </div>
+      </LayoutContainer>
     </motion.header>
   );
 };

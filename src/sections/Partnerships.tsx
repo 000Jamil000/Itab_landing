@@ -36,6 +36,38 @@ const PartnershipCard = ({ iconSrc, iconAlt, iconCrop, title, description, delay
   );
 };
 
+const PartnershipCard744 = ({ iconSrc, iconAlt, iconCrop, title, description, delay }: PartnershipCardProps) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      style={{
+        width: 229.333,
+        height: 380,
+        backgroundColor: '#F7F7F7',
+        borderRadius: 24,
+        padding: 24,
+        overflow: 'hidden',
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ width: 72, height: 72, position: 'relative' }}>
+          <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+            <img alt={iconAlt} src={iconSrc} style={{ position: 'absolute', maxWidth: 'none', ...iconCrop }} />
+          </div>
+        </div>
+        <div style={{ color: '#242424', fontSize: 20, lineHeight: '22px', fontWeight: 500 }}>{title}</div>
+      </div>
+      <div style={{ marginTop: 12, color: '#848484', fontSize: 16, lineHeight: '22px', letterSpacing: '-0.2px' }}>{description}</div>
+    </motion.div>
+  );
+};
+
 const Partnerships = () => {
   const benefits = [
     {
@@ -122,46 +154,98 @@ const Partnerships = () => {
   ];
 
   return (
-    <section className="bg-white rounded-[32px] py-[80px] mb-[8px]">
-      <div className="mx-auto w-[1200px]">
-        <div className="flex flex-row gap-[40px] mb-[40px] items-end">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex-1"
-          >
-            <h2 className="text-h2 text-secondary leading-tight">
-              Мы строим долгосрочные партнёрства, где ваш рост — <br />
-              наш главный приоритет
-            </h2>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex-1"
-          >
-            <p className="text-body-16 text-tertiary leading-relaxed">
-              На iTAB вы не просто размещаете товары — вы развиваете бизнес вместе <br />
-              с экспертной платформой, которая помогает продавать больше, выстраивать доверие и расти вместе с рынком интегративного здоровья.
-            </p>
-          </motion.div>
-        </div>
+    <>
+      {/* Desktop / 1440 */}
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
+        <div className="mx-auto w-[1200px]">
+          <div className="flex flex-row gap-[40px] mb-[40px] items-end">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1"
+            >
+              <h2 className="text-h2 text-secondary leading-tight">
+                Мы строим долгосрочные партнёрства, где ваш рост — <br />
+                наш главный приоритет
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex-1"
+            >
+              <p className="text-body-16 text-tertiary leading-relaxed">
+                На iTAB вы не просто размещаете товары — вы развиваете бизнес вместе <br />
+                с экспертной платформой, которая помогает продавать больше, выстраивать доверие и расти вместе с рынком интегративного здоровья.
+              </p>
+            </motion.div>
+          </div>
 
-        <div className="grid gap-4" style={{ gridTemplateColumns: '389.333px 389.333px 389.333px' }}>
-          {benefits.map((benefit, index) => (
-            <PartnershipCard
-              key={index}
-              {...benefit}
-              delay={index * 0.1}
-            />
-          ))}
+          <div className="grid gap-4" style={{ gridTemplateColumns: '389.333px 389.333px 389.333px' }}>
+            {benefits.map((benefit, index) => (
+              <PartnershipCard key={index} {...benefit} delay={index * 0.1} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Tablet 744 (Figma: 3x2 grid, cards 229.333x380, gap 8) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[744px] px-[20px]">
+          <div style={{ width: 704 }}>
+            {/* Heading (744): по макету — слева, без искусственных переносов */}
+            <div style={{ width: 704 }}>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                style={{
+                  margin: 0,
+                  color: '#242424',
+                  fontSize: 36,
+                  lineHeight: '40px',
+                  fontWeight: 500,
+                  letterSpacing: '-1px',
+                  textAlign: 'left',
+                }}
+              >
+                Мы строим долгосрочные партнёрства, где ваш рост — наш главный приоритет
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+                style={{
+                  margin: 0,
+                  marginTop: 16,
+                  color: '#848484',
+                  fontSize: 16,
+                  lineHeight: '22px',
+                  letterSpacing: '-0.2px',
+                  textAlign: 'left',
+                }}
+              >
+                На iTAB вы не просто размещаете товары — вы развиваете бизнес вместе с экспертной платформой, которая помогает продавать больше, выстраивать доверие
+                и расти вместе с рынком интегративного здоровья.
+              </motion.p>
+            </div>
+
+            <div style={{ marginTop: 40, width: 704, display: 'grid', gridTemplateColumns: '229.333px 229.333px 229.333px', columnGap: 8, rowGap: 8 }}>
+              {benefits.map((benefit, index) => (
+                <PartnershipCard744 key={index} {...benefit} delay={index * 0.05} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
