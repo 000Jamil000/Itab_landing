@@ -29,4 +29,13 @@
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+
+  /* Hide scrollbars for horizontal carousels (still scrollable). */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
 }

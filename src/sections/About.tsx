@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import LayoutContainer from '../components/LayoutContainer';
+import ScaledFrame from '../components/ScaledFrame';
 
 const About = () => {
   return (
@@ -312,20 +313,20 @@ const About = () => {
       <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '94px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x606 */}
-          <div style={{ width: '704px' }}>
-            {/* Heading: 704x144 */}
-            <div style={{ width: '704px', height: '144px' }}>
-              <h2 style={{ margin: 0, fontSize: '36px', lineHeight: '40px', fontWeight: 500, letterSpacing: '-1px', color: '#242424' }}>
+          <ScaledFrame designWidth={704} designHeight={606}>
+            {/* Heading: 704x144 (gap 16) */}
+            <div style={{ width: 704, height: 144 }}>
+              <h2 style={{ margin: 0, width: 704, height: 80, fontSize: 36, lineHeight: '40px', fontWeight: 500, letterSpacing: '-1px', color: '#242424' }}>
                 iTAB — это знак качества. Ваш пропуск <br />
                 к аудитории, которая доверяет экспертам
               </h2>
-              <p style={{ margin: 0, marginTop: '16px', fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.2px', color: '#848484' }}>
+              <p style={{ margin: 0, marginTop: 16, width: 704, height: 48, fontSize: 16, lineHeight: '24px', letterSpacing: '-0.2px', color: '#848484' }}>
                 Ваш продукт получает знак доверия от реальных врачей и нутрициологов — это сразу повышает его ценность в глазах покупателей.
               </p>
             </div>
 
             {/* Cards row: 704x430, gap 8 */}
-            <div style={{ marginTop: '32px', display: 'flex', gap: '8px', width: '704px', height: '430px' }}>
+            <div style={{ marginTop: 32, display: 'flex', gap: 8, width: 704, height: 430 }}>
               {/* Card 1: 229.333x430 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -333,83 +334,60 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
                 style={{
-                  width: '229.333px',
-                  height: '430px',
+                  width: 229.333,
+                  height: 430,
                   backgroundColor: '#F7F7F7',
-                  borderRadius: '24px',
-                  padding: '24px',
+                  borderRadius: 24,
+                  padding: 24,
                   overflow: 'hidden',
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
+                  boxSizing: 'border-box',
                 }}
               >
-                <div>
-                  <h3 style={{ margin: 0, fontSize: '20px', lineHeight: '24px', fontWeight: 500, color: '#242424' }}>
-                    Подтверждаем,
-                    <br />
-                    что вам можно доверять
-                  </h3>
-                  <p style={{ margin: 0, marginTop: '12px', fontSize: '14px', lineHeight: '20px', color: '#848484' }}>
-                    После проверки вы получаете статус безопасного бренда — покупатели чувствуют уверенность в качестве продукта и возвращаются снова.
-                  </p>
-                </div>
-
-                {/* Art block (744 metadata): Frame 2087327982 is 181.333x150 within inner content */}
-                <div style={{ position: 'relative', width: '181.333px', height: '150px' }}>
-                  {/* Green spot: icon_m_LoveFill (470.302). Positioning matches the visual from desktop, but constrained to 744 card. */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: '-23px',
-                      bottom: '-267.3px',
-                      width: '470.302px',
-                      height: '470.302px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      pointerEvents: 'none',
-                      zIndex: 1,
-                    }}
-                  >
-                    <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '384px', height: '384px' }}>
-                      <img src="/images/about-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                {/* Inner content (x=24,y=24,w=181.333,h=382) */}
+                <div style={{ width: 181.333, height: 382, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div style={{ width: 181.333 }}>
+                    <div style={{ width: 181.333, fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>
+                      Подтверждаем, <br />
+                      что вам можно доверять
+                    </div>
+                    <div style={{ marginTop: 12, width: 181.333, fontSize: 14, lineHeight: '22px', fontWeight: 400, letterSpacing: '-0.2px', color: '#848484' }}>
+                      После проверки <br />
+                      вы получаете статус безопасного бренда — покупатели чувствуют уверенность в качестве продукта и возвращаются снова.
                     </div>
                   </div>
 
-                  {/* Main rectangle (197x197) at x=-7.2448, y=22 */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: '-7.245px',
-                      top: '22px',
-                      width: '197px',
-                      height: '197px',
-                      overflow: 'hidden',
-                      pointerEvents: 'none',
-                      zIndex: 2,
-                      borderRadius: '24px',
-                    }}
-                  >
-                    <img src="/images/about-shield-card.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                  </div>
+                  {/* Art block: Frame 2087327982 (w=181.333,h=150) */}
+                  <div style={{ position: 'relative', width: 181.333, height: 150, flex: 1 }}>
+                    {/* LoveFill spot: left=-23, top=61.38, size 470.302, rotate 15, scaleY(-1) */}
+                    <div style={{ position: 'absolute', left: -23, top: 61.38, width: 470.302, height: 470.302, pointerEvents: 'none', zIndex: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: 384, height: 384, position: 'relative' }}>
+                        <div style={{ position: 'absolute', top: '16.67%', right: '11.59%', bottom: '14.44%', left: '8.33%' }}>
+                          <div style={{ position: 'absolute', top: '-30.24%', right: '-26.02%', bottom: '-30.24%', left: '-26.02%' }}>
+                            <img src="/images/about-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-                  {/* Small badge (90.670x90.670) at x=121.1566, y=-30 */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: '121.157px',
-                      top: '-30px',
-                      width: '90.67px',
-                      height: '90.67px',
-                      pointerEvents: 'none',
-                      zIndex: 3,
-                      overflow: 'hidden',
-                      borderRadius: '24px',
-                    }}
-                  >
-                    <img src="/images/about-badge.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    {/* Shield: bottom=-69, centered, size 197 with crop */}
+                    <div style={{ position: 'absolute', left: 'calc(50% + 0.59px)', bottom: -69, width: 197, height: 197, transform: 'translateX(-50%)', overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
+                      <img
+                        src="/images/about-shield-card.png"
+                        alt=""
+                        style={{ position: 'absolute', left: '-11.56%', top: '-10.61%', width: '123.11%', height: '123.11%', maxWidth: 'none' }}
+                      />
+                    </div>
+
+                    {/* Badge: bottom=89.33, right=-11.33, size 90.67, rotate 15 */}
+                    <div style={{ position: 'absolute', right: -11.33, bottom: 89.33, width: 90.67, height: 90.67, pointerEvents: 'none', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ transform: 'rotate(15deg)', width: 74.032, height: 74.032 }}>
+                        <img src="/images/about-badge.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -421,42 +399,51 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.05 }}
                 style={{
-                  width: '229.333px',
-                  height: '430px',
-                  borderRadius: '24px',
+                  width: 229.333,
+                  height: 430,
+                  borderRadius: 16,
                   overflow: 'hidden',
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'flex-end',
-                  padding: '24px',
+                  padding: 32,
+                  gap: 9,
+                  boxSizing: 'border-box',
                 }}
               >
                 <img
                   src="/images/expert-anna.jpg"
                   alt="Анна Государева"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, borderRadius: 16 }}
                 />
-                {/* Green spot overlay (tablet 744): must be visible inside the cropped photo */}
+                {/* Green lovefill overlay: right=-165.33, bottom=-215, w=692,h=404, rotate 90, scaleY(-1) */}
                 <div
                   style={{
                     position: 'absolute',
-                    right: '-110px',
-                    bottom: '-140px',
-                    width: '560px',
-                    height: '327px',
+                    right: -165.33,
+                    bottom: -215,
+                    width: 692,
+                    height: 404,
                     pointerEvents: 'none',
                     zIndex: 1,
-                    opacity: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
-                  <div style={{ transform: 'rotate(90deg) scaleY(-1)', width: '327px', height: '560px' }}>
-                    <img src="/images/about-spot-green.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                  {/* Match Figma: inner Vector is inset (gives 323.511 x 476.749 in Inspect) */}
+                  <div style={{ transform: 'rotate(90deg) scaleY(-1)', width: 404, height: 692, position: 'relative' }}>
+                    <div style={{ position: 'absolute', top: '16.67%', right: '11.59%', bottom: '14.44%', left: '8.33%' }}>
+                      <div style={{ position: 'absolute', top: '-16.78%', right: '-24.73%', bottom: '-16.78%', left: '-24.73%' }}>
+                        <img src="/images/about-spot-green-744.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <div style={{ fontSize: '16px', lineHeight: '20px', fontWeight: 500, color: '#FFFFFF' }}>Анна Государева</div>
-                  <div style={{ fontSize: '12px', lineHeight: '16px', color: 'rgba(255,255,255,0.6)' }}>
+                  <div style={{ fontSize: 20, lineHeight: '24px', fontWeight: 500, color: '#FFFFFF' }}>Анна Государева</div>
+                  <div style={{ fontSize: 14, lineHeight: '20px', color: 'rgba(255,255,255,0.6)' }}>
                     Руководитель экспернто-медицинской комиссии iTAB, Нутрициолог
                   </div>
                 </div>
@@ -469,48 +456,56 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 style={{
-                  width: '229.333px',
-                  height: '430px',
-                  borderRadius: '24px',
+                  width: 229.333,
+                  height: 430,
+                  borderRadius: 16,
                   overflow: 'hidden',
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'flex-end',
-                  padding: '24px',
+                  padding: 32,
+                  gap: 9,
+                  boxSizing: 'border-box',
                 }}
               >
                 <img
                   src="/images/expert-vladimir.jpg"
                   alt="Владимир Попов"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, borderRadius: 16 }}
                 />
-                {/* Green spot overlay (tablet 744): must be visible inside the cropped photo */}
+                {/* Green lovefill overlay: right=-165, bottom=-215, w=692,h=404, rotate 90, scaleY(-1) */}
                 <div
                   style={{
                     position: 'absolute',
-                    right: '-110px',
-                    bottom: '-140px',
-                    width: '560px',
-                    height: '327px',
+                    right: -165,
+                    bottom: -215,
+                    width: 692,
+                    height: 404,
                     pointerEvents: 'none',
                     zIndex: 1,
-                    opacity: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
-                  <div style={{ transform: 'rotate(90deg) scaleY(-1)', width: '327px', height: '560px' }}>
-                    <img src="/images/about-spot-green.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                  <div style={{ transform: 'rotate(90deg) scaleY(-1)', width: 404, height: 692, position: 'relative' }}>
+                    <div style={{ position: 'absolute', top: '16.67%', right: '11.59%', bottom: '14.44%', left: '8.33%' }}>
+                      <div style={{ position: 'absolute', top: '-16.78%', right: '-24.73%', bottom: '-16.78%', left: '-24.73%' }}>
+                        <img src="/images/about-spot-green-744.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <div style={{ fontSize: '16px', lineHeight: '20px', fontWeight: 500, color: '#FFFFFF' }}>Владимир Попов</div>
-                  <div style={{ fontSize: '12px', lineHeight: '16px', color: 'rgba(255,255,255,0.6)' }}>
+                  <div style={{ fontSize: 20, lineHeight: '24px', fontWeight: 500, color: '#FFFFFF' }}>Владимир Попов</div>
+                  <div style={{ fontSize: 14, lineHeight: '20px', color: 'rgba(255,255,255,0.6)' }}>
                     Сооснователь и медицинский директор iTAB, Нутрициолог, Невролог
                   </div>
                 </div>
               </motion.div>
             </div>
-          </div>
+          </ScaledFrame>
         </div>
       </section>
 

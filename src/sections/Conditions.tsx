@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ScaledFrame from '../components/ScaledFrame';
 
 const Conditions = () => {
   return (
@@ -240,14 +241,15 @@ const Conditions = () => {
               </div>
             </div>
           </motion.div>
-          </div>
+        </div>
         </div>
       </section>
 
       {/* Tablet 744 (Figma: 4 cards 2x2, 348x360) */}
       <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
-          <div style={{ width: 704 }}>
+          {/* Content: 704x852 (8389:34833) */}
+          <ScaledFrame designWidth={704} designHeight={852}>
             {/* Heading 704x84: title + links below */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -296,7 +298,7 @@ const Conditions = () => {
             </motion.div>
 
             {/* Cards grid 704x744, gap 8 */}
-            <div style={{ marginTop: 44, width: 704, display: 'grid', gridTemplateColumns: '348px 348px', columnGap: 8, rowGap: 8 }}>
+            <div style={{ marginTop: 40, width: 704, display: 'grid', gridTemplateColumns: '348px 348px', columnGap: 8, rowGap: 8 }}>
               {/* Card 1 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -327,12 +329,14 @@ const Conditions = () => {
                   </div>
                 </div>
                 <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
-                  <div style={{ position: 'absolute', left: -79, bottom: -217.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                  {/* Match Figma 744 (8389:34833): left=-99, bottom=-267.3 */}
+                  <div style={{ position: 'absolute', left: -99, bottom: -267.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
                     <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: 384, height: 384 }}>
                       <img src="/images/conditions-spot-card1.svg" alt="" style={{ width: '100%', height: '100%' }} />
                     </div>
                   </div>
-                  <div style={{ position: 'absolute', left: 12, bottom: -51.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                  {/* Match Figma 744: bottom=-81.21 */}
+                  <div style={{ position: 'absolute', left: 12, bottom: -81.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
                     <img src="/images/conditions-card1-illustration.png" alt="" style={{ position: 'absolute', left: '11.87%', top: '16.01%', width: '88.14%', height: '77.46%', maxWidth: 'none' }} />
                   </div>
                 </div>
@@ -366,15 +370,15 @@ const Conditions = () => {
                   </div>
                 </div>
                 <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
-                  <div style={{ position: 'absolute', left: -79, bottom: -217.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                  <div style={{ position: 'absolute', left: -99, bottom: -267.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
                     <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: 384, height: 384 }}>
                       <img src="/images/conditions-spot-card2.svg" alt="" style={{ width: '100%', height: '100%' }} />
                     </div>
                   </div>
-                  <div style={{ position: 'absolute', left: 12, bottom: -51.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                  <div style={{ position: 'absolute', left: 12, bottom: -81.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
                     <img src="/images/conditions-card2-illustration.png" alt="" style={{ position: 'absolute', left: '7.65%', top: '7.79%', width: '92.18%', height: '92.18%', maxWidth: 'none' }} />
                   </div>
-                  <div style={{ position: 'absolute', right: -23.79, bottom: 124.21, width: 110.787, height: 110.787, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
+                  <div style={{ position: 'absolute', right: -23.79, bottom: 104.21, width: 110.787, height: 110.787, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
                     <div style={{ transform: 'rotate(15deg)', width: 90.457, height: 90.457, overflow: 'hidden' }}>
                       <img src="/images/conditions-card2-illustration.png" alt="" style={{ position: 'absolute', left: '3.06%', top: '11.42%', width: '100%', height: '100%', maxWidth: 'none' }} />
                     </div>
@@ -410,12 +414,12 @@ const Conditions = () => {
                   </div>
                 </div>
                 <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
-                  <div style={{ position: 'absolute', left: -79, bottom: -217.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                  <div style={{ position: 'absolute', left: -99, bottom: -267.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
                     <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: 384, height: 384 }}>
                       <img src="/images/conditions-spot-card3.svg" alt="" style={{ width: '100%', height: '100%' }} />
                     </div>
                   </div>
-                  <div style={{ position: 'absolute', left: 12, bottom: -51.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                  <div style={{ position: 'absolute', left: 12, bottom: -81.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
                     <img src="/images/conditions-card3-illustration.png" alt="" style={{ position: 'absolute', left: '12.54%', top: '11.6%', width: '87.39%', height: '76.8%', maxWidth: 'none' }} />
                   </div>
                 </div>
@@ -449,15 +453,15 @@ const Conditions = () => {
                   </div>
                 </div>
                 <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
-                  <div style={{ position: 'absolute', left: -79, bottom: -217.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                  <div style={{ position: 'absolute', left: -99, bottom: -267.3, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
                     <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: 384, height: 384 }}>
                       <img src="/images/conditions-spot-card4.svg" alt="" style={{ width: '100%', height: '100%' }} />
                     </div>
                   </div>
-                  <div style={{ position: 'absolute', left: 12, bottom: -51.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
+                  <div style={{ position: 'absolute', left: 12, bottom: -81.21, width: 241, height: 241, overflow: 'hidden', pointerEvents: 'none', zIndex: 2 }}>
                     <img src="/images/conditions-card4-illustration.png" alt="" style={{ position: 'absolute', left: '-3.53%', top: '-1.75%', width: '107.06%', height: '107.06%', maxWidth: 'none' }} />
                   </div>
-                  <div style={{ position: 'absolute', right: -23.79, bottom: 124.21, width: 110.787, height: 110.787, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
+                  <div style={{ position: 'absolute', right: -23.79, bottom: 104.21, width: 110.787, height: 110.787, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
                     <div style={{ transform: 'rotate(15deg)', width: 90.457, height: 90.457, overflow: 'hidden' }}>
                       <img src="/images/conditions-card4-plane.png" alt="" style={{ position: 'absolute', left: '-6.06%', top: '-2.06%', width: '112.21%', height: '112.21%', maxWidth: 'none' }} />
                     </div>
@@ -465,7 +469,7 @@ const Conditions = () => {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </ScaledFrame>
       </div>
     </section>
 

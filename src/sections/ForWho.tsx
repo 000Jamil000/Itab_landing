@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import LayoutContainer from '../components/LayoutContainer';
+import ScaledFrame from '../components/ScaledFrame';
 
 const ForWho = () => {
   return (
@@ -137,7 +138,7 @@ const ForWho = () => {
       <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x542 */}
-          <div style={{ width: 704 }}>
+          <ScaledFrame designWidth={704} designHeight={542}>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -151,13 +152,16 @@ const ForWho = () => {
                 fontWeight: 500,
                 letterSpacing: '-1px',
                 color: '#242424',
+                width: 704,
+                height: 80,
               }}
             >
-              Для производителей, дистрибьюторов и розничных продавцов
+              Для производителей, дистрибьюторов <br />
+              и розничных продавцов
             </motion.h2>
 
             {/* Cards row (744): 2 cards 348x224, gap 8 */}
-            <div style={{ marginTop: 32, width: 704, display: 'flex', gap: 8 }}>
+            <div style={{ marginTop: 40, width: 704, display: 'flex', gap: 8 }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -180,11 +184,11 @@ const ForWho = () => {
                   <div style={{ width: 54, height: 54, overflow: 'hidden', flexShrink: 0 }}>
                     <img src="/images/forwho-card-icon.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
-                  <div style={{ fontSize: 20, lineHeight: '22px', fontWeight: 500, color: '#242424', paddingTop: 5 }}>
+                  <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424', paddingTop: 5 }}>
                     Производителям <br />и дистрибьюторам
                   </div>
                 </div>
-                <div style={{ color: '#848484', fontSize: 16, lineHeight: '22px', letterSpacing: '-0.2px' }}>
+                <div style={{ color: '#848484', fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px' }}>
                   Получаете прямой доступ к покупателям, контроль над ценами и рост узнаваемости бренда благодаря знаку доверия iTAB.
                 </div>
               </motion.div>
@@ -211,7 +215,7 @@ const ForWho = () => {
                   <div style={{ width: 54, height: 54, overflow: 'hidden', flexShrink: 0 }}>
                     <img src="/images/forwho-card-icon.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
-                  <div style={{ fontSize: 20, lineHeight: '22px', fontWeight: 500, color: '#242424', paddingTop: 5 }}>
+                  <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424', paddingTop: 5 }}>
                     Розничным <br />торговцам
                   </div>
                 </div>
@@ -229,7 +233,7 @@ const ForWho = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
               style={{
-                marginTop: 24,
+                marginTop: 8,
                 width: 704,
                 height: 190,
                 backgroundColor: '#59AD3B',
@@ -245,10 +249,9 @@ const ForWho = () => {
             >
               {/* Text block (content box inside padding): 373x142 */}
               <div style={{ width: 373, height: 142, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                {/* Без фиксированной высоты: переносы могут отличаться на разных рендерах шрифта,
-                    но кнопка всегда должна оставаться снизу (как в Figma: content 656x142). */}
-                <div style={{ width: 373, fontSize: 20, lineHeight: '22px', fontWeight: 500, color: '#FFFFFF' }}>
-                  Обеспечим продвижение и поддержку — чтобы ваши продукты продавались больше, а клиенты возвращались чаще
+                <div style={{ width: 373, height: 66, fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#FFFFFF' }}>
+                  Обеспечим продвижение и поддержку — <br />
+                  чтобы ваши продукты продавались больше, <br />а клиенты возвращались чаще
                 </div>
                 <button
                   type="button"
@@ -271,62 +274,70 @@ const ForWho = () => {
                 </button>
               </div>
 
-              {/* Image group: x=429,y=-13,w=247,h=247 */}
-              <div style={{ position: 'absolute', left: 429, top: -13, width: 247, height: 247, pointerEvents: 'none', zIndex: 1 }}>
+              {/* Image group: right=27, top=-14, w=247,h=247 */}
+              <div style={{ position: 'absolute', right: 27, top: -14, width: 247, height: 247, pointerEvents: 'none', zIndex: 1 }}>
                 {/* inner image: rectangle 260x260 at x=-13,y=6.882 */}
                 <div style={{ position: 'absolute', left: -13, top: 6.882, width: 260, height: 260 }}>
                   <img src="/images/forwho-banner-illustration.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                {/* Featured icon 44.286 at x=197.518,y=54.327 */}
-                <div style={{ position: 'absolute', left: 197.518, top: 54.327, width: 44.286, height: 44.286 }}>
-                  <div
-                    style={{
-                      width: 44.286,
-                      height: 44.286,
-                      borderRadius: 16,
-                      backgroundColor: 'rgba(255,255,255,0.6)',
-                      border: '1px solid rgba(255,255,255,0.6)',
-                      backdropFilter: 'blur(16px)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: 10,
-                      boxSizing: 'border-box',
-                    }}
-                  >
-                    <img src="/images/forwho-icon-pie.svg" alt="" style={{ width: 24, height: 24 }} />
+                {/* Featured icon A: x=197.518,y=54.327,size=44.286, rotate 13.554; glass 36.706, blur 6.118 */}
+                <div style={{ position: 'absolute', left: 188.92, top: 54.327, width: 44.286, height: 44.286, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ transform: 'rotate(13.554deg)', width: 36.706, height: 36.706 }}>
+                    <div
+                      style={{
+                        width: 36.706,
+                        height: 36.706,
+                        borderRadius: 12.235,
+                        backgroundColor: 'rgba(255,255,255,0.6)',
+                        border: '1px solid rgba(255,255,255,0.6)',
+                        backdropFilter: 'blur(6.118px)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: 9.176,
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <img src="/images/forwho-icon-pie.svg" alt="" style={{ width: 24, height: 24 }} />
+                    </div>
                   </div>
                 </div>
-                {/* Featured icon 49.64 at x=0,y=106.886 */}
-                <div style={{ position: 'absolute', left: 0, top: 106.886, width: 49.64, height: 49.64 }}>
-                  <div
-                    style={{
-                      width: 49.64,
-                      height: 49.64,
-                      borderRadius: 16,
-                      backgroundColor: 'rgba(255,255,255,0.6)',
-                      border: '1px solid rgba(255,255,255,0.6)',
-                      backdropFilter: 'blur(16px)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: 12,
-                      boxSizing: 'border-box',
-                    }}
-                  >
-                    <img src="/images/forwho-icon-line.svg" alt="" style={{ width: 28, height: 28 }} />
+                {/* Featured icon B: x=0,y=106.886,size=49.64, rotate 349.949; glass 42.824, blur 6.118 */}
+                <div style={{ position: 'absolute', left: 0, top: 99.41, width: 49.64, height: 49.64, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ transform: 'rotate(349.949deg)', width: 42.824, height: 42.824 }}>
+                    <div
+                      style={{
+                        width: 42.824,
+                        height: 42.824,
+                        borderRadius: 12.235,
+                        backgroundColor: 'rgba(255,255,255,0.6)',
+                        border: '1px solid rgba(255,255,255,0.6)',
+                        backdropFilter: 'blur(6.118px)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: 10.706,
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <img src="/images/forwho-icon-line.svg" alt="" style={{ width: 28, height: 28 }} />
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Spot (Figma 744 Banner: icon_m_LoveFill x=796.548, y=262.010 inside banner y=232 => top ~30.01) */}
-              <div style={{ position: 'absolute', left: 796.548, top: 30.01, width: 541.548, height: 541.548, pointerEvents: 'none', zIndex: 0 }}>
-                <div style={{ transform: 'rotate(139.274deg)', width: 384, height: 384 }}>
-                  <img src="/images/forwho-banner-spot-light.svg" alt="" style={{ width: '100%', height: '100%' }} />
+              {/* Spot: right=-93.55, top=-30, size 541.548, rotate 139.274, nested insets like Figma */}
+              <div style={{ position: 'absolute', right: -93.55, top: -30, width: 541.548, height: 541.548, pointerEvents: 'none', zIndex: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ transform: 'rotate(139.274deg)', width: 384, height: 384, position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: '16.67%', right: '11.59%', bottom: '14.44%', left: '8.33%' }}>
+                    <div style={{ position: 'absolute', top: '-30.24%', right: '-26.02%', bottom: '-30.24%', left: '-26.02%' }}>
+                      <img src="/images/forwho-banner-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
-          </div>
+          </ScaledFrame>
         </div>
       </section>
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ScaledFrame from '../components/ScaledFrame';
 
 const Hero = () => {
   return (
@@ -167,52 +168,52 @@ const Hero = () => {
         className="relative overflow-hidden hidden max-744:block max-375:hidden"
         style={{
           backgroundColor: '#59AD3B',
-          height: '600px',
         }}
       >
-        {/* Background spot (icon_m_LoveFill) — позиция/размер как в Inspect, форма/свечение через Figma insets */}
-        <div
-          style={{
-            position: 'absolute',
-            right: '-589.893px',
-            bottom: '-1200.894px',
-            width: '1459.118px',
-            height: '1459.118px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'none',
-            zIndex: 0,
-          }}
-        >
-          <div style={{ transform: 'rotate(336.274deg) scaleY(-1)', width: '1459.118px', height: '1459.118px', position: 'relative' }}>
-            {/* Match Figma nesting/insets for icon_m_LoveFill (744) */}
+        {/* Scale the whole 744 frame to fit any width between 375..744 (prevents overflow at e.g. 702px) */}
+        <div className="mx-auto w-full max-w-[744px]">
+          <ScaledFrame designWidth={744} designHeight={600}>
+            {/* Background spot (icon_m_LoveFill) — позиция/размер как в Inspect, форма/свечение через Figma insets */}
             <div
               style={{
                 position: 'absolute',
-                top: '16.67%',
-                right: '11.59%',
-                bottom: '14.44%',
-                left: '8.33%',
+                right: '-589.893px',
+                bottom: '-1200.894px',
+                width: '1459.118px',
+                height: '1459.118px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                pointerEvents: 'none',
+                zIndex: 0,
               }}
             >
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-43.77%',
-                  right: '-37.66%',
-                  bottom: '-43.77%',
-                  left: '-37.66%',
-                }}
-              >
-                <img src="/images/hero-lovefill.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+              <div style={{ transform: 'rotate(336.274deg) scaleY(-1)', width: '1459.118px', height: '1459.118px', position: 'relative' }}>
+                {/* Match Figma nesting/insets for icon_m_LoveFill (744) */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '16.67%',
+                    right: '11.59%',
+                    bottom: '14.44%',
+                    left: '8.33%',
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '-43.77%',
+                      right: '-37.66%',
+                      bottom: '-43.77%',
+                      left: '-37.66%',
+                    }}
+                  >
+                    <img src="/images/hero-lovefill.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* 744 wrapper (exact макетная ширина). Внутри — абсолютные координаты как в Figma. */}
-        <div className="mx-auto w-full max-w-[744px] h-full relative" style={{ zIndex: 1 }}>
           {/* Frame 2087327877: x=0, y=130, w=375, h=340 */}
           <div style={{ position: 'absolute', left: 0, top: 130, width: 375, height: 340 }}>
             {/* Offer: x=20, y=0, w=335, h=340 */}
@@ -309,6 +310,7 @@ const Hero = () => {
               </div>
             </motion.div>
           </div>
+          </ScaledFrame>
         </div>
       </section>
 

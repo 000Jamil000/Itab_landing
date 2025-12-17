@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ScaledFrame from '../components/ScaledFrame';
 
 interface StepCardProps {
   number: string;
@@ -242,7 +243,7 @@ const Steps = () => {
       {/* Tablet 744 (Figma 744 steps frame: 3 cards in horizontal row) */}
       <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
-          <div style={{ width: 704 }}>
+          <ScaledFrame designWidth={704} designHeight={398}>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -252,7 +253,7 @@ const Steps = () => {
                 width: 704,
                 height: 40,
                 margin: 0,
-                textAlign: 'center',
+                textAlign: 'left',
                 fontSize: 36,
                 lineHeight: '40px',
                 fontWeight: 500,
@@ -265,6 +266,7 @@ const Steps = () => {
 
             {/* Cards strip (x=20,y=136,w=704,h=326). Card: 259x326, gap 8, horizontal scroll */}
             <div
+              className="no-scrollbar"
               style={{
                 marginTop: 32,
                 width: 704,
@@ -291,7 +293,7 @@ const Steps = () => {
                     scrollSnapAlign: 'start',
                     backgroundColor: '#F7F7F7',
                     borderRadius: 24,
-                    padding: 24,
+                    padding: 32,
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -316,9 +318,9 @@ const Steps = () => {
                       <span style={{ color: '#FFFFFF', fontWeight: 400, fontSize: 16, lineHeight: '22px', letterSpacing: '-0.2px' }}>{s.number}</span>
                     </div>
 
-                    <div style={{ fontSize: 20, lineHeight: '22px', fontWeight: 500, color: '#242424' }}>{s.title}</div>
+                    <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>{s.title}</div>
 
-                    <div style={{ color: '#848484', fontSize: 16, lineHeight: '24px', letterSpacing: '-0.2px' }}>{s.description}</div>
+                    <div style={{ color: '#848484', fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px', whiteSpace: 'pre-wrap' }}>{s.description}</div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 24 }}>
@@ -328,7 +330,7 @@ const Steps = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </ScaledFrame>
         </div>
       </section>
 

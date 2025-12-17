@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import LayoutContainer from '../components/LayoutContainer';
+import ScaledFrame from '../components/ScaledFrame';
 
 interface StatCardProps {
   iconSrc: string;
@@ -138,8 +139,8 @@ const Numbers = () => {
       <section className="relative z-10 mt-[-32px] max-744:mt-[-30px] mb-[8px] hidden max-744:block max-375:hidden">
         <div className="w-full bg-white rounded-[32px] py-[20px]">
           {/* Figma: Frame 2087327981 (x=0,y=20,w=744,h=208), inner content x=20,w=704 */}
-          <div className="mx-auto w-full max-w-[744px] px-[20px] h-[208px]">
-            <div className="relative w-[704px] h-[208px]">
+          <div className="mx-auto w-full max-w-[744px] px-[20px]">
+            <ScaledFrame designWidth={704} designHeight={208}>
               {stats744.map((s, idx) => {
                 const col = idx % 2;
                 const row = Math.floor(idx / 2);
@@ -236,7 +237,7 @@ const Numbers = () => {
                   </motion.div>
                 );
               })}
-            </div>
+            </ScaledFrame>
           </div>
         </div>
       </section>
