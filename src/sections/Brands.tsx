@@ -13,14 +13,19 @@ type LogoItem = {
   objectFit?: 'contain' | 'cover';
 };
 
-const BrandLogo = ({ item }: { item: LogoItem }) => {
+type BrandLogoSize = number | 'fluid';
+
+const BrandLogo = ({ item, size = 'fluid' }: { item: LogoItem; size?: BrandLogoSize }) => {
   const radius = item.rounded ?? 0;
+  const isFluid = size === 'fluid';
+  const px = typeof size === 'number' ? `${size}px` : undefined;
 
   return (
     <div
       style={{
-        width: '100%',
-        aspectRatio: '1',
+        width: isFluid ? '100%' : px,
+        height: isFluid ? undefined : px,
+        aspectRatio: isFluid ? '1' : undefined,
         position: 'relative',
         flexShrink: 0,
         borderRadius: radius ? `${radius}px` : undefined,
@@ -147,7 +152,7 @@ const Brands = () => {
                 transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
               >
                 {[...row1, ...row1].map((item, idx) => (
-                  <BrandLogo key={`r1-${idx}`} item={item} />
+                  <BrandLogo key={`r1-${idx}`} item={item} size={ITEM_SIZE} />
                 ))}
               </motion.div>
               <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
@@ -161,7 +166,7 @@ const Brands = () => {
                 transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
               >
                 {[...row2, ...row2].map((item, idx) => (
-                  <BrandLogo key={`r2-${idx}`} item={item} />
+                  <BrandLogo key={`r2-${idx}`} item={item} size={ITEM_SIZE} />
                 ))}
               </motion.div>
               <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
@@ -204,7 +209,7 @@ const Brands = () => {
                   transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
                 >
                   {[...row1, ...row1].map((item, idx) => (
-                    <BrandLogo key={`r1-744-${idx}`} item={item} />
+                    <BrandLogo key={`r1-744-${idx}`} item={item} size={ITEM_SIZE} />
                   ))}
                 </motion.div>
                 <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
@@ -218,7 +223,7 @@ const Brands = () => {
                   transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
                 >
                   {[...row2, ...row2].map((item, idx) => (
-                    <BrandLogo key={`r2-744-${idx}`} item={item} />
+                    <BrandLogo key={`r2-744-${idx}`} item={item} size={ITEM_SIZE} />
                   ))}
                 </motion.div>
                 <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
@@ -275,7 +280,7 @@ const Brands = () => {
                       }}
                     >
                       {logos375.map((item, idx) => (
-                        <BrandLogo key={`b-375-${suffix}-${idx}`} item={item} />
+                        <BrandLogo key={`b-375-${suffix}-${idx}`} item={item} size="fluid" />
                       ))}
                     </div>
                   );
