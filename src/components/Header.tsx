@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import LayoutContainer from './LayoutContainer';
+import { ITAB_URL } from '../constants/links';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -91,9 +92,12 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <button className="px-5 py-3 bg-[#6CB651] hover:bg-[#5a9d35] text-white text-button rounded-2xl transition-colors max-375:w-[86px] max-375:h-[48px] max-375:px-[20px] max-375:py-[12px] max-375:rounded-[16px] max-375:flex max-375:items-center max-375:justify-center">
+          <a
+            href={ITAB_URL}
+            className="px-5 py-3 bg-[#6CB651] hover:bg-[#5a9d35] text-white text-button rounded-2xl transition-colors max-375:w-[86px] max-375:h-[48px] max-375:px-[20px] max-375:py-[12px] max-375:rounded-[16px] max-375:flex max-375:items-center max-375:justify-center"
+          >
             Войти
-          </button>
+          </a>
         </div>
       </LayoutContainer>
     </motion.header>

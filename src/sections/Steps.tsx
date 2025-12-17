@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import ScaledFrame from '../components/ScaledFrame';
+import { ITAB_URL } from '../constants/links';
 
 interface StepCardProps {
   number: string;
@@ -111,7 +112,7 @@ const Steps = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
+      <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
         <div className="mx-auto w-[1200px]">
           <motion.h2
             className="text-h2"
@@ -216,7 +217,8 @@ const Steps = () => {
                 </div>
               </div>
 
-              <button
+              <a
+                href={ITAB_URL}
                 style={{
                   width: '196px',
                   height: '56px',
@@ -231,17 +233,21 @@ const Steps = () => {
                   cursor: 'pointer',
                   position: 'relative',
                   zIndex: 2,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
                 }}
               >
                 Зарегистрироваться
-              </button>
+              </a>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Tablet 744 (Figma 744 steps frame: 3 cards in horizontal row) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <ScaledFrame designWidth={704} designHeight={398}>
             <motion.h2

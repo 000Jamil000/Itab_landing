@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
+import { ITAB_URL } from '../constants/links';
 
 const CTA = () => {
   return (
     <>
       {/* Desktop / 1440 */}
     <section 
-        className="relative overflow-hidden mb-[8px] max-744:hidden"
+        className="relative overflow-hidden mb-[8px] max-1200:hidden"
         style={{
           backgroundColor: '#59AD3B',
           borderRadius: '32px',
@@ -59,8 +60,8 @@ const CTA = () => {
             </p>
             </div>
 
-            <button
-              type="button"
+            <a
+              href={ITAB_URL}
               style={{
                 width: '178px',
                 height: '56px',
@@ -73,10 +74,14 @@ const CTA = () => {
                 fontWeight: 500,
                 lineHeight: '24px',
                 cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
               }}
             >
               Начать продавать
-            </button>
+            </a>
           </motion.div>
         </div>
 
@@ -132,7 +137,7 @@ const CTA = () => {
       </section>
 
       {/* Tablet 744 (Figma: content 704x260, illustration 471 at x=319,y=-47, icon 103.229 at x=653.815,y=64) */}
-      <section className="relative overflow-hidden mb-[8px] hidden max-744:block max-375:hidden" style={{ backgroundColor: '#59AD3B', borderRadius: 32, paddingTop: 49, paddingBottom: 49 }}>
+      <section className="relative overflow-hidden mb-[8px] hidden max-1200:block max-375:hidden" style={{ backgroundColor: '#59AD3B', borderRadius: 32, paddingTop: 49, paddingBottom: 49 }}>
         {/* Background big spot (Figma 744: x=-1011.262, y=-1927.401, size 2080.228) */}
         <div style={{ position: 'absolute', left: -1011.262, top: -1927.401, width: 2080.228, height: 2080.228, pointerEvents: 'none' }}>
           <div style={{ transform: 'rotate(150deg)', width: 1522.833, height: 1522.833, position: 'relative' }}>
@@ -158,8 +163,8 @@ const CTA = () => {
             </div>
 
             {/* Button 178x56 at y=204 */}
-            <button
-              type="button"
+            <a
+              href={ITAB_URL}
               style={{
                 position: 'absolute',
                 left: 0,
@@ -175,10 +180,14 @@ const CTA = () => {
                 fontWeight: 500,
                 lineHeight: '24px',
                 cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
               }}
             >
               Начать продавать
-            </button>
+            </a>
 
             {/* Illustration 471x471 at x=319,y=-47 */}
             <div style={{ position: 'absolute', left: 319, top: -47, width: 471, height: 471, pointerEvents: 'none', zIndex: 1 }}>
@@ -305,8 +314,8 @@ const CTA = () => {
               </div>
             </div>
 
-            <button
-              type="button"
+            <a
+              href={ITAB_URL}
               style={{
                 width: 178,
                 height: 56,
@@ -319,13 +328,17 @@ const CTA = () => {
                 fontWeight: 500,
                 lineHeight: '24px',
                 cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
               }}
             >
               Начать продавать
-            </button>
+            </a>
           </motion.div>
-        </div>
-      </section>
+      </div>
+    </section>
     </>
   );
 };

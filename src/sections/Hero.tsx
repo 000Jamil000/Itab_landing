@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import ScaledFrame from '../components/ScaledFrame';
+import { ITAB_URL } from '../constants/links';
 
 const Hero = () => {
   return (
     <>
       {/* Desktop / 1440 */}
       <section
-        className="relative overflow-hidden max-744:hidden"
+        className="relative overflow-hidden max-1200:hidden"
         style={{
           backgroundColor: '#59AD3B',
           height: '760px',
@@ -112,8 +113,8 @@ const Hero = () => {
               <br />
               на каждом этапе
             </p>
-            <button
-              type="button"
+            <a
+              href={ITAB_URL}
               style={{
                 width: '178px',
                 height: '56px',
@@ -126,10 +127,14 @@ const Hero = () => {
                 fontWeight: 500,
                 lineHeight: '24px',
                 cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
               }}
             >
               Начать продавать
-            </button>
+            </a>
           </motion.div>
 
           {/* Image */}
@@ -165,7 +170,7 @@ const Hero = () => {
 
       {/* Tablet 744 (Figma: 8389:34730) */}
       <section
-        className="relative overflow-hidden hidden max-744:block max-375:hidden"
+        className="relative overflow-hidden hidden max-1200:block max-375:hidden"
         style={{
           backgroundColor: '#59AD3B',
         }}
@@ -177,15 +182,16 @@ const Hero = () => {
             <div
               style={{
                 position: 'absolute',
-                right: '-589.893px',
                 bottom: '-1200.894px',
-                width: '1459.118px',
-                height: '1459.118px',
+                left: 'calc(50% + 0.45px)',
+                width: '1922.894px',
+                height: '1922.894px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 pointerEvents: 'none',
                 zIndex: 0,
+                transform: 'translateX(-50%)',
               }}
             >
               <div style={{ transform: 'rotate(336.274deg) scaleY(-1)', width: '1459.118px', height: '1459.118px', position: 'relative' }}>
@@ -260,8 +266,8 @@ const Hero = () => {
                 Простое подключение, прозрачные условия <br />
                 и поддержка на каждом этапе
               </p>
-              <button
-                type="button"
+              <a
+                href={ITAB_URL}
                 style={{
                   width: 178,
                   height: 56,
@@ -274,10 +280,14 @@ const Hero = () => {
                   fontWeight: 500,
                   lineHeight: '24px',
                   cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
                 }}
               >
                 Начать продавать
-              </button>
+              </a>
             </motion.div>
 
             {/* Image: x=324, y=-45, w=431, h=431 */}
@@ -391,8 +401,8 @@ const Hero = () => {
                 Простое подключение, прозрачные условия <br />
                 и поддержка на каждом этапе
               </p>
-              <button
-                type="button"
+              <a
+                href={ITAB_URL}
                 style={{
                   width: 335,
                   height: 56,
@@ -405,10 +415,14 @@ const Hero = () => {
                   fontWeight: 500,
                   lineHeight: '24px',
                   cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
                 }}
               >
                 Начать продавать
-              </button>
+              </a>
             </motion.div>
 
             {/* Image: x=-72,y=212,w=520,h=520 (внутри этого фрейма; итоговая Y=120+212) */}

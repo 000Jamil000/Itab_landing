@@ -1,21 +1,91 @@
+import {
+  APPSTORE_URL,
+  FOOTER_ABOUT_URL,
+  FOOTER_CATALOG_URL,
+  FOOTER_BRANDS_URL,
+  FOOTER_CONTACTS_URL,
+  FOOTER_COURSES_URL,
+  FOOTER_DELIVERY_URL,
+  FOOTER_DISTRIBUTOR_URL,
+  FOOTER_FAQ_URL,
+  FOOTER_PAYMENT_URL,
+  FOOTER_RETURN_URL,
+  FOOTER_SPECIALISTS_URL,
+  FOOTER_SUPPLIER_URL,
+  FOOTER_TESTS_URL,
+  GOOGLEPLAY_URL,
+  OK_URL,
+  PODCAST_URL,
+  TG_URL,
+  TIKTOK_URL,
+  VK_URL,
+  YOUTUBE_URL,
+} from '../constants/links';
+import { useMemo, useState } from 'react';
+
 const Footer = () => {
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
+
+  const mobileSections = useMemo(
+    () => [
+      {
+        id: 'clients',
+        title: 'Клиентам',
+        links: [
+          { label: 'Каталог', href: FOOTER_CATALOG_URL },
+          { label: 'Бренды', href: FOOTER_BRANDS_URL },
+          { label: 'Оплата заказов', href: FOOTER_PAYMENT_URL },
+          { label: 'Способы доставки', href: FOOTER_DELIVERY_URL },
+        ],
+      },
+      {
+        id: 'services',
+        title: 'Услуги',
+        links: [
+          { label: 'Подбор БАД', href: FOOTER_TESTS_URL },
+          { label: 'Консультации', href: FOOTER_SPECIALISTS_URL },
+          { label: 'Онлайн-курсы', href: FOOTER_COURSES_URL },
+        ],
+      },
+      {
+        id: 'company',
+        title: 'О компании',
+        links: [
+          { label: 'О нас', href: FOOTER_ABOUT_URL },
+          { label: 'Поставщикам', href: FOOTER_SUPPLIER_URL },
+          { label: 'Оптовым клиентам', href: FOOTER_DISTRIBUTOR_URL },
+        ],
+      },
+      {
+        id: 'support',
+        title: 'Поддержка',
+        links: [
+          { label: 'Контакты', href: FOOTER_CONTACTS_URL },
+          { label: 'Частые вопросы', href: FOOTER_FAQ_URL },
+          { label: 'Возврат продукции', href: FOOTER_RETURN_URL },
+        ],
+      },
+    ],
+    []
+  );
+
   return (
     <>
-      {/* Tablet 744 (Figma: footer 744x962) */}
-      <footer className="bg-white h-[962px] box-border hidden max-744:flex max-375:hidden flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px]">
+      {/* Tablet 744 (Figma: footer 744x962). Показываем на любых ширинах <=1200 (иначе desktop ломается на 8xx–11xx). */}
+      <footer className="bg-white h-[962px] box-border hidden max-1200:flex max-375:hidden flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px]">
         <div className="w-[664px] flex flex-col gap-[40px] items-start">
           {/* Links grid (2 columns) */}
           <div className="w-full grid" style={{ gridTemplateColumns: '1fr 1fr', columnGap: '40px', rowGap: '24px' }}>
             <div className="flex flex-col gap-[16px]">
               <p className="text-[16px] leading-[24px] tracking-[-0.2px] font-medium text-text-primary">Клиентам</p>
               <div className="flex flex-col gap-[12px] text-[16px] leading-[22px] tracking-[-0.2px]">
-                <a href="#" className="text-accent-green">
+                <a href={FOOTER_CATALOG_URL} target="_blank" rel="noopener noreferrer" className="text-accent-green">
                   Каталог
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_PAYMENT_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Оплата заказов
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_DELIVERY_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Способы доставки
                 </a>
               </div>
@@ -24,13 +94,13 @@ const Footer = () => {
             <div className="flex flex-col gap-[16px]">
               <p className="text-[16px] leading-[24px] tracking-[-0.2px] font-medium text-text-primary">Услуги</p>
               <div className="flex flex-col gap-[12px] text-text-secondary text-[16px] leading-[22px] tracking-[-0.2px]">
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_TESTS_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Подбор&nbsp;БАД
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_SPECIALISTS_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Консультации
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_COURSES_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Онлайн-курсы
                 </a>
             </div>
@@ -39,13 +109,13 @@ const Footer = () => {
             <div className="flex flex-col gap-[16px]">
               <p className="text-[16px] leading-[24px] tracking-[-0.2px] font-medium text-text-primary">О&nbsp;компании</p>
               <div className="flex flex-col gap-[12px] text-text-secondary text-[16px] leading-[22px] tracking-[-0.2px]">
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_ABOUT_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   О&nbsp;нас
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Поставщикам
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_DISTRIBUTOR_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Оптовым клиентам
                 </a>
               </div>
@@ -54,13 +124,13 @@ const Footer = () => {
             <div className="flex flex-col gap-[16px]">
               <p className="text-[16px] leading-[24px] tracking-[-0.2px] font-medium text-text-primary">Поддержка</p>
               <div className="flex flex-col gap-[12px] text-text-secondary text-[16px] leading-[22px] tracking-[-0.2px]">
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_CONTACTS_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Контакты
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_FAQ_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Частые вопросы
                 </a>
-                <a href="#" className="text-text-secondary">
+                <a href={FOOTER_RETURN_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                   Возврат продукции
                 </a>
           </div>
@@ -74,9 +144,15 @@ const Footer = () => {
                 <img src="/images/footer-podcast-icon.svg" alt="" className="w-[40px] h-[40px]" />
                 <div className="text-[#202020] text-[16px] leading-[24px] tracking-[-0.2px]">Подкасты о&nbsp;здоровье</div>
               </div>
-              <button type="button" className="bg-white rounded-[16px] px-[32px] py-[16px] text-[#59AD3B] text-[16px] leading-[24px] tracking-[-0.2px] font-medium">
+              <a
+                href={PODCAST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white rounded-[16px] px-[32px] py-[16px] text-[#59AD3B] text-[16px] leading-[24px] tracking-[-0.2px] font-medium"
+                style={{ textDecoration: 'none' }}
+              >
                 Слушать
-              </button>
+              </a>
           </div>
         </div>
 
@@ -107,19 +183,19 @@ const Footer = () => {
             <div className="w-full flex flex-col gap-[12px] items-start">
               <div className="text-[#202020] text-[16px] leading-[24px] tracking-[-0.2px] font-medium">Мы в социальных сетях</div>
               <div className="w-full flex gap-[12px] items-start">
-                <a href="#" className="w-[44px] h-[44px] block">
+                <a href={VK_URL} target="_blank" rel="noopener noreferrer" className="w-[44px] h-[44px] block">
                   <img src="/images/footer-icon-vk-44.svg" alt="" className="w-[44px] h-[44px] block" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
                   <img src="/images/footer-social-youtube.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
                   <img src="/images/footer-social-tiktok.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
-                  <img src="/images/footer-social-huawei.svg" alt="" className="w-[24px] h-[24px]" />
+                <a href={TG_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                  <img src="/images/footer-social-telegram.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                <a href={OK_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
                   <img src="/images/footer-social-odnoklassniki.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
               </div>
@@ -137,13 +213,13 @@ const Footer = () => {
                 <img src="/images/footer-qr.svg" alt="" className="w-[61px] h-[61px] rounded-[10px] block" />
               </div>
               <div className="flex-1 flex items-center gap-[12px]">
-                <button type="button" className="flex-1 h-[80px] bg-white rounded-[20px] px-[22px] py-[28px] flex items-center justify-center">
+                <a href={GOOGLEPLAY_URL} target="_blank" rel="noopener noreferrer" className="flex-1 h-[80px] bg-white rounded-[20px] px-[22px] py-[28px] flex items-center justify-center">
                   <div className="flex items-center gap-[8px]">
                     <img src="/images/footer-icon-googleplay-44.svg" alt="" className="w-[44px] h-[44px] block" />
                     <span className="text-[#202020] text-[16px] leading-[24px] tracking-[-0.2px] whitespace-nowrap">Google Play</span>
                   </div>
-                </button>
-                <button type="button" className="flex-1 h-[80px] bg-white rounded-[24px] px-[22px] py-[28px] flex items-center justify-center">
+                </a>
+                <a href={APPSTORE_URL} target="_blank" rel="noopener noreferrer" className="flex-1 h-[80px] bg-white rounded-[24px] px-[22px] py-[28px] flex items-center justify-center">
                   <div className="flex items-center gap-[8px]">
                     <span className="bg-bg-primary rounded-[12px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
                       <span className="block" style={{ transform: 'scaleY(-1)' }}>
@@ -152,7 +228,7 @@ const Footer = () => {
                     </span>
                     <span className="text-[#202020] text-[16px] leading-[24px] tracking-[-0.2px] whitespace-nowrap">App Store</span>
                   </div>
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -186,23 +262,55 @@ const Footer = () => {
             <img src="/images/logo.svg" alt="iTAB" className="w-full h-full block" />
           </div>
 
-          {/* Accordion headers */}
+          {/* Accordion */}
           <div className="w-full flex flex-col gap-[8px]">
-            {['Клиентам', 'Услуги', 'О компании', 'Поддержка'].map((label) => (
-              <button
-                key={label}
-                type="button"
-                className="w-full flex items-center justify-between border-b border-[#EEE] pb-[8px]"
-                style={{ background: 'transparent' }}
-              >
-                <span className="text-[#202020] text-[14px] leading-[22px] tracking-[-0.2px] font-medium">{label}</span>
-                <span className="w-[24px] h-[24px] flex items-center justify-center">
-                  <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L6 5L11 1" stroke="#59AD3B" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </button>
-            ))}
+            {mobileSections.map((section) => {
+              const isOpen = openMobileSection === section.id;
+
+              return (
+                <div key={section.id} className="w-full">
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenMobileSection(isOpen ? null : section.id)}
+                    className="w-full flex items-center justify-between border-b border-[#EEE] pb-[8px]"
+                    style={{ background: 'transparent' }}
+                  >
+                    <span className="text-[#202020] text-[14px] leading-[22px] tracking-[-0.2px] font-medium">{section.title}</span>
+                    <span
+                      className="w-[24px] h-[24px] flex items-center justify-center transition-transform duration-200"
+                      style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                    >
+                      <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 5L11 1" stroke="#59AD3B" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  <div
+                    className="overflow-hidden transition-[max-height] duration-200"
+                    style={{
+                      maxHeight: isOpen ? `${section.links.length * 34 + 8}px` : '0px',
+                    }}
+                  >
+                    <div className="pt-[8px] flex flex-col gap-[8px]">
+                      {section.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#7B7B7B] text-[14px] leading-[22px] tracking-[-0.2px]"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          {l.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Contacts */}
@@ -217,19 +325,19 @@ const Footer = () => {
 
             {/* Socials (36x36, bg #F1F1F1) */}
             <div className="flex gap-[12px]">
-              <a href="#" className="w-[36px] h-[36px] rounded-[8px] bg-[#F1F1F1] flex items-center justify-center">
+              <a href={VK_URL} target="_blank" rel="noopener noreferrer" className="w-[36px] h-[36px] rounded-[8px] bg-[#F1F1F1] flex items-center justify-center">
                 <img src="/images/footer-social-vk.svg" alt="" className="w-[24px] h-[24px]" />
               </a>
-              <a href="#" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
+              <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
                 <img src="/images/footer-social-youtube.svg" alt="" className="w-[24px] h-[24px]" />
               </a>
-              <a href="#" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
+              <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
                 <img src="/images/footer-social-tiktok.svg" alt="" className="w-[24px] h-[24px]" />
               </a>
-              <a href="#" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
-                <img src="/images/footer-social-huawei.svg" alt="" className="w-[24px] h-[24px]" />
+              <a href={TG_URL} target="_blank" rel="noopener noreferrer" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
+                <img src="/images/footer-social-telegram.svg" alt="" className="w-[24px] h-[24px]" />
               </a>
-              <a href="#" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
+              <a href={OK_URL} target="_blank" rel="noopener noreferrer" className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
                 <img src="/images/footer-social-odnoklassniki.svg" alt="" className="w-[24px] h-[24px]" />
               </a>
             </div>
@@ -242,9 +350,15 @@ const Footer = () => {
                 <img src="/images/footer-podcast-icon.svg" alt="" className="w-[32px] h-[32px]" />
                 <div className="text-[#202020] text-[14px] leading-[22px] tracking-[-0.2px]">Подкасты о&nbsp;здоровье</div>
               </div>
-              <button type="button" className="ml-auto bg-white rounded-[12px] px-[20px] py-[12px] h-[44px] text-[#59AD3B] text-[14px] leading-[24px] tracking-[-0.2px] font-medium">
+              <a
+                href={PODCAST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto bg-white rounded-[12px] px-[20px] py-[12px] h-[44px] text-[#59AD3B] text-[14px] leading-[24px] tracking-[-0.2px] font-medium inline-flex items-center justify-center"
+                style={{ textDecoration: 'none' }}
+              >
                 Подробнее
-              </button>
+              </a>
             </div>
           </div>
 
@@ -287,7 +401,7 @@ const Footer = () => {
       </footer>
 
       {/* Desktop / 1440 */}
-      <footer className="bg-white h-[600px] box-border flex flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px] max-744:hidden">
+      <footer className="bg-white h-[600px] box-border flex flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px] max-1200:hidden">
       {/* Top block is 1360px wide (per Figma) */}
       <div className="w-[1360px] flex items-start justify-between">
           {/* Left */}
@@ -299,13 +413,16 @@ const Footer = () => {
                   Клиентам
                 </p>
                 <div className="w-full flex flex-col gap-[12px] text-[16px] leading-[22px] tracking-[-0.2px]">
-                  <a href="#" className="text-accent-green">
+                  <a href={FOOTER_CATALOG_URL} target="_blank" rel="noopener noreferrer" className="text-accent-green">
                     Каталог
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_BRANDS_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
+                    Бренды
+                  </a>
+                  <a href={FOOTER_PAYMENT_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Оплата заказов
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_DELIVERY_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Способы доставки
                   </a>
                 </div>
@@ -316,13 +433,13 @@ const Footer = () => {
                   Услуги
                 </p>
                 <div className="w-[147px] flex flex-col gap-[12px] text-text-secondary text-[16px] leading-[22px] tracking-[-0.2px]">
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_TESTS_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Подбор&nbsp;БАД
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_SPECIALISTS_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Консультации
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_COURSES_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Онлайн-курсы
                   </a>
                 </div>
@@ -333,13 +450,13 @@ const Footer = () => {
                   О&nbsp;компании
                 </p>
                 <div className="w-full flex flex-col gap-[12px] text-text-secondary text-[16px] leading-[22px] tracking-[-0.2px]">
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_ABOUT_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     О&nbsp;нас
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Поставщикам
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_DISTRIBUTOR_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Оптовым клиентам
                   </a>
                 </div>
@@ -350,13 +467,13 @@ const Footer = () => {
                   Поддержка
                 </p>
                 <div className="w-[147px] flex flex-col gap-[12px] text-text-secondary text-[16px] leading-[22px] tracking-[-0.2px]">
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_CONTACTS_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Контакты
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_FAQ_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Частые вопросы
                   </a>
-                  <a href="#" className="text-text-secondary">
+                  <a href={FOOTER_RETURN_URL} target="_blank" rel="noopener noreferrer" className="text-text-secondary">
                     Возврат продукции
                   </a>
                 </div>
@@ -373,12 +490,15 @@ const Footer = () => {
                       Подкасты о&nbsp;здоровье
                     </div>
                   </div>
-                  <button
-                    type="button"
+                  <a
+                    href={PODCAST_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-white rounded-[16px] px-[32px] py-[16px] text-[#59AD3B] text-[16px] leading-[24px] tracking-[-0.2px] font-medium"
+                    style={{ textDecoration: 'none' }}
                   >
                     Слушать
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -425,19 +545,19 @@ const Footer = () => {
                 Мы в социальных сетях
               </div>
               <div className="w-full flex gap-[12px] items-start">
-                <a href="#" className="w-[44px] h-[44px] block">
+                <a href={VK_URL} target="_blank" rel="noopener noreferrer" className="w-[44px] h-[44px] block">
                   <img src="/images/footer-icon-vk-44.svg" alt="" className="w-[44px] h-[44px] block" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
                   <img src="/images/footer-social-youtube.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
                   <img src="/images/footer-social-tiktok.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
-                  <img src="/images/footer-social-huawei.svg" alt="" className="w-[24px] h-[24px]" />
+                <a href={TG_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                  <img src="/images/footer-social-telegram.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
-                <a href="#" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
+                <a href={OK_URL} target="_blank" rel="noopener noreferrer" className="bg-bg-primary rounded-[8px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
                   <img src="/images/footer-social-odnoklassniki.svg" alt="" className="w-[24px] h-[24px]" />
                 </a>
               </div>
@@ -459,9 +579,12 @@ const Footer = () => {
             </div>
 
             <div className="w-[495px] flex items-center gap-[12px]">
-              <button
-                type="button"
+              <a
+                href={GOOGLEPLAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 h-[80px] bg-white rounded-[20px] px-[22px] py-[28px] flex items-center justify-center"
+                style={{ textDecoration: 'none' }}
               >
                 <div className="flex items-center gap-[8px]">
                   <img src="/images/footer-icon-googleplay-44.svg" alt="" className="w-[44px] h-[44px] block" />
@@ -469,11 +592,14 @@ const Footer = () => {
                     Google Play
                   </span>
                 </div>
-              </button>
+              </a>
 
-              <button
-                type="button"
+              <a
+                href={APPSTORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 h-[80px] bg-white rounded-[24px] px-[22px] py-[28px] flex items-center justify-center"
+                style={{ textDecoration: 'none' }}
               >
                 <div className="flex items-center gap-[8px]">
                   <span className="bg-bg-primary rounded-[12px] p-[9px] w-[44px] h-[44px] flex items-center justify-center">
@@ -485,7 +611,7 @@ const Footer = () => {
                     App Store
                   </span>
                 </div>
-              </button>
+              </a>
             </div>
           </div>
         </div>

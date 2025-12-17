@@ -1,32 +1,33 @@
 import { motion } from 'framer-motion';
 import LayoutContainer from '../components/LayoutContainer';
 import ScaledFrame from '../components/ScaledFrame';
+import { ITAB_URL } from '../constants/links';
 
 const ForWho = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
         <LayoutContainer>
-          <motion.h2
+        <motion.h2 
             className="text-h2 text-secondary"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
+        >
+            Для производителей, дистрибьюторов <br />
+            и розничных продавцов
+        </motion.h2>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            style={{ textAlign: 'center', marginBottom: '40px' }}
-          >
-            Для производителей, дистрибьюторов <br />
-            и розничных продавцов
-          </motion.h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
                 style={{
                   backgroundColor: '#F7F7F7',
                   borderRadius: '24px',
@@ -43,21 +44,21 @@ const ForWho = () => {
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                   <div style={{ width: '72px', height: '72px', overflow: 'hidden' }}>
                     <img src="/images/forwho-card-icon.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
+              </div>
                   <h3 className="text-h4" style={{ color: '#242424' }}>
                     Производителям <br />и дистрибьюторам
-                  </h3>
-                </div>
+              </h3>
+            </div>
                 <p style={{ color: '#848484', fontSize: '16px', lineHeight: '22px', letterSpacing: '-0.2px' }}>
-                  Получаете прямой доступ к покупателям, контроль над ценами и рост узнаваемости бренда благодаря знаку доверия iTAB.
-                </p>
-              </motion.div>
+              Получаете прямой доступ к покупателям, контроль над ценами и рост узнаваемости бренда благодаря знаку доверия iTAB.
+            </p>
+          </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
                 style={{
                   backgroundColor: '#F7F7F7',
                   borderRadius: '24px',
@@ -74,24 +75,24 @@ const ForWho = () => {
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                   <div style={{ width: '72px', height: '72px', overflow: 'hidden' }}>
                     <img src="/images/forwho-card-icon.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
+              </div>
                   <h3 className="text-h4" style={{ color: '#242424' }}>
                     Розничным <br />
                     торговцам
-                  </h3>
-                </div>
+              </h3>
+            </div>
                 <p style={{ color: '#848484', fontSize: '16px', lineHeight: '22px', letterSpacing: '-0.2px' }}>
                   Получаете конкурентное преимущество: товары со знаком iTAB продаются быстрее, потому что подтверждены экспертами и активно поддерживаются
                   нашими медиа-активностями.
-                </p>
-              </motion.div>
-            </div>
+            </p>
+          </motion.div>
+        </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
               style={{
                 width: '1200px',
                 height: '196px',
@@ -105,10 +106,11 @@ const ForWho = () => {
             >
               <div style={{ position: 'relative', zIndex: 2, width: '790px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <h3 className="text-h4" style={{ color: '#FFFFFF' }}>
-                  Обеспечим продвижение и поддержку — чтобы ваши продукты продавались больше, а клиенты возвращались чаще
-                </h3>
+                Обеспечим продвижение и поддержку — чтобы ваши продукты продавались больше, а клиенты возвращались чаще
+              </h3>
                 <div>
-                  <button
+                  <a
+                    href={ITAB_URL}
                     style={{
                       height: '56px',
                       padding: '16px 20px',
@@ -118,10 +120,14 @@ const ForWho = () => {
                       fontSize: '16px',
                       fontWeight: 500,
                       lineHeight: '24px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textDecoration: 'none',
                     }}
                   >
-                    Зарегистрироваться
-                  </button>
+                Зарегистрироваться
+                  </a>
                 </div>
               </div>
               <div style={{ position: 'absolute', left: '851px', top: '-39px', width: '323px', height: '323px', pointerEvents: 'none' }}>
@@ -135,7 +141,7 @@ const ForWho = () => {
       </section>
 
       {/* Tablet 744 (Figma: 8389:34797) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x542 */}
           <ScaledFrame designWidth={704} designHeight={542}>
@@ -253,8 +259,8 @@ const ForWho = () => {
                   Обеспечим продвижение и поддержку — <br />
                   чтобы ваши продукты продавались больше, <br />а клиенты возвращались чаще
                 </div>
-                <button
-                  type="button"
+                <a
+                  href={ITAB_URL}
                   style={{
                     width: 196,
                     height: 56,
@@ -268,10 +274,14 @@ const ForWho = () => {
                     padding: '16px 20px',
                     cursor: 'pointer',
                     flexShrink: 0,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textDecoration: 'none',
                   }}
                 >
                   Зарегистрироваться
-                </button>
+                </a>
               </div>
 
               {/* Image group: right=27, top=-14, w=247,h=247 */}
@@ -466,8 +476,8 @@ const ForWho = () => {
                   Обеспечим продвижение <br />
                   и поддержку — чтобы ваши продукты продавались больше, <br />а клиенты возвращались чаще
                 </div>
-                <button
-                  type="button"
+                <a
+                  href={ITAB_URL}
                   style={{
                     width: 196,
                     height: 56,
@@ -481,10 +491,14 @@ const ForWho = () => {
                     padding: '16px 20px',
                     cursor: 'pointer',
                     alignSelf: 'flex-start',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textDecoration: 'none',
                   }}
                 >
                   Зарегистрироваться
-                </button>
+                </a>
               </div>
 
               {/* Image group (x=27, y=159.638, w=281, h=281) */}
@@ -533,13 +547,13 @@ const ForWho = () => {
                     }}
                   >
                     <img src="/images/forwho-icon-line.svg" alt="" style={{ width: 28, height: 28 }} />
-                  </div>
-                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+          </div>
+      </div>
+    </section>
     </>
   );
 };

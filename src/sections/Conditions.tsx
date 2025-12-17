@@ -5,7 +5,7 @@ const Conditions = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section id="conditions" className="bg-white rounded-[32px] mb-[8px] pt-[63px] pb-[63px] max-744:hidden">
+      <section id="conditions" className="bg-white rounded-[32px] mb-[8px] pt-[63px] pb-[63px] max-1200:hidden">
         <div className="mx-auto w-[1200px]">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '24px', marginBottom: '40px' }}>
           <motion.h2 
@@ -246,7 +246,7 @@ const Conditions = () => {
       </section>
 
       {/* Tablet 744 (Figma: 4 cards 2x2, 348x360) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x852 (8389:34833) */}
           <ScaledFrame designWidth={704} designHeight={852}>

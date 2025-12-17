@@ -126,7 +126,7 @@ const Brands = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
         <div className="mx-auto w-[1200px]">
           <motion.h2
             className="text-h2 text-secondary"
@@ -172,7 +172,7 @@ const Brands = () => {
       </section>
 
       {/* Tablet 744 (Figma: title 2 lines, rows offsets -312/-360) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             <motion.h2

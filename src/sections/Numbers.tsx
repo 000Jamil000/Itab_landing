@@ -118,7 +118,7 @@ const Numbers = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="relative z-10 mt-[-32px] mb-[8px] max-744:hidden">
+      <section className="relative z-10 mt-[-32px] mb-[8px] max-1200:hidden">
         {/* White block (separate container) */}
         <div className="w-full bg-white rounded-[32px] py-[20px]">
           <LayoutContainer className="h-[128px] flex items-center gap-[11px]">
@@ -136,7 +136,7 @@ const Numbers = () => {
       </section>
 
       {/* Tablet 744 (Figma: 8389:34746) */}
-      <section className="relative z-10 mt-[-32px] max-744:mt-[-30px] mb-[8px] hidden max-744:block max-375:hidden">
+      <section className="relative z-10 mt-[-32px] max-744:mt-[-30px] mb-[8px] hidden max-1200:block max-375:hidden">
         <div className="w-full bg-white rounded-[32px] py-[20px]">
           {/* Figma: Frame 2087327981 (x=0,y=20,w=744,h=208), inner content x=20,w=704 */}
           <div className="mx-auto w-full max-w-[744px] px-[20px]">
