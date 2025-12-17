@@ -134,7 +134,7 @@ const ForWho = () => {
       </section>
 
       {/* Tablet 744 (Figma: 8389:34797) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x542 */}
           <div style={{ width: 704 }}>
@@ -323,6 +323,206 @@ const ForWho = () => {
               <div style={{ position: 'absolute', left: 796.548, top: 30.01, width: 541.548, height: 541.548, pointerEvents: 'none', zIndex: 0 }}>
                 <div style={{ transform: 'rotate(139.274deg)', width: 384, height: 384 }}>
                   <img src="/images/forwho-banner-spot-light.svg" alt="" style={{ width: '100%', height: '100%' }} />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 375 (Figma: 8389:34593) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{
+              margin: 0,
+              width: 335,
+              fontSize: 24,
+              lineHeight: '28px',
+              fontWeight: 500,
+              letterSpacing: '-1px',
+              color: '#242424',
+            }}
+          >
+            Для производителей, дистрибьюторов <br />
+            и розничных продавцов
+          </motion.h2>
+
+          <div style={{ marginTop: 32, width: 335, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {/* Card 1: 335x180 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{
+                width: 335,
+                height: 180,
+                backgroundColor: '#F7F7F7',
+                borderRadius: 24,
+                padding: 24,
+                overflow: 'hidden',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                gap: 12,
+              }}
+            >
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+                <div style={{ width: 54, height: 54, overflow: 'hidden', flexShrink: 0 }}>
+                  <img src="/images/forwho-card-icon.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, color: '#242424', letterSpacing: '-0.2px' }}>
+                  Производителям <br />и дистрибьюторам
+                </div>
+              </div>
+              <div style={{ color: '#848484', fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px' }}>
+                Получаете прямой доступ к покупателям, контроль над ценами и рост узнаваемости бренда благодаря знаку доверия iTAB.
+              </div>
+            </motion.div>
+
+            {/* Card 2: 335x224 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              style={{
+                width: 335,
+                height: 224,
+                backgroundColor: '#F7F7F7',
+                borderRadius: 24,
+                padding: 24,
+                overflow: 'hidden',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                gap: 12,
+              }}
+            >
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+                <div style={{ width: 54, height: 54, overflow: 'hidden', flexShrink: 0 }}>
+                  <img src="/images/forwho-card-icon.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, color: '#242424', letterSpacing: '-0.2px' }}>
+                  Розничным <br />
+                  торговцам
+                </div>
+              </div>
+              <div style={{ color: '#848484', fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px' }}>
+                Получаете конкурентное преимущество: товары со знаком iTAB продаются быстрее, потому что подтверждены экспертами <br />
+                и активно поддерживаются нашими медиа-активностями.
+              </div>
+            </motion.div>
+
+            {/* Banner: 335x380 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              style={{
+                width: 335,
+                height: 380,
+                backgroundColor: '#59AD3B',
+                border: '1px solid #B7DAAA',
+                borderRadius: 24,
+                padding: 24,
+                overflow: 'hidden',
+                position: 'relative',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 20,
+              }}
+            >
+              {/* Spot: icon_m_LoveFill (x=439,y=386.647,w=541.548,h=541.548) */}
+              <div style={{ position: 'absolute', left: 439, top: 386.647, width: 541.548, height: 541.548, pointerEvents: 'none', zIndex: 0 }}>
+                <div style={{ transform: 'rotate(139.274deg)', width: 384, height: 384 }}>
+                  <img src="/images/forwho-banner-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                </div>
+              </div>
+
+              {/* Text + button */}
+              <div style={{ position: 'relative', zIndex: 2, width: 287, display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, color: '#FFFFFF', letterSpacing: '-0.2px' }}>
+                  Обеспечим продвижение <br />
+                  и поддержку — чтобы ваши продукты продавались больше, <br />а клиенты возвращались чаще
+                </div>
+                <button
+                  type="button"
+                  style={{
+                    width: 196,
+                    height: 56,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 16,
+                    border: 'none',
+                    color: '#59AD3B',
+                    fontSize: 16,
+                    fontWeight: 500,
+                    lineHeight: '24px',
+                    padding: '16px 20px',
+                    cursor: 'pointer',
+                    alignSelf: 'flex-start',
+                  }}
+                >
+                  Зарегистрироваться
+                </button>
+              </div>
+
+              {/* Image group (x=27, y=159.638, w=281, h=281) */}
+              <div style={{ position: 'absolute', left: 27, top: 159.638, width: 281, height: 281, pointerEvents: 'none', zIndex: 1 }}>
+                {/* inner base image: x=-14.79,y=7.83,w=295.789,h=295.789 */}
+                <div style={{ position: 'absolute', left: -14.79, top: 7.83, width: 295.789, height: 295.789 }}>
+                  <img src="/images/forwho-banner-illustration.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+
+                {/* Featured icon: x=224.707,y=61.805,w=50.382 */}
+                <div style={{ position: 'absolute', left: 224.707, top: 61.805, width: 50.382, height: 50.382 }}>
+                  <div
+                    style={{
+                      width: 41.759,
+                      height: 41.759,
+                      borderRadius: 16,
+                      backgroundColor: 'rgba(255,255,255,0.6)',
+                      border: '1px solid rgba(255,255,255,0.6)',
+                      backdropFilter: 'blur(16px)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: 10.44,
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <img src="/images/forwho-icon-pie.svg" alt="" style={{ width: 24, height: 24 }} />
+                  </div>
+                </div>
+
+                {/* Featured icon: x=0,y=121.599,w=56.473 */}
+                <div style={{ position: 'absolute', left: 0, top: 121.599, width: 56.473, height: 56.473 }}>
+                  <div
+                    style={{
+                      width: 48.718,
+                      height: 48.718,
+                      borderRadius: 16,
+                      backgroundColor: 'rgba(255,255,255,0.6)',
+                      border: '1px solid rgba(255,255,255,0.6)',
+                      backdropFilter: 'blur(16px)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: 12.18,
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <img src="/images/forwho-icon-line.svg" alt="" style={{ width: 28, height: 28 }} />
+                  </div>
                 </div>
               </div>
             </motion.div>

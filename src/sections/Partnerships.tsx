@@ -194,7 +194,7 @@ const Partnerships = () => {
       </section>
 
       {/* Tablet 744 (Figma: 3x2 grid, cards 229.333x380, gap 8) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             {/* Heading (744): по макету — слева, без искусственных переносов */}
@@ -240,6 +240,101 @@ const Partnerships = () => {
             <div style={{ marginTop: 40, width: 704, display: 'grid', gridTemplateColumns: '229.333px 229.333px 229.333px', columnGap: 8, rowGap: 8 }}>
               {benefits.map((benefit, index) => (
                 <PartnershipCard744 key={index} {...benefit} delay={index * 0.05} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 375 (Figma: 8389:34666) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+          <div style={{ width: 335 }}>
+            {/* Heading block: gap 16 */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{
+                margin: 0,
+                width: 335,
+                fontSize: 24,
+                lineHeight: '28px',
+                fontWeight: 500,
+                letterSpacing: '-1px',
+                color: '#242424',
+              }}
+            >
+              Мы строим долгосрочные партнёрства, где ваш рост — <br />
+              наш главный приоритет
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              style={{
+                margin: 0,
+                marginTop: 16,
+                width: 335,
+                fontSize: 14,
+                lineHeight: '22px',
+                fontWeight: 400,
+                letterSpacing: '-0.2px',
+                color: '#848484',
+              }}
+            >
+              На iTAB вы не просто размещаете товары — <br />
+              вы развиваете бизнес вместе с экспертной платформой, которая помогает продавать больше, выстраивать доверие и расти вместе с рынком интегративного здоровья.
+            </motion.p>
+
+            {/* Cards strip: Frame 2087328006 (w=335,h=280), card 250x280, gap 8 */}
+            <div
+              style={{
+                marginTop: 32,
+                width: 335,
+                height: 280,
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                display: 'flex',
+                gap: 8,
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={`p-375-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  style={{
+                    width: 250,
+                    height: 280,
+                    flexShrink: 0,
+                    scrollSnapAlign: 'start',
+                    backgroundColor: '#F7F7F7',
+                    borderRadius: 24,
+                    padding: 24,
+                    overflow: 'hidden',
+                    boxSizing: 'border-box',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    gap: 12,
+                  }}
+                >
+                  <div style={{ width: 72, height: 72, position: 'relative' }}>
+                    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+                      <img alt={benefit.iconAlt} src={benefit.iconSrc} style={{ position: 'absolute', maxWidth: 'none', ...benefit.iconCrop }} />
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>{benefit.title}</div>
+                  <div style={{ fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px', color: '#848484' }}>{benefit.description}</div>
+                </motion.div>
               ))}
             </div>
           </div>

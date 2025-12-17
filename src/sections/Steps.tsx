@@ -240,7 +240,7 @@ const Steps = () => {
       </section>
 
       {/* Tablet 744 (Figma 744 steps frame: 3 cards in horizontal row) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             <motion.h2
@@ -328,6 +328,95 @@ const Steps = () => {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 375 (Figma: 8389:34621) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{
+              width: 335,
+              margin: 0,
+              textAlign: 'left',
+              fontSize: 24,
+              lineHeight: '28px',
+              fontWeight: 500,
+              letterSpacing: '-1px',
+              color: '#242424',
+            }}
+          >
+            Всего 4 шага, чтобы начать продавать
+          </motion.h2>
+
+          {/* Cards strip: x=20,y=152,w=335,h=326. Card: 250x326, gap 8 */}
+          <div
+            style={{
+              marginTop: 32,
+              width: 335,
+              height: 326,
+              overflowX: 'auto',
+              overflowY: 'hidden',
+              display: 'flex',
+              gap: 8,
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {steps.map((s, idx) => (
+              <motion.div
+                key={`s-375-${s.number}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                style={{
+                  width: 250,
+                  height: 326,
+                  flexShrink: 0,
+                  scrollSnapAlign: 'start',
+                  backgroundColor: '#F7F7F7',
+                  borderRadius: 24,
+                  padding: 32,
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <div
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 32,
+                      backgroundColor: '#59AD3B',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: 12,
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <span style={{ color: '#FFFFFF', fontWeight: 400, fontSize: 16, lineHeight: '22px', letterSpacing: '-0.2px' }}>{s.number}</span>
+                  </div>
+
+                  <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, color: '#242424', letterSpacing: '-0.2px' }}>{s.title}</div>
+
+                  <div style={{ color: '#848484', fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px', whiteSpace: 'pre-wrap' }}>{s.description}</div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, height: 24 }}>
+                  <img src="/images/steps-clock.svg" alt="" style={{ width: 24, height: 24 }} />
+                  <span style={{ color: '#C1C1C1', fontSize: 16, lineHeight: '22px', fontWeight: 500 }}>{s.time}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

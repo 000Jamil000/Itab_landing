@@ -164,7 +164,7 @@ const Hero = () => {
 
       {/* Tablet 744 (Figma: 8389:34730) */}
       <section
-        className="relative overflow-hidden hidden max-744:block"
+        className="relative overflow-hidden hidden max-744:block max-375:hidden"
         style={{
           backgroundColor: '#59AD3B',
           height: '600px',
@@ -294,6 +294,136 @@ const Hero = () => {
               }}
             >
               <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+                <img
+                  src="/images/hero-image.png"
+                  alt=""
+                  style={{
+                    position: 'absolute',
+                    left: '-5.17%',
+                    top: '-10.41%',
+                    width: '110.47%',
+                    height: '110.47%',
+                    maxWidth: 'none',
+                  }}
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 375 (Figma: 8389:34526) */}
+      <section
+        className="relative overflow-hidden hidden max-375:block"
+        style={{
+          backgroundColor: '#59AD3B',
+          height: '760px',
+          paddingTop: '120px',
+          paddingBottom: '120px',
+        }}
+      >
+        {/* Background spot (icon_m_LoveFill) — mobile (same geometry as desktop) */}
+        <div
+          style={{
+            position: 'absolute',
+            left: 'calc(50% + 0.95px)',
+            bottom: '-996.89px',
+            width: '1922.894px',
+            height: '1922.894px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+            zIndex: 0,
+            transform: 'translateX(-50%)',
+          }}
+        >
+          <div style={{ transform: 'rotate(336.274deg) scaleY(-1)', width: '1459.118px', height: '1459.118px', position: 'relative' }}>
+            <div style={{ position: 'absolute', top: '16.67%', right: '11.59%', bottom: '14.44%', left: '8.33%' }}>
+              <div style={{ position: 'absolute', top: '-43.77%', right: '-37.66%', bottom: '-43.77%', left: '-37.66%' }}>
+                <img src="/images/hero-lovefill.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Frame 2087327877: x=0,y=120,w=375,h=252 (header остаётся отдельным компонентом) */}
+        <div className="mx-auto w-full max-w-[375px] relative" style={{ zIndex: 1 }}>
+          <div style={{ position: 'relative', width: 375, paddingLeft: 20, paddingRight: 20, boxSizing: 'border-box' }}>
+            {/* Offer: x=20,y=0,w=335,h=252 */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              style={{
+                width: 335,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 20,
+                alignItems: 'flex-start',
+              }}
+            >
+              <h1
+                style={{
+                  width: 335,
+                  color: '#FFFFFF',
+                  margin: 0,
+                  fontSize: 28,
+                  lineHeight: '28px',
+                  fontWeight: 600,
+                  letterSpacing: 0,
+                }}
+              >
+                Продавайте с iTAB — платформой для ответственных брендов здоровья и красоты
+              </h1>
+              <p
+                style={{
+                  width: 335,
+                  margin: 0,
+                  color: 'rgba(255,255,255,0.6)',
+                  fontSize: 14,
+                  lineHeight: '22px',
+                  letterSpacing: '-0.2px',
+                }}
+              >
+                Простое подключение, прозрачные условия <br />
+                и поддержка на каждом этапе
+              </p>
+              <button
+                type="button"
+                style={{
+                  width: 335,
+                  height: 56,
+                  padding: '16px 20px',
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: 16,
+                  border: 'none',
+                  color: '#59AD3B',
+                  fontSize: 16,
+                  fontWeight: 500,
+                  lineHeight: '24px',
+                  cursor: 'pointer',
+                }}
+              >
+                Начать продавать
+              </button>
+            </motion.div>
+
+            {/* Image: x=-72,y=212,w=520,h=520 (внутри этого фрейма; итоговая Y=120+212) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              style={{
+                position: 'absolute',
+                left: -72,
+                top: 212,
+                width: 520,
+                height: 520,
+                pointerEvents: 'none',
+              }}
+            >
+              <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
                 <img
                   src="/images/hero-image.png"
                   alt=""

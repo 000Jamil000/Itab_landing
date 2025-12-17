@@ -34,7 +34,14 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <LayoutContainer>
-        <div className="flex items-center justify-between h-[90px] gap-20 max-744:gap-0">
+        {/* 375 Figma Header (8389:34534):
+            - container: 375x90
+            - padding: 20px
+            - inner row: 335x50
+            - logo: 100x35 (y=7.5 inside 50)
+            - button: 86x48 (y=1 inside 50)
+        */}
+        <div className="flex items-center justify-between h-[90px] box-border gap-20 max-744:gap-0 max-375:py-[20px]">
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
@@ -84,7 +91,7 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <button className="px-5 py-3 bg-[#6CB651] hover:bg-[#5a9d35] text-white text-button rounded-2xl transition-colors">
+          <button className="px-5 py-3 bg-[#6CB651] hover:bg-[#5a9d35] text-white text-button rounded-2xl transition-colors max-375:w-[86px] max-375:h-[48px] max-375:px-[20px] max-375:py-[12px] max-375:rounded-[16px] max-375:flex max-375:items-center max-375:justify-center">
             Войти
           </button>
         </div>

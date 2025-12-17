@@ -18,7 +18,7 @@ export default function LayoutContainer({ children, className = '' }: LayoutCont
     // - 1440: padding 120 => контент 1200
     // - 744:  padding 20  => контент 704
     // - 375:  padding 20  => контент 335
-    <div className={`w-full px-[360px] max-1440:px-[120px] max-744:px-[20px] ${className}`}>
+    <div className={`w-full box-border px-[360px] max-1440:px-[120px] max-744:px-[20px] ${className}`}>
       {children}
     </div>
   );

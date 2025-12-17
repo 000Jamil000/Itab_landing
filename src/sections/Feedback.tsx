@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 interface FeedbackItem {
   position: string;
@@ -12,9 +12,11 @@ interface FeedbackCardProps {
   delay: number;
   onReadMore: () => void;
   width?: number;
+  height?: number;
+  lineClamp?: number;
 }
 
-const FeedbackCard = ({ item, delay, onReadMore, width }: FeedbackCardProps) => {
+const FeedbackCard = ({ item, delay, onReadMore, width, height, lineClamp }: FeedbackCardProps) => {
   const previewText = useMemo(() => item.paragraphs.join('\n\n'), [item.paragraphs]);
 
   return (
@@ -30,7 +32,7 @@ const FeedbackCard = ({ item, delay, onReadMore, width }: FeedbackCardProps) => 
         display: 'flex',
         flexDirection: 'column',
         gap: '16px',
-        height: '462px',
+        height: height ? `${height}px` : '462px',
         width: width ? `${width}px` : '389.333px',
       }}
     >
@@ -74,7 +76,7 @@ const FeedbackCard = ({ item, delay, onReadMore, width }: FeedbackCardProps) => 
             letterSpacing: '-0.2px',
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical' as any,
-            WebkitLineClamp: 9,
+            WebkitLineClamp: lineClamp ?? 9,
             overflow: 'hidden',
             whiteSpace: 'pre-wrap',
           }}
@@ -138,6 +140,8 @@ const Feedback = () => {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const active = activeIndex === null ? null : feedbacks[activeIndex];
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -161,27 +165,27 @@ const Feedback = () => {
       {/* Desktop / 1440 */}
       <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-744:hidden">
         <div className="mx-auto w-[1200px]">
-          <motion.h2
+        <motion.h2 
             className="text-h2 text-secondary"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '40px' }}
-          >
-            Отзывы наших поставщиков
-          </motion.h2>
+        >
+          Отзывы наших поставщиков
+        </motion.h2>
 
           <div style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
             {feedbacks.map((item, index) => (
               <FeedbackCard key={index} item={item} delay={index * 0.1} onReadMore={() => setActiveIndex(index)} />
-            ))}
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Tablet 744 (Figma: cards strip, card 400x462, gap 8) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             <motion.h2
@@ -227,6 +231,90 @@ const Feedback = () => {
         </div>
       </section>
 
+      {/* Mobile 375 (Figma: 8389:34708) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+          <div style={{ width: 335 }}>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{
+                width: 335,
+                height: 28,
+                margin: 0,
+                fontSize: 24,
+                lineHeight: '28px',
+                fontWeight: 500,
+                letterSpacing: '-1px',
+                color: '#242424',
+              }}
+            >
+              Отзывы наших поставщиков
+            </motion.h2>
+
+            {/* Card viewport: x=0,y=44,w=335,h=600 */}
+            <div
+              ref={carouselRef}
+              onScroll={(e) => {
+                const el = e.currentTarget;
+                const step = 335 + 8;
+                const idx = Math.round(el.scrollLeft / step);
+                if (idx !== carouselIndex) setCarouselIndex(Math.max(0, Math.min(feedbacks.length - 1, idx)));
+              }}
+              style={{
+                marginTop: 16,
+                width: 335,
+                height: 600,
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                display: 'flex',
+                gap: 8,
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {feedbacks.map((item, index) => (
+                <div key={`f-375-${index}`} style={{ scrollSnapAlign: 'start' }}>
+                  <FeedbackCard item={item} width={335} height={600} lineClamp={18} delay={index * 0.05} onReadMore={() => setActiveIndex(index)} />
+                </div>
+              ))}
+            </div>
+
+            {/* Dots: Frame 2087327762 (w=335,h=8), gap 7, centered */}
+            <div style={{ marginTop: 8, width: 335, height: 8, display: 'flex', gap: 7, alignItems: 'center', justifyContent: 'center' }}>
+              {feedbacks.map((_, idx) => {
+                const activeDot = idx === carouselIndex;
+                return (
+                  <button
+                    key={`dot-${idx}`}
+                    type="button"
+                    aria-label={`Перейти к отзыву ${idx + 1}`}
+                    onClick={() => {
+                      const el = carouselRef.current;
+                      if (!el) return;
+                      const step = 335 + 8;
+                      el.scrollTo({ left: idx * step, behavior: 'smooth' });
+                      setCarouselIndex(idx);
+                    }}
+                    style={{
+                      width: activeDot ? 12 : 8,
+                      height: 8,
+                      borderRadius: 9999,
+                      border: 'none',
+                      padding: 0,
+                      cursor: 'pointer',
+                      backgroundColor: activeDot ? '#59AD3B' : '#EDEDED',
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Modal (общий для desktop + 744) */}
       <AnimatePresence>
         {active && (
@@ -234,16 +322,8 @@ const Feedback = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              backgroundColor: 'rgba(0,0,0,0.2)',
-              zIndex: 50,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '24px',
-            }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-[24px] max-375:p-[20px]"
+            style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
             onMouseDown={() => setActiveIndex(null)}
           >
             <motion.div
@@ -251,14 +331,7 @@ const Feedback = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: 8 }}
               transition={{ duration: 0.15 }}
-              style={{
-                width: '800px',
-                maxWidth: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                gap: '8px',
-              }}
+              className="w-[800px] max-w-full flex flex-col items-end gap-[8px] max-375:w-[335px]"
               onMouseDown={(e) => e.stopPropagation()}
             >
               <button
@@ -282,17 +355,8 @@ const Feedback = () => {
               </button>
 
               <div
-                style={{
-                  width: '800px',
-                  maxWidth: '100%',
-                  height: '462px',
-                  backgroundColor: '#FFFFFF',
-                  borderRadius: '24px',
-                  padding: '32px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '16px',
-                }}
+                className="w-[800px] max-w-full h-[462px] bg-white rounded-[24px] p-[32px] flex flex-col gap-[16px] max-375:w-[335px] max-375:h-[600px]"
+                style={{ maxHeight: 'calc(100vh - 120px)' }}
               >
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                   <div

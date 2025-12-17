@@ -172,7 +172,7 @@ const Brands = () => {
       </section>
 
       {/* Tablet 744 (Figma: title 2 lines, rows offsets -312/-360) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             <motion.h2
@@ -224,6 +224,83 @@ const Brands = () => {
                 <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
                 <div style={{ position: 'absolute', left: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 375 (Figma: 8389:34683) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+          {/* Content box: 335 */}
+          <div style={{ width: 335, position: 'relative' }}>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{
+                margin: 0,
+                width: 335,
+                fontSize: 24,
+                lineHeight: '28px',
+                fontWeight: 500,
+                letterSpacing: '-1px',
+                color: '#242424',
+              }}
+            >
+              Бренды, которые уже <br />
+              сотрудничают с нами
+            </motion.h2>
+
+            {/* Brands (Figma layout 3x5) + scroll animation (requested) */}
+            <div style={{ marginTop: 16, width: 335, position: 'relative' }}>
+              {/* Viewport height in Figma: 464 (5 rows * 80 + 4 gaps * 16) */}
+              <div style={{ position: 'relative', width: 335, height: 464, overflow: 'hidden' }}>
+                {(() => {
+                  // 15 logos: first 12 + last row 3 (exactly like Figma 8389:34683)
+                  const logos375 = [...row1.slice(0, 12), ...row2.slice(0, 3)];
+
+                  const Grid = ({ suffix }: { suffix: string }) => (
+                    <div
+                      style={{
+                        width: 335,
+                        height: 464,
+                        display: 'grid',
+                        gridTemplateColumns: '80px 80px 80px',
+                        columnGap: 16,
+                        rowGap: 16,
+                        justifyContent: 'center',
+                        alignContent: 'start',
+                      }}
+                    >
+                      {logos375.map((item, idx) => (
+                        <BrandLogo key={`b-375-${suffix}-${idx}`} item={item} />
+                      ))}
+                    </div>
+                  );
+
+                  return (
+                    <motion.div
+                      style={{ position: 'absolute', inset: 0, willChange: 'transform' }}
+                      // В момент старта (y=0) сетка 1:1 как в Figma, дальше плавно “прокручиваем”.
+                      animate={{ y: [0, -464] }}
+                      transition={{ y: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
+                    >
+                      <Grid suffix="a" />
+                      <Grid suffix="b" />
+                    </motion.div>
+                  );
+                })()}
+
+                {/* Top row edge fades (Rectangles 34700/34701) */}
+                <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', left: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+              </div>
+
+              {/* Side vertical fades (Rectangles 34706/34707): top=140.638, h=454, w=120 */}
+              <div style={{ position: 'absolute', left: -20, top: 68.638, width: 120, height: 454, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', right: -20, top: 68.638, width: 120, height: 454, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
             </div>
           </div>
         </div>

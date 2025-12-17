@@ -27,7 +27,7 @@ function App() {
         <Feedback />
         <CTA />
       </main>
-      <div className="mt-[80px]">
+      <div className="mt-[80px] max-744:mt-[8px]">
         <Footer />
       </div>
     </div>

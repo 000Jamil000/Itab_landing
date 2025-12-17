@@ -309,7 +309,7 @@ const About = () => {
       </section>
 
       {/* Tablet 744 (Figma: 8389:34770) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '94px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '94px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x606 */}
           <div style={{ width: '704px' }}>
@@ -505,6 +505,129 @@ const About = () => {
                 <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div style={{ fontSize: '16px', lineHeight: '20px', fontWeight: 500, color: '#FFFFFF' }}>Владимир Попов</div>
                   <div style={{ fontSize: '12px', lineHeight: '16px', color: 'rgba(255,255,255,0.6)' }}>
+                    Сооснователь и медицинский директор iTAB, Нутрициолог, Невролог
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 375 (Figma: 8389:34566) */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+          {/* Heading (x=20,y=64,w=335,h=166) */}
+          <div style={{ width: 335 }}>
+            <h2 style={{ margin: 0, fontSize: 24, lineHeight: '28px', fontWeight: 500, letterSpacing: '-1px', color: '#242424' }}>
+              iTAB — это знак качества. <br />
+              Ваш пропуск к аудитории, <br />
+              которая доверяет экспертам
+            </h2>
+            <p style={{ margin: 0, marginTop: 16, fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px', color: '#848484' }}>
+              Ваш продукт получает знак доверия от реальных врачей и нутрициологов — это сразу повышает <br />
+              его ценность в глазах покупателей.
+            </p>
+          </div>
+
+          {/* Cards container (x=20,y=262,w=335,h=714.362, gap 8) */}
+          <div style={{ marginTop: 32, width: 335, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {/* Card 1: 335x380 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{
+                width: 335,
+                height: 380,
+                backgroundColor: '#F7F7F7',
+                borderRadius: 24,
+                padding: 24,
+                overflow: 'hidden',
+                position: 'relative',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>
+                  Подтверждаем, <br />
+                  что вам можно доверять
+                </div>
+                <div style={{ fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px', color: '#848484' }}>
+                  После проверки вы получаете статус безопасного бренда — покупатели чувствуют уверенность в качестве продукта и возвращаются снова.
+                </div>
+              </div>
+
+              {/* Art block (fills remaining space) */}
+              <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
+                {/* Spot: icon_m_LoveFill (x=-23,y=61.38,w=470.302,h=470.302) */}
+                <div style={{ position: 'absolute', left: -23, top: 61.38, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                  <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: 384, height: 384 }}>
+                    <img src="/images/about-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
+                  </div>
+                </div>
+
+                {/* Main rectangle: x=27, bottom=-69, w=234, h=233, crop */}
+                <div style={{ position: 'absolute', left: 27, bottom: -69, width: 234, height: 233, overflow: 'hidden', pointerEvents: 'none', zIndex: 2, borderRadius: 24 }}>
+                  <img
+                    src="/images/about-shield-card.png"
+                    alt=""
+                    style={{
+                      position: 'absolute',
+                      left: '-11.56%',
+                      top: '-10.61%',
+                      width: '123.11%',
+                      height: '123.11%',
+                      maxWidth: 'none',
+                    }}
+                  />
+                </div>
+
+                {/* Badge: right=4.99, bottom=110.58, size=107.421, inner=87.709 rotated 15deg */}
+                <div style={{ position: 'absolute', right: 4.99, bottom: 110.58, width: 107.421, height: 107.421, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
+                  <div style={{ transform: 'rotate(15deg)', width: 87.709, height: 87.709, position: 'relative' }}>
+                    <img src="/images/about-badge.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 50%' }} />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Experts row: two cards 163.5 wide, gap 8 */}
+            <div style={{ width: 335, display: 'flex', gap: 8 }}>
+              {/* Anna: w=163.5 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+                style={{ width: 163.5, display: 'flex', flexDirection: 'column', gap: 8 }}
+              >
+                <div style={{ width: 163.5, height: 230, borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
+                  <img src="/images/expert-anna.jpg" alt="Анна Государева" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div style={{ paddingLeft: 4, paddingRight: 4, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  <div style={{ fontSize: 17, lineHeight: '20px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>Анна Государева</div>
+                  <div style={{ fontSize: 12, lineHeight: '16px', color: '#848484' }}>Руководитель экспернто-медицинской комиссии iTAB, Нутрициолог</div>
+                </div>
+              </motion.div>
+
+              {/* Vladimir: w=163.5 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                style={{ width: 163.5, display: 'flex', flexDirection: 'column', gap: 8 }}
+              >
+                <div style={{ width: 163.5, height: 230, borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
+                  <img src="/images/expert-vladimir.jpg" alt="Владимир Попов" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div style={{ paddingLeft: 4, paddingRight: 4, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  <div style={{ fontSize: 17, lineHeight: '20px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>Владимир Попов</div>
+                  <div style={{ fontSize: 12, lineHeight: '16px', color: '#848484' }}>
                     Сооснователь и медицинский директор iTAB, Нутрициолог, Невролог
                   </div>
                 </div>
