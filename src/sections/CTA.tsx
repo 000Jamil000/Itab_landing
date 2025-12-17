@@ -6,7 +6,7 @@ const CTA = () => {
     <>
       {/* Desktop / 1440 */}
     <section 
-        className="relative overflow-hidden mb-[8px] max-1200:hidden"
+        className="relative overflow-hidden mb-[8px] max-1440:hidden"
         style={{
           backgroundColor: '#59AD3B',
           borderRadius: '32px',
@@ -137,7 +137,7 @@ const CTA = () => {
       </section>
 
       {/* Tablet 744 (Figma: content 704x260, illustration 471 at x=319,y=-47, icon 103.229 at x=653.815,y=64) */}
-      <section className="relative overflow-hidden mb-[8px] hidden max-1200:block max-375:hidden" style={{ backgroundColor: '#59AD3B', borderRadius: 32, paddingTop: 49, paddingBottom: 49 }}>
+      <section className="relative overflow-hidden mb-[8px] hidden max-1440:block max-744:hidden" style={{ backgroundColor: '#59AD3B', borderRadius: 32, paddingTop: 49, paddingBottom: 49 }}>
         {/* Background big spot (Figma 744: x=-1011.262, y=-1927.401, size 2080.228) */}
         <div style={{ position: 'absolute', left: -1011.262, top: -1927.401, width: 2080.228, height: 2080.228, pointerEvents: 'none' }}>
           <div style={{ transform: 'rotate(150deg)', width: 1522.833, height: 1522.833, position: 'relative' }}>
@@ -222,23 +222,23 @@ const CTA = () => {
 
       {/* Mobile 375 (Figma: 8389:34717) */}
       <section
-        className="relative overflow-hidden mb-[8px] hidden max-375:block"
+        className="relative overflow-hidden mb-[8px] hidden max-744:block"
         style={{
           backgroundColor: '#59AD3B',
-          borderRadius: 32,
-          paddingTop: 64,
-          paddingBottom: 64,
-          height: 500, // Figma: Cooperation frame 375x500
+          borderRadius: 'clamp(24px, 6vw, 32px)',
+          paddingTop: 'clamp(56px, 15vw, 64px)',
+          paddingBottom: 'clamp(56px, 15vw, 64px)',
+          minHeight: 'clamp(450px, 120vw, 500px)',
         }}
       >
-        {/* Spot (icon_m_LoveFill): size 665.104, centered, top=165.06 */}
+        {/* Spot (icon_m_LoveFill) */}
         <div
           style={{
             position: 'absolute',
-            left: 'calc(50% - 0.05px)',
-            top: 165.062,
-            width: 665.104,
-            height: 665.104,
+            left: '50%',
+            top: '33%',
+            width: '177%',
+            aspectRatio: '1',
             transform: 'translateX(-50%)',
             pointerEvents: 'none',
             zIndex: 0,
@@ -247,7 +247,7 @@ const CTA = () => {
             justifyContent: 'center',
           }}
         >
-          <div style={{ transform: 'rotate(139.274deg)', width: 471.611, height: 471.611, position: 'relative' }}>
+          <div style={{ transform: 'rotate(139.274deg)', width: '70.9%', aspectRatio: '1', position: 'relative' }}>
             <div style={{ position: 'absolute', top: '16.67%', right: '11.59%', bottom: '14.44%', left: '8.33%' }}>
               <div style={{ position: 'absolute', top: '-30.24%', right: '-26.02%', bottom: '-30.24%', left: '-26.02%' }}>
                 <img src="/images/cta-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
@@ -256,20 +256,19 @@ const CTA = () => {
           </div>
         </div>
 
-        {/* Rectangle illustration: x=-62.5, y=170, 500x500 */}
-        <div style={{ position: 'absolute', left: -62.5, top: 170, width: 500, height: 500, pointerEvents: 'none', zIndex: 1 }}>
+        {/* Rectangle illustration */}
+        <div style={{ position: 'absolute', left: '-16.7%', top: '34%', width: '133.3%', aspectRatio: '1', pointerEvents: 'none', zIndex: 1 }}>
           <img src="/images/cta-rectangle.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
 
-        {/* Featured icon: x=275.43,y=279.64,w=101.405 (thumbs up in glass) */}
+        {/* Featured icon (thumbs up in glass) */}
         <div
           style={{
             position: 'absolute',
-            left: 'calc(50% + 117.2px)',
-            top: 279.638,
-            width: 101.405,
-            height: 101.405,
-            transform: 'translateX(-50%)',
+            left: '73.4%',
+            top: '55.9%',
+            width: '27%',
+            aspectRatio: '1',
             pointerEvents: 'none',
             zIndex: 2,
             display: 'flex',
@@ -277,39 +276,38 @@ const CTA = () => {
             justifyContent: 'center',
           }}
         >
-          <div style={{ transform: 'rotate(15deg)', width: 82.797, height: 82.797 }}>
+          <div style={{ transform: 'rotate(15deg)', width: '81.6%', aspectRatio: '1' }}>
             <div
               style={{
-                width: 78.226,
-                height: 78.226,
-                borderRadius: 26.075,
+                width: '94.5%',
+                aspectRatio: '1',
+                borderRadius: '33.3%',
                 backgroundColor: 'rgba(255,255,255,0.6)',
                 border: '1px solid rgba(255,255,255,0.6)',
                 backdropFilter: 'blur(13.038px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: 19.556,
+                padding: '25%',
                 boxSizing: 'border-box',
               }}
             >
-              <img src="/images/cta-thumb.svg" alt="" style={{ width: 24, height: 24 }} />
+              <img src="/images/cta-thumb.svg" alt="" style={{ width: '100%', height: '100%' }} />
             </div>
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-[375px] px-[20px]" style={{ position: 'relative', zIndex: 3 }}>
-          {/* Content box: x=20,y=64,w=335,h=186 */}
+        <div className="mx-auto w-full max-w-[744px] px-[20px]" style={{ position: 'relative', zIndex: 3 }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            style={{ width: 335, display: 'flex', flexDirection: 'column', gap: 20, color: '#FFFFFF' }}
+            style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 'clamp(18px, 5vw, 20px)', color: '#FFFFFF' }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <div style={{ fontSize: 24, lineHeight: '28px', fontWeight: 500, letterSpacing: '-1px' }}>Начните продавать на iTAB</div>
-              <div style={{ fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(14px, 4vw, 16px)' }}>
+              <div style={{ fontSize: 'clamp(22px, 6.4vw, 24px)', lineHeight: 'clamp(26px, 7.5vw, 28px)', fontWeight: 500, letterSpacing: '-1px' }}>Начните продавать на iTAB</div>
+              <div style={{ fontSize: 'clamp(13px, 3.7vw, 14px)', lineHeight: 'clamp(20px, 5.5vw, 22px)', letterSpacing: '-0.2px' }}>
                 Размещение вашего продукта на iTAB — это не просто продажа, это признание его соответствия высоким стандартам интегративного здоровья.
               </div>
             </div>
@@ -317,14 +315,14 @@ const CTA = () => {
             <a
               href={ITAB_URL}
               style={{
-                width: 178,
-                height: 56,
+                width: '178px',
+                height: '56px',
                 padding: '16px 20px',
                 backgroundColor: '#FFFFFF',
-                borderRadius: 16,
+                borderRadius: '16px',
                 border: 'none',
                 color: '#59AD3B',
-                fontSize: 16,
+                fontSize: '16px',
                 fontWeight: 500,
                 lineHeight: '24px',
                 cursor: 'pointer',
@@ -332,6 +330,7 @@ const CTA = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 textDecoration: 'none',
+                boxSizing: 'border-box',
               }}
             >
               Начать продавать

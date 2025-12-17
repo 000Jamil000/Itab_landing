@@ -112,7 +112,7 @@ const Steps = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
+      <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
         <div className="mx-auto w-[1200px]">
           <motion.h2
             className="text-h2"
@@ -247,7 +247,7 @@ const Steps = () => {
       </section>
 
       {/* Tablet 744 (Figma 744 steps frame: 3 cards in horizontal row) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <ScaledFrame designWidth={704} designHeight={398}>
             <motion.h2
@@ -341,15 +341,23 @@ const Steps = () => {
       </section>
 
       {/* Mobile 375 (Figma: 8389:34621) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        {/* На ширинах 375..744 масштабируем размеры пропорционально ширине контента (335 в Figma) */}
+        <div
+          className="mx-auto w-full max-w-[744px] px-[20px]"
+          style={
+            {
+              ['--steps-content-w' as any]: 'min(704px, calc(100vw - 40px))',
+            } as React.CSSProperties
+          }
+        >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             style={{
-              width: 335,
+              width: '100%',
               margin: 0,
               textAlign: 'left',
               fontSize: 24,
@@ -366,8 +374,8 @@ const Steps = () => {
           <div
             style={{
               marginTop: 32,
-              width: 335,
-              height: 326,
+              width: '100%',
+              height: 'calc(var(--steps-content-w) * 326 / 335)',
               overflowX: 'auto',
               overflowY: 'hidden',
               display: 'flex',
@@ -384,17 +392,17 @@ const Steps = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 style={{
-                  width: 250,
-                  height: 326,
+                  width: 'calc(var(--steps-content-w) * 250 / 335)',
+                  height: 'calc(var(--steps-content-w) * 326 / 335)',
                   flexShrink: 0,
                   scrollSnapAlign: 'start',
                   backgroundColor: '#F7F7F7',
                   borderRadius: 24,
                   padding: 32,
                   boxSizing: 'border-box',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
+                  display: 'grid',
+                  gridTemplateRows: 'auto 1fr auto',
+                  rowGap: 20,
                 }}
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>

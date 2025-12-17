@@ -5,9 +5,9 @@ import { ITAB_URL } from '../constants/links';
 const Hero = () => {
   return (
     <>
-      {/* Desktop / 1440 */}
+      {/* Desktop / 1440 - показывается только на >=1440 */}
       <section
-        className="relative overflow-hidden max-1200:hidden"
+        className="relative overflow-hidden max-1440:hidden"
         style={{
           backgroundColor: '#59AD3B',
           height: '760px',
@@ -168,9 +168,9 @@ const Hero = () => {
       </div>
       </section>
 
-      {/* Tablet 744 (Figma: 8389:34730) */}
+      {/* Tablet 744 (Figma: 8389:34730) - показывается только на 744-1439 */}
       <section
-        className="relative overflow-hidden hidden max-1200:block max-375:hidden"
+        className="relative overflow-hidden hidden max-1440:block max-744:hidden"
         style={{
           backgroundColor: '#59AD3B',
         }}
@@ -324,12 +324,12 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Mobile 375 (Figma: 8389:34526) */}
+      {/* Mobile 375 (Figma: 8389:34526) - растягивается до 744px */}
       <section
-        className="relative overflow-hidden hidden max-375:block"
+        className="relative overflow-hidden hidden max-744:block"
         style={{
           backgroundColor: '#59AD3B',
-          height: '760px',
+          minHeight: '760px',
           paddingTop: '120px',
           paddingBottom: '120px',
         }}
@@ -359,29 +359,29 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Frame 2087327877: x=0,y=120,w=375,h=252 (header остаётся отдельным компонентом) */}
-        <div className="mx-auto w-full max-w-[375px] relative" style={{ zIndex: 1 }}>
-          <div style={{ position: 'relative', width: 375, paddingLeft: 20, paddingRight: 20, boxSizing: 'border-box' }}>
-            {/* Offer: x=20,y=0,w=335,h=252 */}
+        {/* Frame 2087327877: растягивается от 375 до 744 */}
+        <div className="mx-auto w-full max-w-[744px] relative" style={{ zIndex: 1, padding: 'clamp(16px, 4.5vw, 20px)' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '100%' }}>
+            {/* Offer: растягиваемый контент */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
               style={{
-                width: 335,
+                width: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 20,
+                gap: 'clamp(16px, 4.5vw, 20px)',
                 alignItems: 'flex-start',
               }}
             >
               <h1
                 style={{
-                  width: 335,
+                  width: '100%',
                   color: '#FFFFFF',
                   margin: 0,
-                  fontSize: 28,
-                  lineHeight: '28px',
+                  fontSize: 'clamp(22px, 6.5vw, 28px)',
+                  lineHeight: 'clamp(26px, 7.2vw, 32px)',
                   fontWeight: 600,
                   letterSpacing: 0,
                 }}
@@ -390,10 +390,10 @@ const Hero = () => {
               </h1>
               <p
                 style={{
-                  width: 335,
+                  width: '100%',
                   margin: 0,
                   color: 'rgba(255,255,255,0.6)',
-                  fontSize: 14,
+                  fontSize: 'clamp(13px, 3.7vw, 14px)',
                   lineHeight: '22px',
                   letterSpacing: '-0.2px',
                 }}
@@ -404,38 +404,40 @@ const Hero = () => {
               <a
                 href={ITAB_URL}
                 style={{
-                  width: 335,
-                  height: 56,
+                  width: '100%',
+                  height: '56px',
                   padding: '16px 20px',
                   backgroundColor: '#FFFFFF',
-                  borderRadius: 16,
+                  borderRadius: '16px',
                   border: 'none',
                   color: '#59AD3B',
-                  fontSize: 16,
+                  fontSize: '16px',
                   fontWeight: 500,
                   lineHeight: '24px',
                   cursor: 'pointer',
-                  display: 'inline-flex',
+                  display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   textDecoration: 'none',
+                  boxSizing: 'border-box',
                 }}
               >
                 Начать продавать
               </a>
             </motion.div>
 
-            {/* Image: x=-72,y=212,w=520,h=520 (внутри этого фрейма; итоговая Y=120+212) */}
+            {/* Image: адаптируется под ширину экрана */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.15 }}
               style={{
                 position: 'absolute',
-                left: -72,
-                top: 212,
-                width: 520,
-                height: 520,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                top: 'clamp(180px, 48vw, 212px)',
+                width: 'min(520px, 138vw)',
+                aspectRatio: '1',
                 pointerEvents: 'none',
               }}
             >

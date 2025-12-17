@@ -72,7 +72,7 @@ const Footer = () => {
   return (
     <>
       {/* Tablet 744 (Figma: footer 744x962). Показываем на любых ширинах <=1200 (иначе desktop ломается на 8xx–11xx). */}
-      <footer className="bg-white h-[962px] box-border hidden max-1200:flex max-375:hidden flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px]">
+      <footer className="bg-white h-[962px] box-border hidden max-1440:flex max-744:hidden flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px]">
         <div className="w-[664px] flex flex-col gap-[40px] items-start">
           {/* Links grid (2 columns) */}
           <div className="w-full grid" style={{ gridTemplateColumns: '1fr 1fr', columnGap: '40px', rowGap: '24px' }}>
@@ -255,7 +255,7 @@ const Footer = () => {
       </footer>
 
       {/* Mobile 375 (Figma: 8389:34726, 375x685) */}
-      <footer className="bg-white hidden max-375:block rounded-tl-[12px] rounded-tr-[12px] px-[8px] py-[32px]">
+      <footer className="bg-white hidden max-744:block rounded-tl-[12px] rounded-tr-[12px] px-[20px] py-[32px]">
         <div className="w-full flex flex-col gap-[24px] items-start">
           {/* Logo */}
           <div className="w-[102px] h-[33px]">
@@ -365,13 +365,13 @@ const Footer = () => {
           {/* Stores */}
           <div className="w-full flex flex-col gap-[8px]">
             <div className="w-full flex gap-[8px]">
-              <button type="button" className="w-[176px] h-[40px] bg-[#F1F1F1] rounded-[12px] flex items-center justify-center gap-[8px]">
+              <button type="button" className="flex-1 h-[40px] bg-[#F1F1F1] rounded-[12px] flex items-center justify-center gap-[8px]">
                 <span className="w-[36px] h-[36px] rounded-[8px] bg-[#F1F1F1] flex items-center justify-center">
                   <img src="/images/footer-icon-googleplay-44.svg" alt="" className="w-[24px] h-[24px]" />
                 </span>
                 <span className="text-[#202020] text-[14px] leading-[22px] tracking-[-0.2px]">Google Play</span>
               </button>
-              <button type="button" className="flex-1 h-[39px] bg-[#F1F1F1] rounded-[12px] flex items-center justify-center gap-[8px]">
+              <button type="button" className="flex-1 h-[40px] bg-[#F1F1F1] rounded-[12px] flex items-center justify-center gap-[8px]">
                 <span className="w-[36px] h-[36px] rounded-[12px] bg-[#F1F1F1] flex items-center justify-center">
                   <img src="/images/footer-social-huawei.svg" alt="" className="w-[18px] h-[18px]" />
                 </span>
@@ -401,7 +401,7 @@ const Footer = () => {
       </footer>
 
       {/* Desktop / 1440 */}
-      <footer className="bg-white h-[600px] box-border flex flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px] max-1200:hidden">
+      <footer className="bg-white h-[600px] box-border flex flex-col gap-[40px] items-center pt-[60px] pb-[20px] px-[40px] rounded-tl-[16px] rounded-tr-[16px] max-1440:hidden">
       {/* Top block is 1360px wide (per Figma) */}
       <div className="w-[1360px] flex items-start justify-between">
           {/* Left */}

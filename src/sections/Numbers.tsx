@@ -118,7 +118,7 @@ const Numbers = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="relative z-10 mt-[-32px] mb-[8px] max-1200:hidden">
+      <section className="relative z-10 mt-[-32px] mb-[8px] max-1440:hidden">
         {/* White block (separate container) */}
         <div className="w-full bg-white rounded-[32px] py-[20px]">
           <LayoutContainer className="h-[128px] flex items-center gap-[11px]">
@@ -136,7 +136,7 @@ const Numbers = () => {
       </section>
 
       {/* Tablet 744 (Figma: 8389:34746) */}
-      <section className="relative z-10 mt-[-32px] max-744:mt-[-30px] mb-[8px] hidden max-1200:block max-375:hidden">
+      <section className="relative z-10 mt-[-32px] max-744:mt-[-30px] mb-[8px] hidden max-1440:block max-744:hidden">
         <div className="w-full bg-white rounded-[32px] py-[20px]">
           {/* Figma: Frame 2087327981 (x=0,y=20,w=744,h=208), inner content x=20,w=704 */}
           <div className="mx-auto w-full max-w-[744px] px-[20px]">
@@ -243,21 +243,12 @@ const Numbers = () => {
       </section>
 
       {/* Mobile 375 (Figma: 8389:34542) */}
-      <section className="relative z-10 mt-[-32px] mb-[8px] hidden max-375:block">
+      <section className="relative z-10 mt-[-32px] mb-[8px] hidden max-744:block">
         <div className="w-full bg-white rounded-[32px] py-[20px]">
-          <div className="mx-auto w-full max-w-[375px] px-[20px]">
-            <div className="grid" style={{ gridTemplateColumns: '162px 162px', columnGap: 11, rowGap: 20 }}>
+          {/* Figma mobile: outer width 375, inner content width 335 (px=20) */}
+          <div className="mx-auto w-full max-w-[744px] px-[20px]">
+            <div className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', columnGap: '11px', rowGap: '20px' }}>
               {stats.map((s, idx) => {
-                // Figma 375 (8389:34542): Featured icon sizes/offsets + label box widths
-                const cfg = [
-                  { iconW: 48, iconH: 40, iconLeft: 57, labelLeft: -2, labelW: 166 },
-                  { iconW: 40, iconH: 40, iconLeft: 61, labelLeft: 19.5, labelW: 123 },
-                  { iconW: 40, iconH: 40, iconLeft: 61, labelLeft: -12, labelW: 186 },
-                  { iconW: 40, iconH: 40, iconLeft: 61, labelLeft: 40, labelW: 82 },
-                ][idx]!;
-
-                const labelAsText = typeof s.label === 'string' ? s.label : undefined;
-
                 return (
                 <motion.div
                   key={idx}
@@ -266,44 +257,68 @@ const Numbers = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.05 }}
                   style={{
-                    width: 162,
-                    height: 110,
-                    position: 'relative',
+                    width: '100%',
+                    // В Figma карточка выглядит как 162x102, но подписи многострочные (<br/>),
+                    // поэтому фиксированная высота приводит к наложениям.
+                    // Делаем min-height и даём карточке увеличиваться по контенту.
+                    minHeight: '102px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    paddingTop: '8px',
+                    paddingBottom: '8px',
+                    gap: '8px',
                   }}
                 >
-                  {/* Featured icon: y=8, w/h varies */}
-                  <div style={{ position: 'absolute', left: cfg.iconLeft, top: 8, width: cfg.iconW, height: cfg.iconH }}>
-                    <div style={{ position: 'relative', width: cfg.iconW, height: cfg.iconH }}>
-                      {/* Green rotated shape behind (kept consistent with other breakpoints) */}
-                      <div style={{ position: 'absolute', left: 2.61, top: -13.39, width: 58.788, height: 58.788, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 0 }}>
-                        <div style={{ transform: 'rotate(15deg)', width: 48, height: 48, backgroundColor: '#59AD3B', borderRadius: 16 }} />
-                      </div>
-                      <div
-                        style={{
-                          position: 'absolute',
-                          inset: 0,
-                          borderRadius: 16,
-                          backgroundColor: 'rgba(255,255,255,0.6)',
-                          border: '1px solid rgba(255,255,255,0.6)',
-                          backdropFilter: 'blur(16px)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          zIndex: 1,
-                        }}
-                      >
-                        <img src={s.iconSrc} alt="" style={{ width: 24, height: 24 }} />
-                      </div>
+                  {/* Featured icon */}
+                  {/* Figma: icon wrapper 48x40 */}
+                  <div style={{ position: 'relative', width: 48, height: 40 }}>
+                    {/* Green rotated shape behind */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: 8,
+                        top: -8,
+                        width: 48,
+                        height: 48,
+                        backgroundColor: '#59AD3B',
+                        borderRadius: 16,
+                        transform: 'rotate(15deg)',
+                        pointerEvents: 'none',
+                        zIndex: 0,
+                      }}
+                    />
+                    {/* Glass */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: 4,
+                        top: 0,
+                        width: 40,
+                        height: 40,
+                        borderRadius: 16,
+                        backgroundColor: 'rgba(255,255,255,0.6)',
+                        border: '1px solid rgba(255,255,255,0.6)',
+                        backdropFilter: 'blur(16px)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: 8,
+                        boxSizing: 'border-box',
+                        zIndex: 1,
+                      }}
+                    >
+                      <img src={s.iconSrc} alt="" style={{ width: 24, height: 24, display: 'block' }} />
                     </div>
                   </div>
 
-                  {/* Text: y=56, w=162, h=54; label box varies */}
-                  <div style={{ position: 'absolute', left: 0, top: 56, width: 162, height: 54 }}>
-                    <div style={{ position: 'absolute', left: 0, top: 0, width: 162, height: 22, textAlign: 'center', fontSize: 16, lineHeight: '22px', fontWeight: 500, color: '#242424' }}>
+                  {/* Text */}
+                  <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', flex: 1 }}>
+                    <div style={{ textAlign: 'center', fontSize: '20px', lineHeight: '24px', fontWeight: 500, color: '#242424' }}>
                       {s.number}
                     </div>
-                    <div style={{ position: 'absolute', left: cfg.labelLeft, top: 22, width: cfg.labelW, height: 32, textAlign: 'center', fontSize: 12, lineHeight: '16px', fontWeight: 400, color: '#848484', whiteSpace: 'pre-wrap' }}>
-                      {labelAsText ?? s.label}
+                    <div style={{ width: '100%', textAlign: 'center', fontSize: '12px', lineHeight: '16px', fontWeight: 400, color: '#848484', padding: '0 4px' }}>
+                      {s.label}
                     </div>
                   </div>
                 </motion.div>

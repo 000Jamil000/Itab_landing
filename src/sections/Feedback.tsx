@@ -11,8 +11,8 @@ interface FeedbackCardProps {
   item: FeedbackItem;
   delay: number;
   onReadMore: () => void;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   lineClamp?: number;
 }
 
@@ -28,12 +28,12 @@ const FeedbackCard = ({ item, delay, onReadMore, width, height, lineClamp }: Fee
       style={{
         backgroundColor: '#F7F7F7',
         borderRadius: '24px',
-        padding: '32px',
+        padding: 'clamp(24px, 6vw, 32px)',
         display: 'flex',
         flexDirection: 'column',
         gap: '16px',
-        height: height ? `${height}px` : '462px',
-        width: width ? `${width}px` : '389.333px',
+        height: typeof height === 'string' ? height : height ? `${height}px` : '462px',
+        width: typeof width === 'string' ? width : width ? `${width}px` : '389.333px',
       }}
     >
       {/* Reviewer Info */}
@@ -163,7 +163,7 @@ const Feedback = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
+      <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
         <div className="mx-auto w-[1200px]">
         <motion.h2 
             className="text-h2 text-secondary"
@@ -185,7 +185,7 @@ const Feedback = () => {
     </section>
 
       {/* Tablet 744 (Figma: cards strip, card 400x462, gap 8) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             <motion.h2
@@ -232,17 +232,17 @@ const Feedback = () => {
       </section>
 
       {/* Mobile 375 (Figma: 8389:34708) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="mx-auto w-full max-w-[375px] px-[20px]">
-          <div style={{ width: 335 }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[744px] px-[20px]">
+          <div style={{ width: '100%' }}>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               style={{
-                width: 335,
-                height: 28,
+                width: '100%',
+                minHeight: 28,
                 margin: 0,
                 fontSize: 24,
                 lineHeight: '28px',
@@ -259,14 +259,15 @@ const Feedback = () => {
               ref={carouselRef}
               onScroll={(e) => {
                 const el = e.currentTarget;
-                const step = 335 + 8;
+                const containerWidth = el.offsetWidth;
+                const step = containerWidth + 8;
                 const idx = Math.round(el.scrollLeft / step);
                 if (idx !== carouselIndex) setCarouselIndex(Math.max(0, Math.min(feedbacks.length - 1, idx)));
               }}
               style={{
                 marginTop: 16,
-                width: 335,
-                height: 600,
+                width: '100%',
+                aspectRatio: '335 / 600',
                 overflowX: 'auto',
                 overflowY: 'hidden',
                 display: 'flex',
@@ -276,14 +277,14 @@ const Feedback = () => {
               }}
             >
               {feedbacks.map((item, index) => (
-                <div key={`f-375-${index}`} style={{ scrollSnapAlign: 'start' }}>
-                  <FeedbackCard item={item} width={335} height={600} lineClamp={18} delay={index * 0.05} onReadMore={() => setActiveIndex(index)} />
+                <div key={`f-375-${index}`} style={{ scrollSnapAlign: 'start', minWidth: '100%', width: '100%', aspectRatio: '335 / 600' }}>
+                  <FeedbackCard item={item} width="100%" height="100%" lineClamp={18} delay={index * 0.05} onReadMore={() => setActiveIndex(index)} />
                 </div>
               ))}
             </div>
 
             {/* Dots: Frame 2087327762 (w=335,h=8), gap 7, centered */}
-            <div style={{ marginTop: 8, width: 335, height: 8, display: 'flex', gap: 7, alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ marginTop: 8, width: '100%', height: 8, display: 'flex', gap: 7, alignItems: 'center', justifyContent: 'center' }}>
               {feedbacks.map((_, idx) => {
                 const activeDot = idx === carouselIndex;
                 return (

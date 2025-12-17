@@ -19,8 +19,8 @@ const BrandLogo = ({ item }: { item: LogoItem }) => {
   return (
     <div
       style={{
-        width: '80px',
-        height: '80px',
+        width: '100%',
+        aspectRatio: '1',
         position: 'relative',
         flexShrink: 0,
         borderRadius: radius ? `${radius}px` : undefined,
@@ -126,7 +126,7 @@ const Brands = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
         <div className="mx-auto w-[1200px]">
           <motion.h2
             className="text-h2 text-secondary"
@@ -172,7 +172,7 @@ const Brands = () => {
       </section>
 
       {/* Tablet 744 (Figma: title 2 lines, rows offsets -312/-360) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             <motion.h2
@@ -230,10 +230,10 @@ const Brands = () => {
       </section>
 
       {/* Mobile 375 (Figma: 8389:34683) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content box: 335 */}
-          <div style={{ width: 335, position: 'relative' }}>
+          <div style={{ width: '100%', position: 'relative' }}>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -241,7 +241,7 @@ const Brands = () => {
               transition={{ duration: 0.5 }}
               style={{
                 margin: 0,
-                width: 335,
+                width: '100%',
                 fontSize: 24,
                 lineHeight: '28px',
                 fontWeight: 500,
@@ -254,9 +254,9 @@ const Brands = () => {
             </motion.h2>
 
             {/* Brands (Figma layout 3x5) + scroll animation (requested) */}
-            <div style={{ marginTop: 16, width: 335, position: 'relative' }}>
+            <div style={{ marginTop: 16, width: '100%', position: 'relative' }}>
               {/* Viewport height in Figma: 464 (5 rows * 80 + 4 gaps * 16) */}
-              <div style={{ position: 'relative', width: 335, height: 464, overflow: 'hidden' }}>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '335 / 464', overflow: 'hidden' }}>
                 {(() => {
                   // 15 logos: first 12 + last row 3 (exactly like Figma 8389:34683)
                   const logos375 = [...row1.slice(0, 12), ...row2.slice(0, 3)];
@@ -264,12 +264,12 @@ const Brands = () => {
                   const Grid = ({ suffix }: { suffix: string }) => (
                     <div
                       style={{
-                        width: 335,
-                        height: 464,
+                        width: '100%',
+                        height: '100%',
                         display: 'grid',
-                        gridTemplateColumns: '80px 80px 80px',
-                        columnGap: 16,
-                        rowGap: 16,
+                        gridTemplateColumns: 'repeat(3, 1fr)',
+                        gridTemplateRows: 'repeat(5, 1fr)',
+                        gap: 'clamp(12px, 3vw, 16px)',
                         justifyContent: 'center',
                         alignContent: 'start',
                       }}

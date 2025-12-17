@@ -6,7 +6,7 @@ const About = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
         <LayoutContainer>
         {/* Heading - 2 columns */}
         <div
@@ -310,7 +310,7 @@ const About = () => {
       </section>
 
       {/* Tablet 744 (Figma: 8389:34770) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '94px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '94px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x606 */}
           <ScaledFrame designWidth={704} designHeight={606}>
@@ -510,10 +510,10 @@ const About = () => {
       </section>
 
       {/* Mobile 375 (Figma: 8389:34566) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="mx-auto w-full max-w-[375px] px-[20px]">
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Heading (x=20,y=64,w=335,h=166) */}
-          <div style={{ width: 335 }}>
+          <div style={{ width: '100%' }}>
             <h2 style={{ margin: 0, fontSize: 24, lineHeight: '28px', fontWeight: 500, letterSpacing: '-1px', color: '#242424' }}>
               iTAB — это знак качества. <br />
               Ваш пропуск к аудитории, <br />
@@ -526,7 +526,7 @@ const About = () => {
           </div>
 
           {/* Cards container (x=20,y=262,w=335,h=714.362, gap 8) */}
-          <div style={{ marginTop: 32, width: 335, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ marginTop: 32, width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
             {/* Card 1: 335x380 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -534,11 +534,11 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               style={{
-                width: 335,
-                height: 380,
+                width: '100%',
+                aspectRatio: '335 / 380',
                 backgroundColor: '#F7F7F7',
                 borderRadius: 24,
-                padding: 24,
+                padding: '7.2%',
                 overflow: 'hidden',
                 position: 'relative',
                 boxSizing: 'border-box',
@@ -547,26 +547,26 @@ const About = () => {
               }}
             >
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div style={{ fontSize: 18, lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>
+                <div style={{ fontSize: 'clamp(16px, 4vw, 18px)', lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px', color: '#242424' }}>
                   Подтверждаем, <br />
                   что вам можно доверять
                 </div>
-                <div style={{ fontSize: 14, lineHeight: '22px', letterSpacing: '-0.2px', color: '#848484' }}>
+                <div style={{ fontSize: 'clamp(13px, 3.5vw, 14px)', lineHeight: '22px', letterSpacing: '-0.2px', color: '#848484' }}>
                   После проверки вы получаете статус безопасного бренда — покупатели чувствуют уверенность в качестве продукта и возвращаются снова.
                 </div>
               </div>
 
               {/* Art block (fills remaining space) */}
               <div style={{ position: 'relative', flex: '1 0 0', width: '100%' }}>
-                {/* Spot: icon_m_LoveFill (x=-23,y=61.38,w=470.302,h=470.302) */}
-                <div style={{ position: 'absolute', left: -23, top: 61.38, width: 470.302, height: 470.302, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
-                  <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: 384, height: 384 }}>
+                {/* Spot: icon_m_LoveFill */}
+                <div style={{ position: 'absolute', left: '-6.9%', top: '16.2%', width: '140.4%', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}>
+                  <div style={{ transform: 'rotate(15deg) scaleY(-1)', width: '81.6%', aspectRatio: '1' }}>
                     <img src="/images/about-spot-light.svg" alt="" style={{ width: '100%', height: '100%', maxWidth: 'none', display: 'block' }} />
                   </div>
                 </div>
 
-                {/* Main rectangle: x=27, bottom=-69, w=234, h=233, crop */}
-                <div style={{ position: 'absolute', left: 27, bottom: -69, width: 234, height: 233, overflow: 'hidden', pointerEvents: 'none', zIndex: 2, borderRadius: 24 }}>
+                {/* Main rectangle: shield card */}
+                <div style={{ position: 'absolute', left: '8.1%', bottom: '-18.2%', width: '69.9%', aspectRatio: '234 / 233', overflow: 'hidden', pointerEvents: 'none', zIndex: 2, borderRadius: 24 }}>
                   <img
                     src="/images/about-shield-card.png"
                     alt=""
@@ -581,9 +581,9 @@ const About = () => {
                   />
                 </div>
 
-                {/* Badge: right=4.99, bottom=110.58, size=107.421, inner=87.709 rotated 15deg */}
-                <div style={{ position: 'absolute', right: 4.99, bottom: 110.58, width: 107.421, height: 107.421, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
-                  <div style={{ transform: 'rotate(15deg)', width: 87.709, height: 87.709, position: 'relative' }}>
+                {/* Badge */}
+                <div style={{ position: 'absolute', right: '1.5%', bottom: '29.1%', width: '32.1%', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 3 }}>
+                  <div style={{ transform: 'rotate(15deg)', width: '81.6%', aspectRatio: '1', position: 'relative' }}>
                     <img src="/images/about-badge.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 50%' }} />
                   </div>
                 </div>
@@ -591,16 +591,16 @@ const About = () => {
             </motion.div>
 
             {/* Experts row: two cards 163.5 wide, gap 8 */}
-            <div style={{ width: 335, display: 'flex', gap: 8 }}>
+            <div style={{ width: '100%', display: 'flex', gap: 8 }}>
               {/* Anna: w=163.5 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.05 }}
-                style={{ width: 163.5, display: 'flex', flexDirection: 'column', gap: 8 }}
+                style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}
               >
-                <div style={{ width: 163.5, height: 230, borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
+                <div style={{ width: '100%', aspectRatio: '163.5 / 230', borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
                   <img src="/images/expert-anna.jpg" alt="Анна Государева" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ paddingLeft: 4, paddingRight: 4, display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -615,9 +615,9 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                style={{ width: 163.5, display: 'flex', flexDirection: 'column', gap: 8 }}
+                style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}
               >
-                <div style={{ width: 163.5, height: 230, borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
+                <div style={{ width: '100%', aspectRatio: '163.5 / 230', borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
                   <img src="/images/expert-vladimir.jpg" alt="Владимир Попов" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ paddingLeft: 4, paddingRight: 4, display: 'flex', flexDirection: 'column', gap: 4 }}>

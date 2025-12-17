@@ -156,7 +156,7 @@ const Partnerships = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1200:hidden">
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
         <div className="mx-auto w-[1200px]">
           <div className="flex flex-row gap-[40px] mb-[40px] items-end">
             <motion.div
@@ -194,7 +194,7 @@ const Partnerships = () => {
       </section>
 
       {/* Tablet 744 (Figma: 3x2 grid, cards 229.333x380, gap 8) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1200:block max-375:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             {/* Heading (744): по макету — слева, без искусственных переносов */}
@@ -247,9 +247,17 @@ const Partnerships = () => {
       </section>
 
       {/* Mobile 375 (Figma: 8389:34666) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-375:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="mx-auto w-full max-w-[375px] px-[20px]">
-          <div style={{ width: 335 }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+        {/* На ширинах 375..744 масштабируем размеры пропорционально ширине контента (335 в Figma) */}
+        <div
+          className="mx-auto w-full max-w-[744px] px-[20px]"
+          style={
+            {
+              ['--p-content-w' as any]: 'min(704px, calc(100vw - 40px))',
+            } as React.CSSProperties
+          }
+        >
+          <div style={{ width: '100%' }}>
             {/* Heading block: gap 16 */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -258,7 +266,7 @@ const Partnerships = () => {
               transition={{ duration: 0.5 }}
               style={{
                 margin: 0,
-                width: 335,
+                width: '100%',
                 fontSize: 24,
                 lineHeight: '28px',
                 fontWeight: 500,
@@ -278,7 +286,7 @@ const Partnerships = () => {
               style={{
                 margin: 0,
                 marginTop: 16,
-                width: 335,
+                width: '100%',
                 fontSize: 14,
                 lineHeight: '22px',
                 fontWeight: 400,
@@ -294,8 +302,8 @@ const Partnerships = () => {
             <div
               style={{
                 marginTop: 32,
-                width: 335,
-                height: 280,
+                width: '100%',
+                height: 'calc(var(--p-content-w) * 280 / 335)',
                 overflowX: 'auto',
                 overflowY: 'hidden',
                 display: 'flex',
@@ -312,8 +320,8 @@ const Partnerships = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   style={{
-                    width: 250,
-                    height: 280,
+                    width: 'calc(var(--p-content-w) * 250 / 335)',
+                    height: 'calc(var(--p-content-w) * 280 / 335)',
                     flexShrink: 0,
                     scrollSnapAlign: 'start',
                     backgroundColor: '#F7F7F7',

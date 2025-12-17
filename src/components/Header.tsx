@@ -42,13 +42,13 @@ const Header = () => {
             - logo: 100x35 (y=7.5 inside 50)
             - button: 86x48 (y=1 inside 50)
         */}
-        <div className="flex items-center justify-between h-[90px] box-border gap-20 max-744:gap-0 max-375:py-[20px]">
+        <div className="flex items-center justify-between h-[90px] box-border gap-20 max-744:gap-0">
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
               src="/images/logo.svg" 
               alt="iTAB" 
-              className="h-[42px] w-[120px] transition-all duration-300 max-375:h-[35px] max-375:w-[100px]"
+              className="h-[35px] w-[100px] transition-all duration-300 min-[744px]:h-[42px] min-[744px]:w-[120px]"
               style={{
                 filter: isScrolled 
                   ? 'brightness(0) saturate(100%) invert(59%) sepia(36%) saturate(625%) hue-rotate(64deg) brightness(95%) contrast(87%)' 
@@ -94,7 +94,7 @@ const Header = () => {
           {/* CTA Button */}
           <a
             href={ITAB_URL}
-            className="px-5 py-3 bg-[#6CB651] hover:bg-[#5a9d35] text-white text-button rounded-2xl transition-colors max-375:w-[86px] max-375:h-[48px] max-375:px-[20px] max-375:py-[12px] max-375:rounded-[16px] max-375:flex max-375:items-center max-375:justify-center"
+            className="bg-[#6CB651] hover:bg-[#5a9d35] text-white text-button transition-colors w-[86px] h-[48px] px-[20px] py-[12px] rounded-[16px] flex items-center justify-center min-[744px]:w-auto min-[744px]:h-auto min-[744px]:px-5 min-[744px]:py-3 min-[744px]:rounded-2xl"
           >
             Войти
           </a>
