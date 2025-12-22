@@ -2,8 +2,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 interface FeedbackItem {
-  position: string;
+  brand: string;
+  role: string;
   avatarSrc: string;
+  /** Текст превью в карточке (как в Figma): те же абзацы, что и в полном тексте; обрезка происходит по высоте карточки */
+  previewParagraphs: string[];
   paragraphs: string[];
 }
 
@@ -13,11 +16,35 @@ interface FeedbackCardProps {
   onReadMore: () => void;
   width?: number | string;
   height?: number | string;
-  lineClamp?: number;
 }
 
-const FeedbackCard = ({ item, delay, onReadMore, width, height, lineClamp }: FeedbackCardProps) => {
-  const previewText = useMemo(() => item.paragraphs.join('\n\n'), [item.paragraphs]);
+const FeedbackCard = ({ item, delay, onReadMore, width, height }: FeedbackCardProps) => {
+  // Figma: текст с абзацами, между ними 12px отступ, в конце "..." если не влезает.
+  const previewParagraphs = useMemo(() => item.previewParagraphs, [item.previewParagraphs]);
+
+  const textContainerRef = useRef<HTMLDivElement | null>(null);
+  const [maxLines, setMaxLines] = useState(12);
+
+  // Динамически считаем сколько строк помещается в текстовый блок
+  useEffect(() => {
+    const container = textContainerRef.current;
+    if (!container) return;
+
+    const LINE_HEIGHT = 24;
+    const calculate = () => {
+      const availableHeight = container.clientHeight;
+      // Учитываем что между абзацами есть дополнительный отступ 12px
+      const paragraphGaps = (previewParagraphs.length - 1) * 12;
+      const effectiveHeight = availableHeight - paragraphGaps;
+      const lines = Math.max(1, Math.floor(effectiveHeight / LINE_HEIGHT));
+      setMaxLines(lines);
+    };
+
+    calculate();
+    const ro = new ResizeObserver(calculate);
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [previewParagraphs.length]);
 
   return (
     <motion.div
@@ -28,10 +55,11 @@ const FeedbackCard = ({ item, delay, onReadMore, width, height, lineClamp }: Fee
       style={{
         backgroundColor: '#F7F7F7',
         borderRadius: '24px',
-        padding: 'clamp(24px, 6vw, 32px)',
+        padding: '32px',
         display: 'flex',
         flexDirection: 'column',
         gap: '16px',
+        overflow: 'hidden',
         height: typeof height === 'string' ? height : height ? `${height}px` : '462px',
         width: typeof width === 'string' ? width : width ? `${width}px` : '389.333px',
       }}
@@ -61,50 +89,106 @@ const FeedbackCard = ({ item, delay, onReadMore, width, height, lineClamp }: Fee
             }}
           />
         </div>
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '2px', justifyContent: 'center' }}>
-          <div style={{ color: '#848484', fontSize: '14px', lineHeight: '20px' }}>{item.position}</div>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '2px', justifyContent: 'center', minWidth: 0 }}>
+          <div
+            style={{
+              color: '#242424',
+              fontSize: '16px',
+              lineHeight: '22px',
+              fontWeight: 500,
+              letterSpacing: 0,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {item.brand}
+          </div>
+          <div
+            style={{
+              color: '#848484',
+              fontSize: '14px',
+              lineHeight: '20px',
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical' as any,
+              WebkitLineClamp: 2,
+              overflow: 'hidden',
+              whiteSpace: 'normal',
+            }}
+          >
+            {item.role}
+          </div>
         </div>
       </div>
 
-      {/* Review Text */}
-      <div style={{ flex: 1, overflow: 'hidden' }}>
-        <div
-          style={{
-            color: '#242424',
-            fontSize: '16px',
-            lineHeight: '24px',
-            letterSpacing: '-0.2px',
-            display: '-webkit-box',
-            WebkitBoxOrient: 'vertical' as any,
-            WebkitLineClamp: lineClamp ?? 9,
-            overflow: 'hidden',
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          {previewText}
-        </div>
-      </div>
-
-      {/* Read More Button */}
-      <button
-        type="button"
-        onClick={onReadMore}
+      {/* Text + Button */}
+      <div
         style={{
-          color: '#59AD3B',
-          fontSize: '16px',
-          fontWeight: 500,
-          lineHeight: '24px',
-          textDecoration: 'underline',
-          textAlign: 'left',
-          background: 'transparent',
-          border: 'none',
-          padding: 0,
-          cursor: 'pointer',
-          alignSelf: 'flex-start',
+          flex: 1,
+          minHeight: 0,
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
         }}
       >
-        Читать полностью
-      </button>
+        {/* Review Text с -webkit-line-clamp для естественного "..." */}
+        <div
+          ref={textContainerRef}
+          style={{
+            flex: 1,
+            minHeight: 0,
+            overflow: 'hidden',
+            width: '100%',
+          }}
+        >
+          <div
+            style={{
+              color: '#242424',
+              fontSize: '16px',
+              lineHeight: '24px',
+              letterSpacing: '-0.2px',
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical' as any,
+              WebkitLineClamp: maxLines,
+              overflow: 'hidden',
+            }}
+          >
+            {previewParagraphs.map((paragraph, idx) => (
+              <span key={idx}>
+                {paragraph}
+                {idx < previewParagraphs.length - 1 && (
+                  <>
+                    <br />
+                    <span style={{ display: 'block', height: '12px' }} />
+                  </>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Read More Button */}
+        <button
+          type="button"
+          onClick={onReadMore}
+          style={{
+            color: '#59AD3B',
+            fontSize: '16px',
+            fontWeight: 500,
+            lineHeight: '24px',
+            textDecoration: 'underline',
+            textAlign: 'left',
+            background: 'transparent',
+            border: 'none',
+            padding: 0,
+            cursor: 'pointer',
+            alignSelf: 'flex-start',
+          }}
+        >
+          Читать полностью
+        </button>
+      </div>
     </motion.div>
   );
 };
@@ -112,16 +196,27 @@ const FeedbackCard = ({ item, delay, onReadMore, width, height, lineClamp }: Fee
 const Feedback = () => {
   const feedbacks: FeedbackItem[] = [
     {
-      position: 'Директор Lollipops',
+      brand: 'Lollipops',
+      role: 'Директор бренда',
       avatarSrc: '/images/feedback-avatar-1.png',
+      previewParagraphs: [
+        'Мы сотрудничаем с данной площадкой более года. Это один из самых профессиональных партнёров на рынке. Хочется отметить четкую и прозрачную работу: менеджеры отвечают быстро, решают вопросы по ассортименту, поставкам и продвижению комплексно; все финансовые вопросы решаются оперативно, отчетность понятна, процесс приемки и хранения товара организован хорошо, брак и потери сведены к минимуму; видим остатки товара.',
+        'Площадка не просто «выкладывает» товар, а помогает в продвижение, организует совместные акции, рассказывает о брендах. Личный кабинет поставщика функциональный и удобный. Все необходимые инструменты для загрузки товара, отслеживания количества под рукой. Мы ценим такое ответственное отношение и планируем долгосрочное сотрудничество.',
+      ],
       paragraphs: [
         'Мы сотрудничаем с данной площадкой более года. Это один из самых профессиональных партнёров на рынке. Хочется отметить четкую и прозрачную работу: менеджеры отвечают быстро, решают вопросы по ассортименту, поставкам и продвижению комплексно; все финансовые вопросы решаются оперативно, отчетность понятна, процесс приемки и хранения товара организован хорошо, брак и потери сведены к минимуму; видим остатки товара.',
         'Площадка не просто «выкладывает» товар, а помогает в продвижение, организует совместные акции, рассказывает о брендах. Личный кабинет поставщика функциональный и удобный. Все необходимые инструменты для загрузки товара, отслеживания количества под рукой. Мы ценим такое ответственное отношение и планируем долгосрочное сотрудничество.',
       ],
     },
     {
-      position: 'Директор бренда Biocycle',
+      brand: 'Biocycle',
+      role: 'Директор бренда',
       avatarSrc: '/images/feedback-avatar-2.png',
+      previewParagraphs: [
+        'В целом все шикарно, самодостаточная платформа, которая не поглощает на 100% клиентскую базу поставщика, а развивает свою. Это ценно. Нет демпинга цен произвольного.',
+        'Единственный нюанс возникает с выплатами и идеально если бы склад сообщал поставщику, когда заканчивается товар 🙏🏻',
+        'Хочется отметить наличие у данной площадки нутрициологов, специалистов, готовых оказать качественную консультацию в выборе того или иного товара. Удобный интерфейс личного кабинета поставщика, интуитивно понятен, но даже если и возникают затруднения в процессе работы, наш курирующий менеджер всегда оперативно отвечает на возникающие вопросы, возможность дистанционной связи, включая мессенджеры, снимает ряд ограничений, экономя такой важный фактор, как время.',
+      ],
       paragraphs: [
         'В целом все шикарно, самодостаточная платформа, которая не поглощает на 100% клиентскую базу поставщика, а развивает свою. Это ценно. Нет демпинга цен произвольного.',
         'Единственный нюанс возникает с выплатами и идеально если бы склад сообщал поставщику, когда заканчивается товар 🙏🏻',
@@ -129,8 +224,13 @@ const Feedback = () => {
       ],
     },
     {
-      position: 'Менеджер отдела по развитию клиентов ООО НПО «Компас Здоровья»',
+      brand: 'ООО НПО «Компас Здоровья»',
+      role: 'Менеджер отдела по развитию клиентов',
       avatarSrc: '/images/feedback-avatar-3.png',
+      previewParagraphs: [
+        'Наше сотрудничество с крупнейшим дистрибьютером витаминов, БАДов «ITAB» началось в 2024 году. Данный маркетплейс для нас, как для российского производителя, оказался отличным каналом продвижения среди онлайн-аудитории. Рынок здорового и правильного питания, а также фармацевтическое направление развиваются быстрыми темпами, поскольку продукция пользуется спросом.',
+        'Хочется отметить наличие у данной площадки нутрициологов, специалистов, готовых оказать качественную консультацию в выборе того или иного товара. Удобный интерфейс личного кабинета поставщика, интуитивно понятен, но даже если и возникают затруднения в процессе работы, наш курирующий менеджер всегда оперативно отвечает на возникающие вопросы, возможность дистанционной связи, включая мессенджеры, снимает ряд ограничений, экономя такой важный фактор, как время.',
+      ],
       paragraphs: [
         'Наше сотрудничество с крупнейшим дистрибьютером витаминов, БАДов «ITAB» началось в 2024 году. Данный маркетплейс для нас, как для российского производителя, оказался отличным каналом продвижения среди онлайн-аудитории. Рынок здорового и правильного питания, а также фармацевтическое направление развиваются быстрыми темпами, поскольку продукция пользуется спросом.',
         'Хочется отметить наличие у данной площадки нутрициологов, специалистов, готовых оказать качественную консультацию в выборе того или иного товара. Удобный интерфейс личного кабинета поставщика, интуитивно понятен, но даже если и возникают затруднения в процессе работы, наш курирующий менеджер всегда оперативно отвечает на возникающие вопросы, возможность дистанционной связи, включая мессенджеры, снимает ряд ограничений, экономя такой важный фактор, как время.',
@@ -178,7 +278,12 @@ const Feedback = () => {
 
           <div style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
             {feedbacks.map((item, index) => (
-              <FeedbackCard key={index} item={item} delay={index * 0.1} onReadMore={() => setActiveIndex(index)} />
+              <FeedbackCard
+                key={index}
+                item={item}
+                delay={index * 0.1}
+                onReadMore={() => setActiveIndex(index)}
+              />
           ))}
         </div>
       </div>
@@ -223,7 +328,12 @@ const Feedback = () => {
             >
               {feedbacks.map((item, index) => (
                 <div key={`f-744-${index}`} style={{ scrollSnapAlign: 'start' }}>
-                  <FeedbackCard item={item} width={400} delay={index * 0.05} onReadMore={() => setActiveIndex(index)} />
+                  <FeedbackCard
+                    item={item}
+                    width={400}
+                    delay={index * 0.05}
+                    onReadMore={() => setActiveIndex(index)}
+                  />
                 </div>
               ))}
             </div>
@@ -231,87 +341,88 @@ const Feedback = () => {
         </div>
       </section>
 
-      {/* Mobile 375 (Figma: 8389:34708) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="mx-auto w-full max-w-[744px] px-[20px]">
-          <div style={{ width: '100%' }}>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              style={{
-                width: '100%',
-                minHeight: 28,
-                margin: 0,
-                fontSize: 24,
-                lineHeight: '28px',
-                fontWeight: 500,
-                letterSpacing: '-1px',
-                color: '#242424',
-              }}
-            >
-              Отзывы наших поставщиков
-            </motion.h2>
+      {/* Mobile 375 (Figma: 8389:34708) — card 335×462, carousel with dots */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '56px', paddingBottom: '56px' }}>
+        <div className="mx-auto w-full px-[20px]">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{
+              width: '100%',
+              margin: 0,
+              fontSize: 24,
+              lineHeight: '28px',
+              fontWeight: 500,
+              letterSpacing: '-1px',
+              color: '#242424',
+            }}
+          >
+            Отзывы наших поставщиков
+          </motion.h2>
 
-            {/* Card viewport: x=0,y=44,w=335,h=600 */}
-            <div
-              ref={carouselRef}
-              onScroll={(e) => {
-                const el = e.currentTarget;
-                const containerWidth = el.offsetWidth;
-                const step = containerWidth + 8;
-                const idx = Math.round(el.scrollLeft / step);
-                if (idx !== carouselIndex) setCarouselIndex(Math.max(0, Math.min(feedbacks.length - 1, idx)));
-              }}
-              style={{
-                marginTop: 16,
-                width: '100%',
-                aspectRatio: '335 / 600',
-                overflowX: 'auto',
-                overflowY: 'hidden',
-                display: 'flex',
-                gap: 8,
-                scrollSnapType: 'x mandatory',
-                WebkitOverflowScrolling: 'touch',
-              }}
-            >
-              {feedbacks.map((item, index) => (
-                <div key={`f-375-${index}`} style={{ scrollSnapAlign: 'start', minWidth: '100%', width: '100%', aspectRatio: '335 / 600' }}>
-                  <FeedbackCard item={item} width="100%" height="100%" lineClamp={18} delay={index * 0.05} onReadMore={() => setActiveIndex(index)} />
-                </div>
-              ))}
-            </div>
+          {/* Card viewport: Figma 335×462 */}
+          <div
+            ref={carouselRef}
+            onScroll={(e) => {
+              const el = e.currentTarget;
+              const containerWidth = el.offsetWidth;
+              const step = containerWidth + 8;
+              const idx = Math.round(el.scrollLeft / step);
+              if (idx !== carouselIndex) setCarouselIndex(Math.max(0, Math.min(feedbacks.length - 1, idx)));
+            }}
+            style={{
+              marginTop: 16,
+              width: '100%',
+              height: '462px',
+              overflowX: 'auto',
+              overflowY: 'hidden',
+              display: 'flex',
+              gap: 8,
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+            className="no-scrollbar"
+          >
+            {feedbacks.map((item, index) => (
+              <div key={`f-375-${index}`} style={{ scrollSnapAlign: 'start', minWidth: '100%', width: '100%', height: '462px' }}>
+                <FeedbackCard item={item} width="100%" height={462} delay={index * 0.05} onReadMore={() => setActiveIndex(index)} />
+              </div>
+            ))}
+          </div>
 
-            {/* Dots: Frame 2087327762 (w=335,h=8), gap 7, centered */}
-            <div style={{ marginTop: 8, width: '100%', height: 8, display: 'flex', gap: 7, alignItems: 'center', justifyContent: 'center' }}>
-              {feedbacks.map((_, idx) => {
-                const activeDot = idx === carouselIndex;
-                return (
-                  <button
-                    key={`dot-${idx}`}
-                    type="button"
-                    aria-label={`Перейти к отзыву ${idx + 1}`}
-                    onClick={() => {
-                      const el = carouselRef.current;
-                      if (!el) return;
-                      const step = 335 + 8;
-                      el.scrollTo({ left: idx * step, behavior: 'smooth' });
-                      setCarouselIndex(idx);
-                    }}
-                    style={{
-                      width: activeDot ? 12 : 8,
-                      height: 8,
-                      borderRadius: 9999,
-                      border: 'none',
-                      padding: 0,
-                      cursor: 'pointer',
-                      backgroundColor: activeDot ? '#59AD3B' : '#EDEDED',
-                    }}
-                  />
-                );
-              })}
-            </div>
+          {/* Dots: Frame 2087327762 (w=335,h=8), gap 7, centered */}
+          <div style={{ marginTop: 8, width: '100%', height: 8, display: 'flex', gap: 7, alignItems: 'center', justifyContent: 'center' }}>
+            {feedbacks.map((_, idx) => {
+              const activeDot = idx === carouselIndex;
+              return (
+                <button
+                  key={`dot-${idx}`}
+                  type="button"
+                  aria-label={`Перейти к отзыву ${idx + 1}`}
+                  onClick={() => {
+                    const el = carouselRef.current;
+                    if (!el) return;
+                    const containerWidth = el.offsetWidth;
+                    const step = containerWidth + 8;
+                    el.scrollTo({ left: idx * step, behavior: 'smooth' });
+                    setCarouselIndex(idx);
+                  }}
+                  style={{
+                    width: activeDot ? 12 : 8,
+                    height: 8,
+                    borderRadius: 9999,
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    backgroundColor: activeDot ? '#59AD3B' : '#EDEDED',
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
@@ -384,7 +495,33 @@ const Feedback = () => {
                     />
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ color: '#848484', fontSize: '14px', lineHeight: '20px' }}>{active.position}</div>
+                    <div
+                      style={{
+                        color: '#242424',
+                        fontSize: '16px',
+                        lineHeight: '22px',
+                        fontWeight: 500,
+                        letterSpacing: 0,
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {active.brand}
+                    </div>
+                    <div
+                      style={{
+                        color: '#848484',
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        marginTop: 2,
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {active.role}
+                    </div>
                   </div>
                 </div>
 

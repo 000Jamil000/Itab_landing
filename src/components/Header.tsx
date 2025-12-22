@@ -42,7 +42,7 @@ const Header = () => {
             - logo: 100x35 (y=7.5 inside 50)
             - button: 86x48 (y=1 inside 50)
         */}
-        <div className="flex items-center justify-between h-[90px] box-border gap-20 max-744:gap-0">
+        <div className="flex items-center justify-between h-[90px] box-border gap-0">
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
@@ -58,14 +58,14 @@ const Header = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden min-744:flex items-center gap-6">
             <button 
               onClick={() => scrollToSection('conditions')}
               className={`text-button transition-colors ${
                 isScrolled 
                   ? 'text-secondary hover:text-primary' 
                   : 'text-white hover:text-white/80'
-              }`}
+              } whitespace-nowrap tracking-normal`}
             >
               Условия сотрудничества
             </button>
@@ -75,7 +75,7 @@ const Header = () => {
                 isScrolled 
                   ? 'text-secondary hover:text-primary' 
                   : 'text-white hover:text-white/80'
-              }`}
+              } whitespace-nowrap tracking-normal`}
             >
               С чего начать
             </button>
@@ -85,7 +85,7 @@ const Header = () => {
                 isScrolled 
                   ? 'text-secondary hover:text-primary' 
                   : 'text-white hover:text-white/80'
-              }`}
+              } whitespace-nowrap tracking-normal`}
             >
               Отзывы
             </button>

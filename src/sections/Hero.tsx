@@ -5,7 +5,7 @@ import { ITAB_URL } from '../constants/links';
 const Hero = () => {
   return (
     <>
-      {/* Desktop / 1440 - показывается только на >=1440 */}
+      {/* Desktop / 1440 - показывается только на >1440 */}
       <section
         className="relative overflow-hidden max-1440:hidden"
         style={{
@@ -67,10 +67,11 @@ const Hero = () => {
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             gap: '4px',
             width: '1200px',
             height: '676px',
+            position: 'relative',
           }}
         >
           {/* Offer */}
@@ -168,7 +169,7 @@ const Hero = () => {
       </div>
       </section>
 
-      {/* Tablet 744 (Figma: 8389:34730) - показывается только на 744-1439 */}
+      {/* Tablet 744 (Figma: 8389:34730) - показывается только на 744-1440 */}
       <section
         className="relative overflow-hidden hidden max-1440:block max-744:hidden"
         style={{

@@ -33,4 +33,11 @@ export const FOOTER_CONTACTS_URL = 'https://itab.pro/contacts/';
 export const FOOTER_FAQ_URL = 'https://itab.pro/faq/';
 export const FOOTER_RETURN_URL = 'https://itab.pro/return/';
 
+// Footer: Партнёрство
+export const FOOTER_PARTNER_URL = 'https://itab.pro/partner/';
+export const FOOTER_OFFER_SPECIALISTS_URL = 'https://cdn.itab.pro/documents/offer-for-suppliers.pdf';
+
+// Footer: Юридические документы
+export const FOOTER_USER_AGREEMENT_URL = 'https://cdn.itab.pro/documents/user-agreement.pdf';
+export const FOOTER_DATA_PROTECTION_URL = 'https://cdn.itab.pro/documents/data-protection-policy.pdf';
 

@@ -234,80 +234,89 @@ const Brands = () => {
         </div>
       </section>
 
-      {/* Mobile 375 (Figma: 8389:34683) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="mx-auto w-full max-w-[744px] px-[20px]">
-          {/* Content box: 335 */}
-          <div style={{ width: '100%', position: 'relative' }}>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              style={{
-                margin: 0,
-                width: '100%',
-                fontSize: 24,
-                lineHeight: '28px',
-                fontWeight: 500,
-                letterSpacing: '-1px',
-                color: '#242424',
-              }}
-            >
-              Бренды, которые уже <br />
-              сотрудничают с нами
-            </motion.h2>
+      {/* Mobile 375 (Figma: 8389:34683) - 5 cols x 3 rows, icons 54x54, horizontal animation */}
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-744:block" style={{ paddingTop: '56px', paddingBottom: '56px' }}>
+        <div className="mx-auto w-full px-[20px]">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{
+              margin: 0,
+              fontSize: 24,
+              lineHeight: '28px',
+              fontWeight: 500,
+              letterSpacing: '-1px',
+              color: '#242424',
+              textAlign: 'center',
+            }}
+          >
+            Бренды, которые уже <br />
+            сотрудничают с нами
+          </motion.h2>
 
-            {/* Brands (Figma layout 3x5) + scroll animation (requested) */}
-            <div style={{ marginTop: 16, width: '100%', position: 'relative' }}>
-              {/* Viewport height in Figma: 464 (5 rows * 80 + 4 gaps * 16) */}
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '335 / 464', overflow: 'hidden' }}>
-                {(() => {
-                  // 15 logos: first 12 + last row 3 (exactly like Figma 8389:34683)
-                  const logos375 = [...row1.slice(0, 12), ...row2.slice(0, 3)];
+          {/* Figma: 5 cols × 3 rows, icons 54x54, gap ~14px, horizontal scroll animation */}
+          {(() => {
+            const MOBILE_SIZE = 54;
+            const MOBILE_GAP = 14;
+            // 15 logos for mobile (5 per row × 3 rows)
+            const mobileRow1 = row1.slice(0, 5);
+            const mobileRow2 = row1.slice(5, 10);
+            const mobileRow3 = [...row1.slice(10, 12), ...row2.slice(0, 3)];
 
-                  const Grid = ({ suffix }: { suffix: string }) => (
-                    <div
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gridTemplateRows: 'repeat(5, 1fr)',
-                        gap: 'clamp(12px, 3vw, 16px)',
-                        justifyContent: 'center',
-                        alignContent: 'start',
-                      }}
-                    >
-                      {logos375.map((item, idx) => (
-                        <BrandLogo key={`b-375-${suffix}-${idx}`} item={item} size="fluid" />
-                      ))}
-                    </div>
-                  );
+            const mobileRowTravel = 5 * (MOBILE_SIZE + MOBILE_GAP);
+            const mobileStartX = -20;
 
-                  return (
-                    <motion.div
-                      style={{ position: 'absolute', inset: 0, willChange: 'transform' }}
-                      // В момент старта (y=0) сетка 1:1 как в Figma, дальше плавно “прокручиваем”.
-                      animate={{ y: [0, -464] }}
-                      transition={{ y: { repeat: Infinity, repeatType: 'loop', duration: 20, ease: 'linear' } }}
-                    >
-                      <Grid suffix="a" />
-                      <Grid suffix="b" />
-                    </motion.div>
-                  );
-                })()}
+            return (
+              <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: `${MOBILE_GAP}px`, overflow: 'hidden', position: 'relative' }}>
+                {/* Row 1 */}
+                <div style={{ position: 'relative', height: `${MOBILE_SIZE}px`, overflow: 'hidden' }}>
+                  <motion.div
+                    style={{ display: 'flex', gap: `${MOBILE_GAP}px`, width: 'max-content', willChange: 'transform' }}
+                    animate={{ x: [mobileStartX, mobileStartX - mobileRowTravel] }}
+                    transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 15, ease: 'linear' } }}
+                  >
+                    {[...mobileRow1, ...mobileRow1].map((item, idx) => (
+                      <BrandLogo key={`m-r1-${idx}`} item={item} size={MOBILE_SIZE} />
+                    ))}
+                  </motion.div>
+                  <div style={{ position: 'absolute', right: 0, top: 0, width: 60, height: MOBILE_SIZE, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                  <div style={{ position: 'absolute', left: 0, top: 0, width: 60, height: MOBILE_SIZE, background: 'linear-gradient(to left, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                </div>
 
-                {/* Top row edge fades (Rectangles 34700/34701) */}
-                <div style={{ position: 'absolute', right: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
-                <div style={{ position: 'absolute', left: 0, top: 0, width: 120, height: 80, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
+                {/* Row 2 - opposite direction */}
+                <div style={{ position: 'relative', height: `${MOBILE_SIZE}px`, overflow: 'hidden' }}>
+                  <motion.div
+                    style={{ display: 'flex', gap: `${MOBILE_GAP}px`, width: 'max-content', willChange: 'transform' }}
+                    animate={{ x: [mobileStartX - mobileRowTravel, mobileStartX] }}
+                    transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 15, ease: 'linear' } }}
+                  >
+                    {[...mobileRow2, ...mobileRow2].map((item, idx) => (
+                      <BrandLogo key={`m-r2-${idx}`} item={item} size={MOBILE_SIZE} />
+                    ))}
+                  </motion.div>
+                  <div style={{ position: 'absolute', right: 0, top: 0, width: 60, height: MOBILE_SIZE, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                  <div style={{ position: 'absolute', left: 0, top: 0, width: 60, height: MOBILE_SIZE, background: 'linear-gradient(to left, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                </div>
+
+                {/* Row 3 */}
+                <div style={{ position: 'relative', height: `${MOBILE_SIZE}px`, overflow: 'hidden' }}>
+                  <motion.div
+                    style={{ display: 'flex', gap: `${MOBILE_GAP}px`, width: 'max-content', willChange: 'transform' }}
+                    animate={{ x: [mobileStartX, mobileStartX - mobileRowTravel] }}
+                    transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: 15, ease: 'linear' } }}
+                  >
+                    {[...mobileRow3, ...mobileRow3].map((item, idx) => (
+                      <BrandLogo key={`m-r3-${idx}`} item={item} size={MOBILE_SIZE} />
+                    ))}
+                  </motion.div>
+                  <div style={{ position: 'absolute', right: 0, top: 0, width: 60, height: MOBILE_SIZE, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                  <div style={{ position: 'absolute', left: 0, top: 0, width: 60, height: MOBILE_SIZE, background: 'linear-gradient(to left, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
+                </div>
               </div>
-
-              {/* Side vertical fades (Rectangles 34706/34707): top=140.638, h=454, w=120 */}
-              <div style={{ position: 'absolute', left: -20, top: 68.638, width: 120, height: 454, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', transform: 'rotate(180deg) scaleY(-1)', pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', right: -20, top: 68.638, width: 120, height: 454, background: 'linear-gradient(to right, rgba(255,255,255,0), #fff)', pointerEvents: 'none' }} />
-            </div>
-          </div>
+            );
+          })()}
         </div>
       </section>
     </>

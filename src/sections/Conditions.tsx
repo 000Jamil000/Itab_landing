@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import ScaledFrame from '../components/ScaledFrame';
+import { FOOTER_OFFER_SPECIALISTS_URL } from '../constants/links';
 
 const Conditions = () => {
   return (
@@ -27,7 +28,9 @@ const Conditions = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <a
-                href="#"
+                href={FOOTER_OFFER_SPECIALISTS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -41,22 +44,6 @@ const Conditions = () => {
               >
                 <img src="/images/conditions-file.svg" alt="" style={{ width: '10.667px', height: '10.667px' }} />
                 Оферта
-              </a>
-              <a
-                href="#"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  color: '#59AD3B',
-                  fontSize: '16px',
-                  fontWeight: 500,
-                  lineHeight: '24px',
-                  textDecoration: 'underline',
-                }}
-              >
-                <img src="/images/conditions-file.svg" alt="" style={{ width: '10.667px', height: '10.667px' }} />
-                Инструкция по регистрации
               </a>
             </motion.div>
           </div>
@@ -258,12 +245,22 @@ const Conditions = () => {
               transition={{ duration: 0.5 }}
               style={{ width: 704, height: 84, position: 'relative' }}
             >
-              <div style={{ width: 704, height: 40, fontSize: 36, lineHeight: '40px', fontWeight: 500, letterSpacing: '-1px', color: '#242424' }}>
-                Условия сотрудничества
-              </div>
-              <div style={{ position: 'absolute', left: 0, top: 60, display: 'flex', gap: 24, height: 24, alignItems: 'center' }}>
+              <div
+                style={{
+                  width: 704,
+                  height: 40,
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div style={{ fontSize: 36, lineHeight: '40px', fontWeight: 500, letterSpacing: '-1px', color: '#242424' }}>
+                  Условия сотрудничества
+                </div>
                 <a
-                  href="#"
+                  href={FOOTER_OFFER_SPECIALISTS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -277,22 +274,6 @@ const Conditions = () => {
                 >
                   <img src="/images/conditions-file.svg" alt="" style={{ width: 10.667, height: 10.667 }} />
                   Оферта
-                </a>
-                <a
-                  href="#"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    color: '#59AD3B',
-                    fontSize: 16,
-                    fontWeight: 500,
-                    lineHeight: '24px',
-                    textDecoration: 'underline',
-                  }}
-                >
-                  <img src="/images/conditions-file.svg" alt="" style={{ width: 10.667, height: 10.667 }} />
-                  Инструкция по регистрации
                 </a>
               </div>
             </motion.div>
@@ -501,22 +482,6 @@ const Conditions = () => {
               >
                 <img src="/images/conditions-file.svg" alt="" style={{ width: 10.667, height: 10.667 }} />
                 Оферта
-              </a>
-              <a
-                href="#"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  color: '#59AD3B',
-                  fontSize: 16,
-                  fontWeight: 500,
-                  lineHeight: '24px',
-                  textDecoration: 'underline',
-                }}
-              >
-                <img src="/images/conditions-file.svg" alt="" style={{ width: 10.667, height: 10.667 }} />
-                Инструкция по регистрации
               </a>
             </div>
           </motion.div>
