@@ -127,11 +127,11 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="w-[356px] flex flex-col gap-[12px] justify-end">
+              <div className="flex flex-col gap-[12px] justify-end">
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Горячая линия</div>
                 <div className="flex flex-col gap-[8px]">
-                  <div className="text-[20px] leading-[24px] font-medium text-primary">+7&nbsp;495&nbsp;650-00-00</div>
-                  <div className="flex items-center gap-[8px] text-[16px] leading-[22px] text-tertiary">
+                  <div className="text-[20px] leading-[24px] font-medium text-primary whitespace-nowrap">+7 495 650-00-00</div>
+                  <div className="flex items-center gap-[8px] text-[16px] leading-[22px] text-tertiary whitespace-nowrap">
                     <span>c 10 до 19 (пн-пт)</span>
                     <span className="text-[12px] leading-[16px] text-[#C1C1C1]">•</span>
                     <span>c 10 до 16 (сб-вс) по Москве</span>
@@ -261,8 +261,8 @@ const Footer = () => {
               <div className="flex flex-col gap-[12px]">
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Горячая линия</div>
                 <div className="flex flex-col gap-[8px]">
-                  <div className="text-[20px] leading-[24px] font-medium text-primary">+7&nbsp;495&nbsp;650-00-00</div>
-                  <div className="flex items-center gap-[8px] text-[16px] leading-[22px] text-tertiary">
+                  <div className="text-[20px] leading-[24px] font-medium text-primary whitespace-nowrap">+7 495 650-00-00</div>
+                  <div className="flex items-center gap-[8px] text-[16px] leading-[22px] text-tertiary whitespace-nowrap">
                     <span>c 10 до 19 (пн-пт)</span>
                     <span className="text-[12px] leading-[16px] text-[#C1C1C1]">•</span>
                     <span>c 10 до 16 (сб-вс) по Москве</span>
@@ -401,10 +401,8 @@ const Footer = () => {
               <div className="text-[16px] leading-[22px] font-medium text-secondary">Горячая линия</div>
               <div className="flex flex-col gap-[8px]">
                 <div className="text-[20px] leading-[24px] font-medium text-primary">+7&nbsp;495&nbsp;650-00-00</div>
-                <div className="flex items-center gap-[8px] text-[14px] leading-[22px] text-tertiary flex-wrap">
-                  <span>c 10 до 19 (пн-пт)</span>
-                  <span className="text-[12px] leading-[16px] text-[#C1C1C1]">•</span>
-                  <span>c 10 до 16 (сб-вс) по Москве</span>
+                <div className="text-[14px] leading-[20px] text-tertiary">
+                  c&nbsp;10&nbsp;до&nbsp;19&nbsp;(пн-пт) <span className="text-[#C1C1C1]">•</span> c&nbsp;10&nbsp;до&nbsp;16&nbsp;(сб-вс) по&nbsp;Москве
                 </div>
               </div>
             </div>
