@@ -36,6 +36,7 @@ export const FOOTER_RETURN_URL = 'https://itab.pro/return/';
 // Footer: Партнёрство
 export const FOOTER_PARTNER_URL = 'https://itab.pro/partner/';
 export const FOOTER_OFFER_SPECIALISTS_URL = 'https://cdn.itab.pro/documents/offer-for-suppliers.pdf';
+export const FOOTER_REFERRAL_OFFER_URL = 'https://cdn.itab.pro/documents/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0_%D0%BF%D0%BE_%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B8%CC%86_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B5_%D1%81%D0%BF%D0%B5%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%B2.pdf';
 
 // Footer: Юридические документы
 export const FOOTER_USER_AGREEMENT_URL = 'https://cdn.itab.pro/documents/user-agreement.pdf';

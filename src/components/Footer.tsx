@@ -20,6 +20,7 @@ import {
   FOOTER_RETURN_URL,
   FOOTER_PARTNER_URL,
   FOOTER_OFFER_SPECIALISTS_URL,
+  FOOTER_REFERRAL_OFFER_URL,
   FOOTER_USER_AGREEMENT_URL,
   FOOTER_DATA_PROTECTION_URL,
 } from '../constants/links';
@@ -67,7 +68,7 @@ const Footer = () => {
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Специалистам</div>
                 <div className="flex flex-col gap-[8px]">
                   <a href={FOOTER_OFFER_SPECIALISTS_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта для специалистов</a>
-                  <a href="#" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта по реферальной программе</a>
+                  <a href={FOOTER_REFERRAL_OFFER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта по реферальной программе</a>
                 </div>
               </div>
               <a href={FOOTER_PARTNER_URL} target="_blank" rel="noopener noreferrer" className={actionBtnClassName} style={{ textDecoration: 'none' }}>
@@ -195,7 +196,7 @@ const Footer = () => {
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Специалистам</div>
                 <div className="flex flex-col gap-[8px]">
                   <a href={FOOTER_OFFER_SPECIALISTS_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта для специалистов</a>
-                  <a href="#" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта по реферальной программе</a>
+                  <a href={FOOTER_REFERRAL_OFFER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта по реферальной программе</a>
                 </div>
               </div>
               <a href={FOOTER_PARTNER_URL} target="_blank" rel="noopener noreferrer" className={actionBtnClassName} style={{ textDecoration: 'none' }}>
@@ -337,7 +338,7 @@ const Footer = () => {
             {openSection === 'specialists' && (
               <div className="flex flex-col gap-[8px] pb-[8px]">
                 <a href={FOOTER_OFFER_SPECIALISTS_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта для специалистов</a>
-                <a href="#" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта по реферальной программе</a>
+                <a href={FOOTER_REFERRAL_OFFER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>Оферта по реферальной программе</a>
                 <a href={FOOTER_PARTNER_URL} target="_blank" rel="noopener noreferrer" className={actionBtnClassName} style={{ textDecoration: 'none' }}>
                   Стать специалистом
                 </a>
