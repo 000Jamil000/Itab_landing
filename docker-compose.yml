@@ -1,0 +1,12 @@
+services:
+  supplier-itab-landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: supplier-itab-landing
+    restart: unless-stopped
+    ports:
+      # Внешний nginx на сервере будет проксировать supplier.itab.pro -> 127.0.0.1:8082
+      - "8082:80"
+
+
