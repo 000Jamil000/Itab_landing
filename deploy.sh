@@ -1,66 +1,78 @@
 #!/bin/bash
 
-# Скрипт деплоя iTAB Landing на сервер
+# Скрипт деплоя iTAB Landing на сервер через Git
 # Использование: ./deploy.sh
+#
+# ВАЖНО: Для работы скрипта нужно настроить SSH-ключи:
+#   ssh-copy-id root@88.210.53.64
+#
+# Или использовать переменную окружения:
+#   export ITAB_SERVER_PASSWORD="your_password"
+#   ./deploy.sh
 
 set -e
 
 # Конфигурация
 SERVER_IP="88.210.53.64"
 SERVER_USER="root"
-SERVER_PASSWORD="f6_64R56ENhKmfG1B4jF"
 PROJECT_NAME="itab-landing"
 PROJECT_DIR="/opt/${PROJECT_NAME}"
-DOCKER_PORT="4000"
 DOMAIN="supplier.itab.pro"
+GIT_REPO="git@github.com:000Jamil000/Itab_landing.git"
 
-# Проверить наличие sshpass
-if ! command -v sshpass &> /dev/null; then
-    echo "❌ Ошибка: sshpass не установлен"
-    echo "📦 Установите его:"
-    echo "   macOS: brew install hudochenkov/sshpass/sshpass"
-    echo "   Linux: apt-get install sshpass"
-    echo ""
-    echo "Или используйте SSH-ключи (рекомендуется):"
-    echo "   ssh-copy-id ${SERVER_USER}@${SERVER_IP}"
-    exit 1
-fi
-
-# Функция для выполнения SSH команд с паролем
+# Функция для выполнения SSH команд
 ssh_exec() {
-    sshpass -p "${SERVER_PASSWORD}" ssh -o StrictHostKeyChecking=no "${SERVER_USER}@${SERVER_IP}" "$@"
-}
-
-# Функция для rsync с паролем
-rsync_exec() {
-    sshpass -p "${SERVER_PASSWORD}" rsync -e "ssh -o StrictHostKeyChecking=no" "$@"
+    ssh -o StrictHostKeyChecking=no "${SERVER_USER}@${SERVER_IP}" "$@"
 }
 
 echo "🚀 Начинаем деплой iTAB Landing на ${DOMAIN}..."
 
-# 1. Собрать проект локально
+# 1. Проверить, что все изменения закоммичены
 echo ""
-echo "📦 Шаг 1: Сборка проекта..."
-npm run build
+echo "📝 Шаг 1: Проверка Git статуса..."
+if [[ -n $(git status --porcelain) ]]; then
+    echo "⚠️  Обнаружены незакоммиченные изменения:"
+    git status --short
+    echo ""
+    read -p "Закоммитить изменения? (y/n): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        read -p "Введите commit message: " COMMIT_MSG
+        git add .
+        git commit -m "$COMMIT_MSG"
+    else
+        echo "❌ Отмена деплоя. Сначала закоммитьте изменения."
+        exit 1
+    fi
+fi
 
-# 2. Создать директорию на сервере
+# 2. Запушить в GitHub
 echo ""
-echo "📁 Шаг 2: Создание директории на сервере..."
-ssh_exec "mkdir -p ${PROJECT_DIR}"
+echo "📤 Шаг 2: Push в GitHub..."
+CURRENT_BRANCH=$(git branch --show-current)
+git push origin "$CURRENT_BRANCH"
+echo "✅ Изменения запушены в GitHub!"
 
-# 3. Скопировать файлы на сервер
+# 3. Подключиться к серверу и обновить код
 echo ""
-echo "📤 Шаг 3: Копирование файлов..."
-rsync_exec -avz --delete \
-  --exclude 'node_modules' \
-  --exclude '.git' \
-  --exclude 'dist' \
-  --exclude '.cursor' \
-  --exclude '*.log' \
-  ./ ${SERVER_USER}@${SERVER_IP}:${PROJECT_DIR}/
+echo "🔄 Шаг 3: Обновление кода на сервере..."
+ssh_exec << ENDSSH
+# Проверить, существует ли директория проекта
+if [ ! -d "${PROJECT_DIR}" ]; then
+    echo "📁 Клонируем репозиторий впервые..."
+    cd /opt
+    git clone ${GIT_REPO} ${PROJECT_NAME}
+    cd ${PROJECT_DIR}
+else
+    echo "📦 Подтягиваем последние изменения..."
+    cd ${PROJECT_DIR}
+    git fetch --all
+    git reset --hard origin/${CURRENT_BRANCH}
+    git pull origin ${CURRENT_BRANCH}
+fi
 
-echo ""
-echo "✅ Файлы скопированы!"
+echo "✅ Код обновлён!"
+ENDSSH
 
 # 4. Собрать и запустить Docker на сервере
 echo ""
