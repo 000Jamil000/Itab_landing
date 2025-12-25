@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import ScaledFrame from '../components/ScaledFrame';
-import { ITAB_URL } from '../constants/links';
+import { SUPPLIER_REGISTRATION_URL } from '../constants/links';
 
 interface StepCardProps {
   number: string;
@@ -218,7 +218,9 @@ const Steps = () => {
               </div>
 
               <a
-                href={ITAB_URL}
+                href={SUPPLIER_REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   width: '196px',
                   height: '56px',

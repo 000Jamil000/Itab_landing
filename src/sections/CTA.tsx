@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ITAB_URL } from '../constants/links';
+import { SUPPLIER_REGISTRATION_URL } from '../constants/links';
 
 const CTA = () => {
   return (
@@ -61,7 +61,9 @@ const CTA = () => {
             </div>
 
             <a
-              href={ITAB_URL}
+              href={SUPPLIER_REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 width: '178px',
                 height: '56px',
@@ -164,7 +166,9 @@ const CTA = () => {
 
             {/* Button 178x56 at y=204 */}
             <a
-              href={ITAB_URL}
+              href={SUPPLIER_REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 position: 'absolute',
                 left: 0,
@@ -313,7 +317,9 @@ const CTA = () => {
             </div>
 
             <a
-              href={ITAB_URL}
+              href={SUPPLIER_REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 width: '178px',
                 height: '56px',

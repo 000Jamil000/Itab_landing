@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import ScaledFrame from '../components/ScaledFrame';
-import { ITAB_URL } from '../constants/links';
+import { SUPPLIER_REGISTRATION_URL } from '../constants/links';
 
 const Hero = () => {
   return (
@@ -115,7 +115,9 @@ const Hero = () => {
               на каждом этапе
             </p>
             <a
-              href={ITAB_URL}
+              href={SUPPLIER_REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 width: '178px',
                 height: '56px',
@@ -268,7 +270,9 @@ const Hero = () => {
                 и поддержка на каждом этапе
               </p>
               <a
-                href={ITAB_URL}
+                href={SUPPLIER_REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   width: 178,
                   height: 56,
@@ -403,7 +407,9 @@ const Hero = () => {
                 и поддержка на каждом этапе
               </p>
               <a
-                href={ITAB_URL}
+                href={SUPPLIER_REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   width: '100%',
                   height: '56px',

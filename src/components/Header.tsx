@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import LayoutContainer from './LayoutContainer';
-import { ITAB_URL } from '../constants/links';
+import { SUPPLIER_REGISTRATION_URL } from '../constants/links';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -93,7 +93,9 @@ const Header = () => {
 
           {/* CTA Button */}
           <a
-            href={ITAB_URL}
+            href={SUPPLIER_REGISTRATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#6CB651] hover:bg-[#5a9d35] text-white text-button transition-colors w-[86px] h-[48px] px-[20px] py-[12px] rounded-[16px] flex items-center justify-center min-[744px]:w-auto min-[744px]:h-auto min-[744px]:px-5 min-[744px]:py-3 min-[744px]:rounded-2xl"
           >
             Войти

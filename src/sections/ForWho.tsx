@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import LayoutContainer from '../components/LayoutContainer';
 import ScaledFrame from '../components/ScaledFrame';
-import { ITAB_URL } from '../constants/links';
+import { SUPPLIER_REGISTRATION_URL } from '../constants/links';
 
 const ForWho = () => {
   return (
@@ -110,7 +110,9 @@ const ForWho = () => {
               </h3>
                 <div>
                   <a
-                    href={ITAB_URL}
+                    href={SUPPLIER_REGISTRATION_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                       height: '56px',
                       padding: '16px 20px',
@@ -260,7 +262,9 @@ const ForWho = () => {
                   чтобы ваши продукты продавались больше, <br />а клиенты возвращались чаще
                 </div>
                 <a
-                  href={ITAB_URL}
+                  href={SUPPLIER_REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     width: 196,
                     height: 56,
@@ -477,7 +481,9 @@ const ForWho = () => {
                   и поддержку — чтобы ваши продукты продавались больше, <br />а клиенты возвращались чаще
                 </div>
                 <a
-                  href={ITAB_URL}
+                  href={SUPPLIER_REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     backgroundColor: '#FFFFFF',
                     borderRadius: 16,

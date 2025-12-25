@@ -1,4 +1,5 @@
 export const ITAB_URL = 'https://itab.pro';
+export const SUPPLIER_REGISTRATION_URL = 'https://itab.pro/supplier/?action=openSupplierRegistrationModalWindow';
 export const PODCAST_URL = 'https://nazdorovoivolne.mave.digital';
 
 // Stores
