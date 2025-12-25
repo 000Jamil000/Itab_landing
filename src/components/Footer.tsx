@@ -5,8 +5,8 @@ import {
   VK_URL,
   YOUTUBE_URL,
   TIKTOK_URL,
+  TG_URL,
   OK_URL,
-  ITAB_URL,
   FOOTER_CATALOG_URL,
   FOOTER_SPECIALISTS_URL,
   FOOTER_TESTS_URL,
@@ -153,8 +153,8 @@ const Footer = () => {
                 <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className={`w-[68px] ${socialBtnClassName}`}>
                   <img src="/images/footer-social-tiktok-green.svg" alt="" className="h-[14px] w-auto" />
                 </a>
-                <a href={ITAB_URL} target="_blank" rel="noopener noreferrer" aria-label="Huawei" className={`w-[68px] ${socialBtnClassName}`}>
-                  <img src="/images/footer-social-huawei-green.svg" alt="" className="h-[16px] w-auto" />
+                <a href={TG_URL} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className={`w-[68px] ${socialBtnClassName}`}>
+                  <img src="/images/footer-social-telegram-green.svg" alt="" className="h-[16px] w-auto" />
                 </a>
                 <a href={OK_URL} target="_blank" rel="noopener noreferrer" aria-label="Одноклассники" className={`w-[68px] ${socialBtnClassName}`}>
                   <img src="/images/footer-social-odnoklassniki-green.svg" alt="" className="h-[14px] w-auto" />
@@ -284,8 +284,8 @@ const Footer = () => {
                 <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className={`w-[68px] ${socialBtnClassName}`}>
                   <img src="/images/footer-social-tiktok-green.svg" alt="" className="h-[14px] w-auto" />
                 </a>
-                <a href={ITAB_URL} target="_blank" rel="noopener noreferrer" aria-label="Huawei" className={`w-[68px] ${socialBtnClassName}`}>
-                  <img src="/images/footer-social-huawei-green.svg" alt="" className="h-[16px] w-auto" />
+                <a href={TG_URL} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className={`w-[68px] ${socialBtnClassName}`}>
+                  <img src="/images/footer-social-telegram-green.svg" alt="" className="h-[16px] w-auto" />
                 </a>
                 <a href={OK_URL} target="_blank" rel="noopener noreferrer" aria-label="Одноклассники" className={`w-[68px] ${socialBtnClassName}`}>
                   <img src="/images/footer-social-odnoklassniki-green.svg" alt="" className="h-[14px] w-auto" />
@@ -421,8 +421,8 @@ const Footer = () => {
                 <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className={`flex-1 ${socialBtnClassName}`}>
                   <img src="/images/footer-social-tiktok-green.svg" alt="" className="h-[14px] w-auto" />
                 </a>
-                <a href={ITAB_URL} target="_blank" rel="noopener noreferrer" aria-label="Huawei" className={`flex-1 ${socialBtnClassName}`}>
-                  <img src="/images/footer-social-huawei-green.svg" alt="" className="h-[16px] w-auto" />
+                <a href={TG_URL} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className={`flex-1 ${socialBtnClassName}`}>
+                  <img src="/images/footer-social-telegram-green.svg" alt="" className="h-[16px] w-auto" />
                 </a>
                 <a href={OK_URL} target="_blank" rel="noopener noreferrer" aria-label="Одноклассники" className={`flex-1 ${socialBtnClassName}`}>
                   <img src="/images/footer-social-odnoklassniki-green.svg" alt="" className="h-[14px] w-auto" />
