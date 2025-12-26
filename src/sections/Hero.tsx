@@ -7,7 +7,7 @@ const Hero = () => {
     <>
       {/* Desktop / 1440 - показывается только на >1440 */}
       <section
-        className="relative overflow-hidden max-1440:hidden"
+        className="relative overflow-hidden max-1024:hidden"
         style={{
           backgroundColor: '#59AD3B',
           height: '760px',
@@ -173,7 +173,7 @@ const Hero = () => {
 
       {/* Tablet 744 (Figma: 8389:34730) - показывается только на 744-1440 */}
       <section
-        className="relative overflow-hidden hidden max-1440:block max-744:hidden"
+        className="relative overflow-hidden hidden max-1024:block max-744:hidden"
         style={{
           backgroundColor: '#59AD3B',
         }}

@@ -6,7 +6,7 @@ const CTA = () => {
     <>
       {/* Desktop / 1440 */}
     <section 
-        className="relative overflow-hidden mb-[8px] max-1440:hidden"
+        className="relative overflow-hidden mb-[8px] max-1024:hidden"
         style={{
           backgroundColor: '#59AD3B',
           borderRadius: '32px',
@@ -139,7 +139,7 @@ const CTA = () => {
       </section>
 
       {/* Tablet 744 (Figma: content 704x260, illustration 471 at x=319,y=-47, icon 103.229 at x=653.815,y=64) */}
-      <section className="relative overflow-hidden mb-[8px] hidden max-1440:block max-744:hidden" style={{ backgroundColor: '#59AD3B', borderRadius: 32, paddingTop: 49, paddingBottom: 49 }}>
+      <section className="relative overflow-hidden mb-[8px] hidden max-1024:block max-744:hidden" style={{ backgroundColor: '#59AD3B', borderRadius: 32, paddingTop: 49, paddingBottom: 49 }}>
         {/* Background big spot (Figma 744: x=-1011.262, y=-1927.401, size 2080.228) */}
         <div style={{ position: 'absolute', left: -1011.262, top: -1927.401, width: 2080.228, height: 2080.228, pointerEvents: 'none' }}>
           <div style={{ transform: 'rotate(150deg)', width: 1522.833, height: 1522.833, position: 'relative' }}>

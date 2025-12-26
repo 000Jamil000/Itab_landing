@@ -14,6 +14,7 @@ export default {
         'min-744': '744px',
         'max-1200': { max: '1200px' },
         'max-1440': { max: '1440px' },
+        'max-1024': { max: '1024px' },
         'max-744': { max: '744px' },
         'max-375': { max: '375px' },
       },

@@ -112,7 +112,7 @@ const Steps = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
+      <section id="steps" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1024:hidden">
         <div className="mx-auto w-[1200px]">
           <motion.h2
             className="text-h2"
@@ -249,7 +249,7 @@ const Steps = () => {
       </section>
 
       {/* Tablet 744 (Figma 744 steps frame: 3 cards in horizontal row) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1024:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <ScaledFrame designWidth={704} designHeight={398}>
             <motion.h2

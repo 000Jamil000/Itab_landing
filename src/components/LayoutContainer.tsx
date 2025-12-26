@@ -19,7 +19,7 @@ export default function LayoutContainer({ children, className = '' }: LayoutCont
     // - ≤1440px: max-w=744 + px=20 => контент 704 (как в Figma для 744-лейаута)
     // - ≤375px:  max-w=375 + px=20 => контент 335 (как в Figma)
     <div
-      className={`w-full mx-auto box-border max-w-[1200px] max-1200:px-[20px] max-1440:max-w-[744px] max-1440:px-[20px] max-375:max-w-[375px] max-375:px-[20px] ${className}`}
+      className={`w-full mx-auto box-border max-w-[1200px] max-1200:px-[20px] max-1024:max-w-[744px] max-1024:px-[20px] max-375:max-w-[375px] max-375:px-[20px] ${className}`}
     >
       {children}
     </div>
