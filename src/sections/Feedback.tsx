@@ -263,7 +263,7 @@ const Feedback = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
+      <section id="feedback" className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1042:hidden">
         <div className="mx-auto w-[1200px]">
         <motion.h2 
             className="text-h2 text-secondary"
@@ -290,7 +290,7 @@ const Feedback = () => {
     </section>
 
       {/* Tablet 744 (Figma: cards strip, card 400x462, gap 8) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1042:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             <motion.h2

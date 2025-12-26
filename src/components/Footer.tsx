@@ -44,7 +44,7 @@ const Footer = () => {
     <footer className="bg-white pt-[64px] pb-[20px] max-744:pt-[24px]">
       <LayoutContainer>
         {/* ==================== DESKTOP (>1440) ==================== */}
-        <div className="flex flex-col gap-[32px] max-1440:hidden">
+        <div className="flex flex-col gap-[32px] max-1042:hidden">
           {/* Верхний блок ссылок - 5 колонок */}
           <div className="grid gap-[16px] grid-cols-[260px_260px_260px_178px_178px]">
             {/* Поставщикам */}
@@ -172,7 +172,7 @@ const Footer = () => {
         </div>
 
         {/* ==================== TABLET 744 (744-1440) ==================== */}
-        <div className="hidden max-1440:flex max-744:hidden flex-col gap-[32px]">
+        <div className="hidden max-1042:flex max-744:hidden flex-col gap-[32px]">
           {/* Верхний блок - 3 колонки (Поставщикам, Специалистам, Поддержка) */}
           <div className="grid grid-cols-3 gap-[8px]">
             {/* Поставщикам */}

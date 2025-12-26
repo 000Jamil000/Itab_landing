@@ -156,7 +156,7 @@ const Partnerships = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1042:hidden">
         <div className="mx-auto w-[1200px]">
           <div className="flex flex-row gap-[40px] mb-[40px] items-end">
             <motion.div
@@ -194,7 +194,7 @@ const Partnerships = () => {
       </section>
 
       {/* Tablet 744 (Figma: 3x2 grid, cards 229.333x380, gap 8) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1042:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           <div style={{ width: 704 }}>
             {/* Heading (744): по макету — слева, без искусственных переносов */}

@@ -7,7 +7,7 @@ const ForWho = () => {
   return (
     <>
       {/* Desktop / 1440 */}
-      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1440:hidden">
+      <section className="bg-white rounded-[32px] py-[80px] mb-[8px] max-1042:hidden">
         <LayoutContainer>
         <motion.h2 
             className="text-h2 text-secondary"
@@ -143,7 +143,7 @@ const ForWho = () => {
       </section>
 
       {/* Tablet 744 (Figma: 8389:34797) */}
-      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1440:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+      <section className="bg-white rounded-[32px] mb-[8px] hidden max-1042:block max-744:hidden" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="mx-auto w-full max-w-[744px] px-[20px]">
           {/* Content: 704x542 */}
           <ScaledFrame designWidth={704} designHeight={542}>
