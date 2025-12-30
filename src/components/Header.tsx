@@ -44,7 +44,7 @@ const Header = () => {
         */}
         <div className="flex items-center justify-between h-[90px] box-border gap-0">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <a href="https://itab.pro" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
             <img 
               src="/images/logo.svg" 
               alt="iTAB" 
@@ -55,7 +55,7 @@ const Header = () => {
                   : 'none'
               }}
             />
-          </div>
+          </a>
 
           {/* Navigation */}
           <nav className="hidden min-744:flex items-center gap-6">
