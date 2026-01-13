@@ -23,6 +23,7 @@ import {
   FOOTER_REFERRAL_OFFER_URL,
   FOOTER_USER_AGREEMENT_URL,
   FOOTER_DATA_PROTECTION_URL,
+  OFERTA_SUPPLIER_URL,
 } from '../constants/links';
 import LayoutContainer from './LayoutContainer';
 
@@ -52,7 +53,7 @@ const Footer = () => {
               <div className="flex flex-col gap-[16px]">
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Поставщикам</div>
                 <div className="flex flex-col gap-[8px]">
-                  <a href={FOOTER_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>
+                  <a href={OFERTA_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>
                     Оферта для&nbsp;поставщиков
                   </a>
                 </div>
@@ -180,7 +181,7 @@ const Footer = () => {
               <div className="flex flex-col gap-[16px]">
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Поставщикам</div>
                 <div className="flex flex-col gap-[8px]">
-                  <a href={FOOTER_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>
+                  <a href={OFERTA_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>
                     Оферта для&nbsp;поставщиков
                   </a>
                 </div>
@@ -317,7 +318,7 @@ const Footer = () => {
             </button>
             {openSection === 'suppliers' && (
               <div className="flex flex-col gap-[8px] pb-[8px]">
-                <a href={FOOTER_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>
+                <a href={OFERTA_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className="text-[14px] leading-[20px] text-tertiary" style={{ textDecoration: 'none' }}>
                   Оферта для&nbsp;поставщиков
                 </a>
                 <a href={FOOTER_SUPPLIER_URL} target="_blank" rel="noopener noreferrer" className={actionBtnClassName} style={{ textDecoration: 'none' }}>

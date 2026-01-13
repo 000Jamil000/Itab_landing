@@ -71,7 +71,7 @@ const Conditions = () => {
             <div>
               <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px', lineHeight: '20px' }}>Комиссия</div>
               <div style={{ marginTop: '8px', color: '#FFFFFF', fontSize: '20px', lineHeight: '24px', fontWeight: 500 }}>
-                Фиксированная комиссия 31,5% <br />
+                Фиксированная комиссия 33% <br />
                 от цены товара, <br />
                 в которую включены логистика, хранение <br />
                 и упаковка
@@ -303,7 +303,7 @@ const Conditions = () => {
                 <div>
                   <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: '20px' }}>Комиссия</div>
                   <div style={{ marginTop: 8, color: '#FFFFFF', fontSize: 20, lineHeight: '24px', fontWeight: 500 }}>
-                    Фиксированная комиссия 31,5% <br />
+                    Фиксированная комиссия 33% <br />
                     от цены товара, <br />
                     в которую включены логистика, хранение <br />
                     и упаковка
@@ -511,7 +511,7 @@ const Conditions = () => {
               <div>
                 <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(13px, 3.5vw, 14px)', lineHeight: '22px', letterSpacing: '-0.2px' }}>Комиссия</div>
                 <div style={{ marginTop: 8, color: '#FFFFFF', fontSize: 'clamp(16px, 4.2vw, 18px)', lineHeight: '22px', fontWeight: 500, letterSpacing: '-0.2px' }}>
-                  Фиксированная комиссия 31,5% от цены товара, в которую включены логистика, хранение <br />и упаковка
+                  Фиксированная комиссия 33% от цены товара, в которую включены логистика, хранение <br />и упаковка
                 </div>
               </div>
 
