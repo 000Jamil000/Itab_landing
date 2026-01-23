@@ -125,14 +125,14 @@ const Footer = () => {
                   <img src="/images/logo-green.svg" alt="iTAB" className="w-full h-full block" />
                 </div>
                 <div className="text-[12px] leading-[16px] text-tertiary w-[175px]">
-                  ООО&nbsp;«Ай&nbsp;ТАБ», 2020–2024. Все&nbsp;права защищены.
+                  ООО&nbsp;«Ай&nbsp;ТАБ», 2020–2026. Все&nbsp;права защищены.
                 </div>
               </div>
 
               <div className="flex flex-col gap-[12px] justify-end">
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Горячая линия</div>
                 <div className="flex flex-col gap-[8px]">
-                  <div className="text-[20px] leading-[24px] font-medium text-primary whitespace-nowrap">+7 495 650-00-00</div>
+                  <div className="text-[20px] leading-[24px] font-medium text-primary whitespace-nowrap">8 (800) 775-46-17</div>
                   <div className="flex items-center gap-[8px] text-[16px] leading-[22px] text-tertiary whitespace-nowrap">
                     <span>c 10 до 19 (пн-пт)</span>
                     <span className="text-[12px] leading-[16px] text-[#C1C1C1]">•</span>
@@ -256,14 +256,14 @@ const Footer = () => {
                   <img src="/images/logo-green.svg" alt="iTAB" className="w-full h-full block" />
                 </div>
                 <div className="text-[12px] leading-[16px] text-tertiary">
-                  ООО&nbsp;«Ай&nbsp;ТАБ», 2020–2024.<br />Все&nbsp;права защищены.
+                  ООО&nbsp;«Ай&nbsp;ТАБ», 2020–2026.<br />Все&nbsp;права защищены.
                 </div>
               </div>
 
               <div className="flex flex-col gap-[12px]">
                 <div className="text-[16px] leading-[22px] font-medium text-secondary">Горячая линия</div>
                 <div className="flex flex-col gap-[8px]">
-                  <div className="text-[20px] leading-[24px] font-medium text-primary whitespace-nowrap">+7 495 650-00-00</div>
+                  <div className="text-[20px] leading-[24px] font-medium text-primary whitespace-nowrap">8 (800) 775-46-17</div>
                   <div className="flex items-center gap-[8px] text-[16px] leading-[22px] text-tertiary whitespace-nowrap">
                     <span>c 10 до 19 (пн-пт)</span>
                     <span className="text-[12px] leading-[16px] text-[#C1C1C1]">•</span>
@@ -394,7 +394,7 @@ const Footer = () => {
                 <img src="/images/logo-green.svg" alt="iTAB" className="w-full h-full block" />
               </div>
               <div className="text-[12px] leading-[16px] text-tertiary">
-                ООО «Ай ТАБ», 2020–2024. Все права защищены.
+                ООО «Ай ТАБ», 2020–2026. Все права защищены.
               </div>
             </div>
 
@@ -402,7 +402,7 @@ const Footer = () => {
             <div className="flex flex-col gap-[12px]">
               <div className="text-[16px] leading-[22px] font-medium text-secondary">Горячая линия</div>
               <div className="flex flex-col gap-[8px]">
-                <div className="text-[20px] leading-[24px] font-medium text-primary">+7&nbsp;495&nbsp;650-00-00</div>
+                <div className="text-[20px] leading-[24px] font-medium text-primary">8&nbsp;(800)&nbsp;775-46-17</div>
                 <div className="text-[14px] leading-[20px] text-tertiary">
                   c&nbsp;10&nbsp;до&nbsp;19&nbsp;(пн-пт) <span className="text-[#C1C1C1]">•</span> c&nbsp;10&nbsp;до&nbsp;16&nbsp;(сб-вс) по&nbsp;Москве
                 </div>
