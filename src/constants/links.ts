@@ -44,4 +44,4 @@ export const FOOTER_USER_AGREEMENT_URL = 'https://cdn.itab.pro/documents/user-ag
 export const FOOTER_DATA_PROTECTION_URL = 'https://cdn.itab.pro/documents/data-protection-policy.pdf';
 
 // Оферта для поставщиков (документ)
-export const OFERTA_SUPPLIER_URL = '/documents/oferta.docx';
+export const OFERTA_SUPPLIER_URL = 'https://cdn.itab.pro/documents/offer-for-suppliers.pdf';
